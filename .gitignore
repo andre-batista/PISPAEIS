@@ -1,8 +1,15 @@
+
 *.aux
+
 *.fdb_latexmk
+
 *.log
+
 *.synctex(busy)
+
+
 figs/*.pdf
+
 *.bbl
 *.blg
 *.fls
