@@ -2,7 +2,7 @@
 *.fdb_latexmk
 *.log
 *.synctex(busy)
-/figs/*.pdf
+figs/*.pdf
 *.bbl
 *.blg
 *.fls
