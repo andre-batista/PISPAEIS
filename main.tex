@@ -123,6 +123,14 @@
 				\caption{An example illustrating the differences between nearest neighbor interpolation and the adopted contour detection methodology. (a) Original image of the scatterer (resolution 100x100); (b) Image reconstructed by an imaging algorithm after thresholding (20x20); (c) Image reconstructed to the original resolution using nearest neighbor interpolation; (d) Image reconstructed to the original resolution using contour identification.}
 				\label{fig:contourmotivation}
 			\end{figure}
+
+            The sum of false negatives and false positives can be easily obtained by applying the XOR operation between the two images. Then, we can compute the shape error as the ratio between the number of incorrectly classified pixels and the total number of pixels that are part of the scatterers in the original image. Additionally, if we consider the shape error in percentage values, we can then define the indicator $\zeta_S$ as
+
+            \begin{equation}
+                \zeta_S = \frac{\text{FP} + \text{FN}}{\text{TP}} \times 100\%, \label{eq:shapeerror}
+            \end{equation}
+
+            \noindent where $\text{FP}$ and $\text{FN}$ are the numbers of false-positive and false-negative pixels, respectively, and $\text{TP}$ is the total number of pixels that are part of the scatterers in the original image. Therefore, the indicator assumes values greater than or equal to zero. Note that values greater than 100\% are also possible, indicating that the reconstructed image has more incorrectly classified pixels than the total number of pixels that make up the scatterers in the original image. This can occur more frequently when the number of pixels of the scatterer in the original image is small.
 			
 		\subsection{Position Error}\label{sec:indicators:positionerror}
 	
