@@ -3,3 +3,7 @@
 *.log
 *.synctex(busy)
 /figs/*.pdf
+*.bbl
+*.blg
+*.fls
+*.synctex.gz
