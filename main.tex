@@ -1,6 +1,7 @@
 \documentclass{IEEEtran}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
@@ -133,6 +134,27 @@
             \noindent where $\text{FP}$ and $\text{FN}$ are the numbers of false-positive and false-negative pixels, respectively, and $\text{TP}$ is the total number of pixels that are part of the scatterers in the original image. Therefore, the indicator assumes values greater than or equal to zero. Note that values greater than 100\% are also possible, indicating that the reconstructed image has more incorrectly classified pixels than the total number of pixels that make up the scatterers in the original image. This can occur more frequently when the number of pixels of the scatterer in the original image is small.
 			
 		\subsection{Position Error}\label{sec:indicators:positionerror}
+
+            % A metodologia para o cálculo do erro de detecção de posição possui similaridades. Da mesma forma como no cálculo de erro de forma, o cálculo do erro de posição também considera o valor absoluto do contraste das imagens e a mesma operação de limiarização. As razões para aplicar a mesma abordagem são as mesmas.
+
+            The methodology for calculating the position detection error shares similarities with that of shape error calculation. As it is done when computing the shape error, the position error calculation also uses the absolute value of the image contrasts and applies the same thresholding operation. The reasons for this approach are the same.
+            
+            % A diferença é que o cálculo do erro de posição se baseia na comparação do ponto médio de pixeis classificados como objetos pelo operador de limiarização aplicado em cada imagem. Ou seja, para cada coordenada na imagem, é calculado a média dos valores de coordenada onde os objetos estão. Para isso, não é necessário aplicar o cálculo de contornos, uma vez que, mesmo tendo resoluções diferentes, os pontos das coordenadas estão dentro dos mesmos limites.
+
+            The key difference lies in the method of position error calculation, which is based on comparing the centroid of pixels classified as objects by the thresholding operation in each image. Specifically, the centroid for each image is determined by averaging the coordinates of the pixels that constitute the objects. This method does not require contour detection, as the coordinate points are within the same boundaries for both images, even when resolutions differ.
+
+            % Com base nos pontos médios em cada imagem, o indicador é definido como a distância euclidiana entre o par de pontos. Vale à pena destacar que os pontos são calculados em um intervalo de 0 a 1, onde 0 representa a origem da imagem e 1 representa o final da imagem. Desta forma, se multiplicarmos a distância por 100, podemos interpretar a distância como um erro percentual em relação ao tamanho da imagem. Em outra palavras, o indicador significa o quanto o algoritmo errou na localização dos objetos em relação ao tamanho da imagem. Isso permite também que o indicador seja usado em um conjunto de testes que tenham diferentes tamanhos de domínio.
+
+            The position error indicator is then defined as the Euclidean distance between the centroids in the two images. It is important to note that these centroids are normalized within a range of 0 to 1, where 0 represents the image's origin and 1 represents its end. By multiplying this distance by 100, the error can be interpreted as a percentage relative to the image size. Thus, the indicator quantifies the error in object localization relative to the image size, allowing its application across test sets with varying domain sizes. Therefore, the position error indicator $\zeta_P$ is defined as:
+            \begin{equation}
+                \zeta_P = \sqrt{(x_c^R - x_c^O)^2 + (y_c^R-y_c^O)^2} \times 100\%, \label{eq:positionerror}
+            \end{equation}
+
+            \noindent where $(x_c^R, y_c^R)$ and $(x_c^O, y_c^O)$ are the centroids of the reconstructed and original images, respectively.
+
+            % De fato, erros na recuperação da geometrias dos objetos podem influenciar diretamente no cálculo no erro de posição. Por exemplo, se um objeto no formato de uma estrela de cinco pontas fosse reconstruído com uma de suas pontas entortada, isso afetaria o ponto médio do objeto e, consequentemente, o erro de posição. No entanto, isso é esperado, uma vez que qualquer critério para considerar a posição de um objeto leva em conta os píxeis que o descrevem, assim como sua geometria. Por outro lado, o indicador proposto, além de ser simples, pode ser aplicado também em imagens com múltiplos objetos.
+
+            It should be noted that inaccuracies in the reconstructed geometry of objects can significantly influence the position error calculation. For example, if a star-shaped object with five points is reconstructed with one point distorted, this distortion will affect the object's centroid, thereby impacting the position error. However, this effect is expected, as any criterion for determining an object's position inherently considers the pixels defining it, as it is for its geometry. Furthermore, the proposed indicator is straightforward and versatile, applicable even in scenarios involving images with multiple objects.
 	
 	\section{Computational Experiments}\label{sec:results}
 	
