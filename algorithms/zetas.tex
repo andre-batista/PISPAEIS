@@ -1,0 +1,109 @@
+\begin{algorithm}
+    \caption{Compute $\zeta_S$}
+    \begin{algorithmic}[1]
+        \REQUIRE $\chi_o$, $\chi_r$, $\text{threshold} = 0.5$
+        \STATE $X_o \gets \text{abs}(\chi_o)$ \COMMENT{Compute the absolute value of contrast matrices}
+        \STATE $X_r \gets \text{abs}(\chi_r)$
+        \STATE $X_{r\min} \gets \text{min}(X_r)$ \COMMENT{Compute the threshold based on the minimum and maximum values of the recovered contrast matrix}
+        \STATE $X_{r\max} \gets \text{max}(X_r)$
+        \STATE $T \gets X_{r\min} + \text{threshold} \times (X_{r\max} - X_{r\min})$
+
+        
+        \STATE $X_o[X_o > 0] \gets 1$ \COMMENT{Thresholding}
+        \STATE $X_r[X_r \le T] \gets 0$
+        \STATE $X_r[X_r > T] \gets 1$
+
+        \IF{$\sum(X_r) == 0$}
+            \RETURN 100
+        \ENDIF
+
+        \STATE $c_o \gets \text{find\_contours}(X_o, 0.0)$
+        \STATE $c_r \gets \text{find\_contours}(X_r, 0.0)$
+
+        \COMMENT{Convert scale}
+        \FOR{$i = 1$ \TO $\text{len}(c_r)$}
+            \STATE $c_r[i][:, 1] \gets X_o.\text{shape}[1] \times c_r[i][:, 1] / X_r.\text{shape}[1]$
+            \STATE $c_r[i][:, 0] \gets X_o.\text{shape}[0] \times c_r[i][:, 0] / X_r.\text{shape}[0]$
+        \ENDFOR
+
+        \STATE $mask_o \gets \text{zeros}(X_o.\text{shape})$
+        \STATE $counter \gets \text{zeros}(X_o.\text{shape})$
+        \FOR{$i = 1$ \TO $\text{len}(c_o)$}
+            \STATE $mask_t \gets \text{grid\_points\_in\_poly}(X_o.\text{shape}, c_o[i])$
+            \STATE $counter[mask_t] \gets counter[mask_t] + 1$
+        \ENDFOR
+        \STATE $mask_o[\text{mod}(counter, 2) == 1] \gets \text{True}$
+
+        \STATE $mask_r \gets \text{zeros}(X_o.\text{shape})$
+        \STATE $counter \gets \text{zeros}(X_o.\text{shape})$
+        \FOR{$i = 1$ \TO $\text{len}(c_r)$}
+            \STATE $mask_t \gets \text{grid\_points\_in\_poly}(X_o.\text{shape}, c_r[i])$
+            \STATE $counter[mask_t] \gets counter[mask_t] + 1$
+        \ENDFOR
+        \STATE $mask_r[\text{mod}(counter, 2) == 1] \gets \text{True}$
+
+        \COMMENT{XOR operation}
+        \STATE $diff \gets \text{logical\_xor}(mask_o, mask_r)$
+
+        \COMMENT{Area of the difference}
+        \STATE $area\_diff \gets \frac{\sum(diff)}{\sum(mask_o)} \times 100$
+
+        \RETURN $area\_diff$
+    \end{algorithmic}
+\end{algorithm}
+
+
+
+% \begin{algorithm}
+% \caption{Compute $\zeta_S$}
+% \begin{algorithmic}[1]
+% \REQUIRE $\chi_o$, $\chi_r$, $\text{threshold} = 0.5$
+% \STATE $X_o \gets \text{abs}(\chi_o)$
+% \STATE $X_r \gets \text{abs}(\chi_r)$
+% \STATE $X_{r\min} \gets \text{min}(X_r)$
+% \STATE $X_{r\max} \gets \text{max}(X_r)$
+% \STATE $\text{threshold} \gets X_{r\min} + \text{threshold} \times (X_{r\max} - X_{r\min})$
+
+% \COMMENT{Thresholding}
+% \STATE $X_o[X_o > 0] \gets 1$
+% \STATE $X_r[X_r \le \text{threshold}] \gets 0$
+% \STATE $X_r[X_r > \text{threshold}] \gets 1$
+
+% \IF{$\sum(X_r) == 0$}
+%     \RETURN 100
+% \ENDIF
+
+% \STATE $c_o \gets \text{find\_contours}(X_o, 0.0)$
+% \STATE $c_r \gets \text{find\_contours}(X_r, 0.0)$
+
+% \COMMENT{Convert scale}
+% \FOR{$i = 1$ \TO $\text{len}(c_r)$}
+%     \STATE $c_r[i][:, 1] \gets X_o.\text{shape}[1] \times c_r[i][:, 1] / X_r.\text{shape}[1]$
+%     \STATE $c_r[i][:, 0] \gets X_o.\text{shape}[0] \times c_r[i][:, 0] / X_r.\text{shape}[0]$
+% \ENDFOR
+
+% \STATE $mask_o \gets \text{zeros}(X_o.\text{shape})$
+% \STATE $counter \gets \text{zeros}(X_o.\text{shape})$
+% \FOR{$i = 1$ \TO \text{len}(c_o)}
+%     \STATE $mask_t \gets \text{grid\_points\_in\_poly}(X_o.\text{shape}, c_o[i])$
+%     \STATE $counter[mask_t] \gets counter[mask_t] + 1$
+% \ENDFOR
+% \STATE $mask_o[\text{mod}(counter, 2) == 1] \gets \text{True}$
+
+% \STATE $mask_r \gets \text{zeros}(X_o.\text{shape})$
+% \STATE $counter \gets \text{zeros}(X_o.\text{shape})$
+% \FOR{$i = 1$ \TO \text{len}(c_r)}
+%     \STATE $mask_t \gets \text{grid\_points\_in\_poly}(X_o.\text{shape}, c_r[i])$
+%     \STATE $counter[mask_t] \gets counter[mask_t] + 1$
+% \ENDFOR
+% \STATE $mask_r[\text{mod}(counter, 2) == 1] \gets \text{True}$
+
+% \COMMENT{XOR operation}
+% \STATE $diff \gets \text{logical\_xor}(mask_o, mask_r)$
+
+% \COMMENT{Area of the difference}
+% \STATE $area\_diff \gets \frac{\sum(diff)}{\sum(mask_o)} \times 100$
+
+% \RETURN $area\_diff$
+% \end{algorithmic}
+% \end{algorithm}
