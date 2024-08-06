@@ -166,17 +166,77 @@
 
         The experiments were conducted using the open-source library EISPY2D \cite{batista2022eispy2d}, specifically developed to design and evaluate algorithms for the inverse electromagnetic scattering problem. Both indicators will be analyzed, with each approach featuring two case studies (one fundamental and the other exploring a particular aspect) as well as a benchmarking study. The case studies aim to assess performance in specific scenarios, while the benchmarking study facilitates broader generalization of the results.
 
-        Para todos os experimentos, o $\lambda_b$ foi definido em 1 [m]. O ruído acrescentado nos dados sempre foi de 5\%. A permissividade relativa do meio de fundo sempre foi fixada em 1. A amplitude da onda incidente sempre foi fixada em 1 [V/m].
+        Para todos os experimentos, o $\lambda_b$ foi definido em 1 [m]. O ruído acrescentado nos dados sempre foi de 5\%. A permissividade relativa do meio de fundo sempre foi fixada em 1. A amplitude da onda incidente sempre foi fixada em 1 [V/m]. A sintetização dos dados foi feita através do algoritmo MoM-CG-FFT \cite{su1987calculation} com 5000 iterações.
 	
 		\subsection{Shape Recovering Study}\label{sec:results:shape}
 		
-			Para estudar o erro de forma, dois estudos de caso foram realizados. O primeiro estudo de caso consiste em um único espalhador com contraste homogêneo. O segundo estudo de caso envolve um espalhador com contraste variável. Ambos estudos de caso foram escolhidos para ilustrar a aplicação do indicador proposto em cenários comuns em problemas de espalhamento eletromagnético. O estudo de benchmarking foi realizado para medir o desempenho médio dos algoritmos em situações mais gerais.
+			% Para estudar o erro de forma, dois estudos de caso foram realizados. O primeiro estudo de caso consiste em um único espalhador com contraste homogêneo. O segundo estudo de caso envolve um espalhador com contraste variável. Ambos estudos de caso foram escolhidos para ilustrar a aplicação do indicador proposto em cenários comuns em problemas de espalhamento eletromagnético. O estudo de benchmarking foi realizado para medir o desempenho médio dos algoritmos em situações mais gerais.
+
+            To evaluate shape error, two case studies were conducted. The first case study involves a single scatterer with homogeneous contrast, while the second case study involves a scatterer with variable contrast. These case studies were selected to demonstrate the application of the proposed indicator in typical scenarios encountered in electromagnetic scattering problems. Additionally, a benchmarking study was performed to assess the average performance of algorithms in more general situations.
 			
-            Em todos os casos, as dimensões do DoI foram ajustadas para $2\lambda_b\times2\lambda_b$. O raio de distância dos pontos de medição $R_O$ foi fixado em 4$\lambda_b$.
+            % Em todos os casos, as dimensões do DoI foram ajustadas para $2\lambda_b\times2\lambda_b$. O raio de distância dos pontos de medição $R_O$ foi fixado em 4$\lambda_b$.
+
+            In all instances, the dimensions of the DoI were set to $2\lambda_b\times2\lambda_b$, and the measurement points' distance radius $R_O$ was fixed at $4\lambda_b$.
 
 			\subsubsection{Single scatter}\label{sec:results:shape:star}
 
-                O primeiro estudo de caso foi formulado com objetivo de verificar a aplicabilidade do indicador em um cenário simples, onde diferentes algoritmos pudessem ser aplicados. O estudo considera um espelhador com formato de uma estrela de cinco pontas posicionada no centro da imagem. Esta escolha foi feita com o objetivo de escolher uma geometria que, ao mesmo tempo que é simétrica e bem definida, possui um número maior de vértices que geometria mais comuns, como quadrados ou triângulos. O contraste foi fixado em 0.25 e o raio do centro do espalhador até os vértices mais distantes foi fixado em 0.9$\lambda_b$. Foram considerados 80 pontos de medição ($N_M$) e 80 ângulos de incidência ($N_S$).
+                % O primeiro estudo de caso foi formulado com objetivo de verificar a aplicabilidade do indicador em um cenário simples, onde diferentes algoritmos pudessem ser aplicados. O estudo considera um espelhador com formato de uma estrela de cinco pontas posicionada no centro da imagem. Esta escolha foi feita com o objetivo de escolher uma geometria que, ao mesmo tempo que é simétrica e bem definida, possui um número maior de vértices que geometria mais comuns, como quadrados ou triângulos. O contraste foi fixado em 0.25 e o raio do centro do espalhador até os vértices mais distantes foi fixado em 0.9$\lambda_b$. Foram considerados 80 pontos de medição ($N_M$) e 80 ângulos de incidência ($N_S$). Nessas condições, o Grau de Não Linearidade (DNL) do teste vale 0.12, o qual é significativamente menor que o limiar em que a Aproximação de Born deixa de ser aplicável, i.e., 1 \cite{bucci2001degree}. O campo espalhado foi sintetizado com base numa discretização de 120$\times$120 pixels da imagem original e todas as reconstruções foram feitas com base numa discretização de 40$\times$40 pixels.
+
+                The first case study was designed to evaluate the applicability of the proposed indicator in a straightforward scenario where various algorithms could be applied. This case study features a scatterer shaped like a five-pointed star, centrally positioned within the image. This choice was made to select a geometry that, while symmetric and well-defined, has more vertices compared to more common shapes such as squares or triangles. The contrast was set to 0.25, and the radius from the center of the scatterer to the farthest vertices was set to 0.9$\lambda_b$. A total of 80 measurement points ($N_M$) and 80 incidence angles ($N_S$) were used. Under these conditions, the Degree of Nonlinearity (DNL) for the test is 0.12, which is significantly lower than the threshold beyond which the Born Approximation becomes inapplicable, i.e., 1 \cite{bucci2001degree}. The scattered field was synthesized using a discretization of 120$\times$120 pixels for the original image, and all reconstructions were performed using a discretization of 40$\times$40 pixels.
+
+                % Os seguintes algoritmos e suas repectivas configurações foram considerados neste estudo:
+                % \begin{itemize}
+                %     \item Linear Sampling Method (LSM):
+                %     \begin{itemize}
+                %         \item Limiar: 0.7;
+                %         \item Método de Regularização: Gradiente Conjugado com 300 iterações.
+                %     \end{itemize}
+                %     \item Orthogonality Sampling Method (OSM):
+                %     \begin{itemize}
+                %         \item Limiar: 0.35;
+                %     \end{itemize}
+                %     \item Born Iterative Method (BIM):
+                %     \begin{itemize}
+                %         \item Método de Regularização: Gradiente Conjugado com 300 iterações.
+                %         \item Critério de Parada: 30 iterações.
+                %     \end{itemize}
+                %     \item Contrast Source Inversion (CSI):
+                %     \begin{itemize}
+                %         \item Critério de Parada: 300 iterações.
+                %     \end{itemize}
+                %     \item Subspace Optimization Method (SOM):
+                %     \begin{itemize}
+                %         \item Critério de Parada: 30 iterações.
+                %         \item Índice de corte de autovalores: 5.
+                %     \end{itemize}
+                % \end{itemize}
+
+                The following algorithms and their configurations were considered for this study:
+                \begin{itemize}
+                    \item Linear Sampling Method (LSM):
+                    \begin{itemize}
+                        \item Threshold: 0.7;
+                        \item Regularization Method: Conjugate Gradient with 300 iterations.
+                    \end{itemize}
+                    \item Orthogonality Sampling Method (OSM):
+                    \begin{itemize}
+                        \item Threshold: 0.35;
+                    \end{itemize}
+                    \item Born Iterative Method (BIM):
+                    \begin{itemize}
+                        \item Regularization Method: Conjugate Gradient with 300 iterations.
+                        \item Stopping Criterion: 30 iterations.
+                    \end{itemize}
+                    \item Contrast Source Inversion (CSI):
+                    \begin{itemize}
+                        \item Stopping Criterion: 300 iterations.
+                    \end{itemize}
+                    \item Subspace Optimization Method (SOM):
+                    \begin{itemize}
+                        \item Stopping Criterion: 30 iterations.
+                        \item Eigenvalue Cutoff Index: 5.
+                    \end{itemize}
+                \end{itemize}
 
                 % The first case study involves a single scatterer with homogeneous contrast. Fig. \ref{fig:star} illustrates the geometry of the problem. The scatterer is a five-point star with a radius of 0.1 m and a contrast of 0.5. The original image was discretized into a 100x100 pixel grid. Fig. \ref{fig:star} also shows the image reconstructed by an imaging algorithm. Table \ref{tab:star} presents the results obtained for shape and position errors. The results demonstrate that the algorithm successfully recovered the scatterer's shape with a shape error of 0.5\% and a position error of 0.1\%. These findings indicate that the algorithm accurately recovered the scatterer's shape and position.
 
