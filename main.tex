@@ -178,7 +178,7 @@
 
             In all instances, the dimensions of the DoI were set to $2\lambda_b\times2\lambda_b$, and the measurement points' distance radius $R_O$ was fixed at $4\lambda_b$.
 
-			\subsubsection{Single scatter}\label{sec:results:shape:star}
+			\subsubsection{Single scatterer}\label{sec:results:shape:star}
 
                 % O primeiro estudo de caso foi formulado com objetivo de verificar a aplicabilidade do indicador em um cenário simples, onde diferentes algoritmos pudessem ser aplicados. O estudo considera um espelhador com formato de uma estrela de cinco pontas posicionada no centro da imagem. Esta escolha foi feita com o objetivo de escolher uma geometria que, ao mesmo tempo que é simétrica e bem definida, possui um número maior de vértices que geometria mais comuns, como quadrados ou triângulos. O contraste foi fixado em 0.25 e o raio do centro do espalhador até os vértices mais distantes foi fixado em 0.9$\lambda_b$. Foram considerados 80 pontos de medição ($N_M$) e 80 ângulos de incidência ($N_S$). Nessas condições, o Grau de Não Linearidade (DNL) do teste vale 0.12, o qual é significativamente menor que o limiar em que a Aproximação de Born deixa de ser aplicável, i.e., 1 \cite{bucci2001degree}. O campo espalhado foi sintetizado com base numa discretização de 120$\times$120 pixels da imagem original e todas as reconstruções foram feitas com base numa discretização de 40$\times$40 pixels.
 
@@ -211,7 +211,7 @@
                 %     \end{itemize}
                 % \end{itemize}
 
-                The following algorithms and their configurations were considered for this study:
+                For this experiment, the following algorithms were considered: LSM, OSM, BIM, CSI, and SOM. Their parameters were chosen after empirical tests that aimed to achieve their best performance. The configurations for each algorithm are as follows:
                 \begin{itemize}
                     \item Linear Sampling Method (LSM):
                     \begin{itemize}
@@ -237,6 +237,19 @@
                         \item Eigenvalue Cutoff Index: 5.
                     \end{itemize}
                 \end{itemize}
+
+                The images reconstructed by each algorithm are shown in Fig. \ref{fig:shape:single:recons}.
+
+                \begin{figure*}
+                    \subfigure[Ground-Truth]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/0}}
+                    \subfigure[LSM]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/1}}
+                    \subfigure[OSM]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/2}} \\
+                    \subfigure[BIM]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/3}}
+                    \subfigure[CSI]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/4}}
+                    \subfigure[SOM]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/5}}
+                    \caption{Shape recovering study, single scatterer: ground-truth and reconstructed images by each algorithm.}
+                    \label{fig:shape:single:recons}
+                \end{figure*}
 
                 % The first case study involves a single scatterer with homogeneous contrast. Fig. \ref{fig:star} illustrates the geometry of the problem. The scatterer is a five-point star with a radius of 0.1 m and a contrast of 0.5. The original image was discretized into a 100x100 pixel grid. Fig. \ref{fig:star} also shows the image reconstructed by an imaging algorithm. Table \ref{tab:star} presents the results obtained for shape and position errors. The results demonstrate that the algorithm successfully recovered the scatterer's shape with a shape error of 0.5\% and a position error of 0.1\%. These findings indicate that the algorithm accurately recovered the scatterer's shape and position.
 
