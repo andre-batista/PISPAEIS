@@ -9,6 +9,7 @@
 
 
 figs/*.pdf
+figs/shape/single/recons/*.pdf
 
 *.bbl
 *.blg
