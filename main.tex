@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{subfigure}
+\usepackage{xcolor}
 
 \newcommand{\brho}{\boldsymbol{\rho}}
 \newcommand{\brhop}{\boldsymbol{\rho^\prime}}
@@ -166,7 +167,9 @@
 
         The experiments were conducted using the open-source library EISPY2D \cite{batista2022eispy2d}, specifically developed to design and evaluate algorithms for the inverse electromagnetic scattering problem. Both indicators will be analyzed, with each approach featuring two case studies (one fundamental and the other exploring a particular aspect) as well as a benchmarking study. The case studies aim to assess performance in specific scenarios, while the benchmarking study facilitates broader generalization of the results.
 
+        {\color{red} 
         Para todos os experimentos, o $\lambda_b$ foi definido em 1 [m]. O ruído acrescentado nos dados sempre foi de 5\%. A permissividade relativa do meio de fundo sempre foi fixada em 1. A amplitude da onda incidente sempre foi fixada em 1 [V/m]. A sintetização dos dados foi feita através do algoritmo MoM-CG-FFT \cite{su1987calculation} com 5000 iterações.
+        }
 	
 		\subsection{Shape Recovering Study}\label{sec:results:shape}
 		
