@@ -239,7 +239,7 @@
                     \end{itemize}
                 \end{itemize}
 
-                The images reconstructed by each algorithm are shown in Fig. \ref{fig:shape:single:recons}.
+                The images reconstructed by each algorithm are shown in Fig. \ref{fig:shape:single:recons}. For the qualitative methods, OSM exhibited contrast variation within the object, which is consistent with the inherent characteristics of the method. Additionally, OSM recovered a larger area with more defined vertices compared to LSM. Regarding the quantitative methods, CSI demonstrated the lower performance in recovering the object's contrast value close to the ground truth. Moreover, the quantitative methods produced less smooth geometries than their qualitative counterparts.
 
                 \begin{figure*}
                     \subfigure[Ground-Truth]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/0}}
@@ -252,28 +252,25 @@
                     \label{fig:shape:single:recons}
                 \end{figure*}
 
-                % The first case study involves a single scatterer with homogeneous contrast. Fig. \ref{fig:star} illustrates the geometry of the problem. The scatterer is a five-point star with a radius of 0.1 m and a contrast of 0.5. The original image was discretized into a 100x100 pixel grid. Fig. \ref{fig:star} also shows the image reconstructed by an imaging algorithm. Table \ref{tab:star} presents the results obtained for shape and position errors. The results demonstrate that the algorithm successfully recovered the scatterer's shape with a shape error of 0.5\% and a position error of 0.1\%. These findings indicate that the algorithm accurately recovered the scatterer's shape and position.
+                Table \ref{tab:star} summarizes the results of the shape error and position error indicators for each algorithm. The results indicate that BIM and SOM achieved the best performance in terms of shape error, while CSI, LSM and OSM performed similarly. This is consistent with the observations from Fig. \ref{fig:shape:single:recons}, since the quantitative methods had a greater ability to capture the object's contours compared to the qualitative methods. This was not true for CSI, which, due to its greater difficulty in quantifying the object's contrast, had more difficulty in capturing the object's contours.        
+                
+                In terms of position error, the qualitative methods achieved the best performance, while BIM and CSI showed higher errors. This suggests that methods producing smoother object contours may be more effective at capturing the central point of objects. Conversely, methods that better capture object boundaries may struggle with the position indicator due to contour irregularities, which can impact centroid calculations, particularly for symmetric figures.
 
-                % \begin{figure}[!t]
-                %     \centering
-                %     \includegraphics[width=.8\columnwidth]{./figs/star}
-                %     \caption{Single scatterer geometry.}
-                %     \label{fig:star}
-                % \end{figure}
-
-                % \begin{table}[!t]
-                %     \centering
-                %     \caption{Results for the single scatterer case study.}
-                %     \label{tab:star}
-                %     \begin{tabular}{|c|c|c|}
-                %         \hline
-                %         Indicator & Value & Unit \\
-                %         \hline
-                %         $\zeta_S$ & 0.5 & \% \\
-                %         $\zeta_P$ & 0.1 & \% \\
-                %         \hline
-                %     \end{tabular}   
-                % \end{table}
+                \begin{table}[!t]
+                    \centering
+                    \renewcommand{\arraystretch}{1.5}
+                    \caption{Results for the single scatterer case study.}
+                    \label{tab:star}
+                    \begin{tabular}{ccc}
+                        Method & Shape error ($\zeta_S$) & Position error ($\zeta_P$) \\
+                        \hline
+                        LSM & 29.2 \% & 0.049 \% \\
+                        OSM & 24.5 \% & 0.057 \% \\
+                        BIM & 14.9 \% & 0.25 \% \\
+                        CSI & 26.3 \% & 0.31 \% \\
+                        SOM & 15.4 \% & 0.14 \% \\
+                    \end{tabular}   
+                \end{table}
 			
 			\subsubsection{Varying contrast}\label{sec:results:shape:varying}
 			
