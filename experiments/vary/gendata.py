@@ -27,7 +27,7 @@ resolution = (160, 160)
 noise = 5.
 indicators = [rst.SHAPE_ERROR, rst.POSITION_ERROR]
 
-forward = mom.MoM_CG_FFT(tolerance=1e-3, maximum_iterations=5000,
+forward = mom.MoM_CG_FFT(tolerance=1e-5, maximum_iterations=5000,
                          parallelization=True)
 
 for n in range(len(epsilon_rd)):

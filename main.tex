@@ -252,28 +252,45 @@
                     \label{fig:shape:single:recons}
                 \end{figure*}
 
-                Table \ref{tab:star} summarizes the results of the shape error and position error indicators for each algorithm. The results indicate that BIM and SOM achieved the best performance in terms of shape error, while CSI, LSM and OSM performed similarly. This is consistent with the observations from Fig. \ref{fig:shape:single:recons}, since the quantitative methods had a greater ability to capture the object's contours compared to the qualitative methods. This was not true for CSI, which, due to its greater difficulty in quantifying the object's contrast, had more difficulty in capturing the object's contours.        
-                
-                In terms of position error, the qualitative methods achieved the best performance, while BIM and CSI showed higher errors. This suggests that methods producing smoother object contours may be more effective at capturing the central point of objects. Conversely, methods that better capture object boundaries may struggle with the position indicator due to contour irregularities, which can impact centroid calculations, particularly for symmetric figures.
+                Table \ref{tab:star} summarizes the results of the shape error indicator for each algorithm. The results indicate that BIM and SOM achieved the best performance, while CSI, LSM and OSM performed similarly. This is consistent with the observations from Fig. \ref{fig:shape:single:recons}, since the quantitative methods had a greater ability to capture the object's contours compared to the qualitative methods. This was not true for CSI, which, due to its greater difficulty in quantifying the object's contrast, had more difficulty in capturing the object's contours.           
 
                 \begin{table}[!t]
                     \centering
                     \renewcommand{\arraystretch}{1.5}
                     \caption{Results for the single scatterer case study.}
                     \label{tab:star}
-                    \begin{tabular}{ccc}
-                        Method & Shape error ($\zeta_S$) & Position error ($\zeta_P$) \\
-                        \hline
-                        LSM & 29.2 \% & 0.049 \% \\
-                        OSM & 24.5 \% & 0.057 \% \\
-                        BIM & 14.9 \% & 0.25 \% \\
-                        CSI & 26.3 \% & 0.31 \% \\
-                        SOM & 15.4 \% & 0.14 \% \\
+                    \begin{tabular}{cccccc}
+                        Method & LSM & OSM & BIM & CSI & SOM \\\hline
+                        $\zeta_S$ (\%) & 29.2 & 24.5 & 14.9 & 26.3 & 15.4 \\
                     \end{tabular}   
                 \end{table}
 			
 			\subsubsection{Varying contrast}\label{sec:results:shape:varying}
-			
+
+                \begin{figure*}
+                    \centering
+                    \subfigure[OSM, $\chi=0.25$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_0.eps}}
+                    \subfigure[OSM, $\chi=0.5$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_1.eps}}
+                    \subfigure[OSM, $\chi=0.75$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_2.eps}}
+                    \subfigure[OSM, $\chi=1$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_3.eps}}
+                    \subfigure[OSM, $\chi=1.5$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_4.eps}} \\
+                    \subfigure[SOM, $\chi=0.25$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_0.eps}}
+                    \subfigure[SOM, $\chi=0.5$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_1.eps}}
+                    \subfigure[SOM, $\chi=0.75$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_2.eps}}
+                    \subfigure[SOM, $\chi=1$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_3.eps}}
+                    \subfigure[SOM, $\chi=1.5$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_4.eps}}
+                    \caption{Shape recovering study, varying contrast: reconstructed images by OSM and SOM for different contrast values.}
+                    \label{fig:shape:vary:recons}
+                \end{figure*}
+                
+                \begin{figure}
+                    \centering
+                    \subfigure[]{\includegraphics[width=0.49\columnwidth]{./experiments/vary/figs/zeta_s.eps}}
+                    \subfigure[]{\includegraphics[width=0.49\columnwidth]{./experiments/vary/figs/dnl.eps}}
+                    \caption{Shape recovering study, varying contrast: (a) shape error indicator $\zeta_S$ for OSM and SOM; (b) Degree of Nonlinearity (DNL) for each contrast value.}
+                    \label{fig:shape:vary:indicators}
+                \end{figure}
+
 			\subsubsection{Average performance}\label{sec:results:shape:average}
 		
 		\subsection{Position Detection Study}\label{sec:results:position}
