@@ -17,6 +17,18 @@ experiments/vary/figs/*.pdf
 *.fls
 *.synctex.gz
 
+# Arquivos de dados grandes (>100MB)
+*.cst
+**/data/*.cst
+experiments/*/data/
+experiments/position/single/data/
+
+# Outros arquivos grandes comuns
+*.hdf5
+*.h5
+*.mat
+*.npz
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
