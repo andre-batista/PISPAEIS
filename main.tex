@@ -167,9 +167,7 @@
 
         The experiments were conducted using the open-source library EISPY2D \cite{batista2022eispy2d}, specifically developed to design and evaluate algorithms for the inverse electromagnetic scattering problem. Both indicators will be analyzed, with each approach featuring two case studies (one fundamental and the other exploring a particular aspect) as well as a benchmarking study. The case studies aim to assess performance in specific scenarios, while the benchmarking study facilitates broader generalization of the results.
 
-        {\color{red} 
-        Para todos os experimentos, o $\lambda_b$ foi definido em 1 [m]. O ruído acrescentado nos dados sempre foi de 5\%. A permissividade relativa do meio de fundo sempre foi fixada em 1. A amplitude da onda incidente sempre foi fixada em 1 [V/m]. A sintetização dos dados foi feita através do algoritmo MoM-CG-FFT \cite{su1987calculation} com 5000 iterações.
-        }
+        For all experiments, the following common parameters were used: $\lambda_b$ = 1 m, noise level = 5\%, relative permittivity of the background medium $\epsilon_{rb}$ = 1, and incident wave amplitude = 1 V/m. Data synthesis was performed using the MoM-CG-FFT algorithm \cite{su1987calculation} with 5000 iterations.
 	
 		\subsection{Shape Recovering Study}\label{sec:results:shape}
 		
@@ -241,7 +239,7 @@
                     \end{itemize}
                 \end{itemize}
 
-                The images reconstructed by each algorithm are shown in Fig. \ref{fig:shape:single:recons}.
+                The images reconstructed by each algorithm are shown in Fig. \ref{fig:shape:single:recons}. For the qualitative methods, OSM exhibited contrast variation within the object, which is consistent with the inherent characteristics of the method. Additionally, OSM recovered a larger area with more defined vertices compared to LSM. Regarding the quantitative methods, CSI demonstrated the lower performance in recovering the object's contrast value close to the ground truth. Moreover, the quantitative methods produced less smooth geometries than their qualitative counterparts.
 
                 \begin{figure*}
                     \subfigure[Ground-Truth]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/0}}
@@ -254,6 +252,7 @@
                     \label{fig:shape:single:recons}
                 \end{figure*}
 
+<<<<<<< HEAD
                 % The first case study involves a single scatterer with homogeneous contrast. Fig. \ref{fig:star} illustrates the geometry of the problem. The scatterer is a five-point star with a radius of 0.1 m and a contrast of 0.5. The original image was discretized into a 100x100 pixel grid. Fig. \ref{fig:star} also shows the image reconstructed by an imaging algorithm. Table \ref{tab:star} presents the results obtained for shape and position errors. The results demonstrate that the algorithm successfully recovered the scatterer's shape with a shape error of 0.5\% and a position error of 0.1\%. These findings indicate that the algorithm accurately recovered the scatterer's shape and position.
 
                 % \begin{figure}[!t]
@@ -277,8 +276,44 @@
                 %     \end{tabular}   
                 % \end{table}
 			
-			\subsubsection{Varying contrast}\label{sec:results:shape:varying}
+                Table \ref{tab:star} summarizes the results of the shape error indicator for each algorithm. The results indicate that BIM and SOM achieved the best performance, while CSI, LSM and OSM performed similarly. This is consistent with the observations from Fig. \ref{fig:shape:single:recons}, since the quantitative methods had a greater ability to capture the object's contours compared to the qualitative methods. This was not true for CSI, which, due to its greater difficulty in quantifying the object's contrast, had more difficulty in capturing the object's contours.           
+
+                \begin{table}[!t]
+                    \centering
+                    \renewcommand{\arraystretch}{1.5}
+                    \caption{Results for the single scatterer case study.}
+                    \label{tab:star}
+                    \begin{tabular}{cccccc}
+                        Method & LSM & OSM & BIM & CSI & SOM \\\hline
+                        $\zeta_S$ (\%) & 29.2 & 24.5 & 14.9 & 26.3 & 15.4 \\
+                    \end{tabular}   
+                \end{table}
 			
+			\subsubsection{Varying contrast}\label{sec:results:shape:varying}
+
+                \begin{figure*}
+                    \centering
+                    \subfigure[OSM, $\chi=0.25$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_0.eps}}
+                    \subfigure[OSM, $\chi=0.5$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_1.eps}}
+                    \subfigure[OSM, $\chi=0.75$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_2.eps}}
+                    \subfigure[OSM, $\chi=1$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_3.eps}}
+                    \subfigure[OSM, $\chi=1.5$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_4.eps}} \\
+                    \subfigure[SOM, $\chi=0.25$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_0.eps}}
+                    \subfigure[SOM, $\chi=0.5$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_1.eps}}
+                    \subfigure[SOM, $\chi=0.75$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_2.eps}}
+                    \subfigure[SOM, $\chi=1$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_3.eps}}
+                    \subfigure[SOM, $\chi=1.5$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_4.eps}}
+                    \caption{Shape recovering study, varying contrast: reconstructed images by OSM and SOM for different contrast values.}
+                    \label{fig:shape:vary:recons}
+                \end{figure*}
+                
+                \begin{figure}
+                    \centering
+                    \subfigure[]{\includegraphics[width=0.49\columnwidth]{./experiments/vary/figs/zeta_s.eps}}
+                    \subfigure[]{\includegraphics[width=0.49\columnwidth]{./experiments/vary/figs/dnl.eps}}
+                    \caption{Shape recovering study, varying contrast: (a) shape error indicator $\zeta_S$ for OSM and SOM; (b) Degree of Nonlinearity (DNL) for each contrast value.}
+                    \label{fig:shape:vary:indicators}
+                \end{figure}
 			\subsubsection{Average performance}\label{sec:results:shape:average}
 		
 		\subsection{Position Detection Study}\label{sec:results:position}
