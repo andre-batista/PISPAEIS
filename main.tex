@@ -239,9 +239,9 @@
                     \end{itemize}
                 \end{itemize}
 
-                The images reconstructed by each algorithm are shown in Fig. \ref{fig:shape:single:recons}. For the qualitative methods, OSM exhibited contrast variation within the object, which is consistent with the inherent characteristics of the method. Additionally, OSM recovered a larger area with more defined vertices compared to LSM. Regarding the quantitative methods, CSI demonstrated the lower performance in recovering the object's contrast value close to the ground truth. Moreover, the quantitative methods produced less smooth geometries than their qualitative counterparts.
+                The images reconstructed by each algorithm are shown in Fig. \ref{fig:shape:single:recons}. For the qualitative methods, OSM exhibited contrast variation within the object, which is consistent with the inherent characteristics of the method. Additionally, OSM recovered a larger area with more defined vertices compared to LSM. Regarding the quantitative methods, CSI demonstrated the lowest performance in recovering the object's contrast value close to the ground truth. Moreover, the quantitative methods produced more accurate contours than their qualitative counterparts.
 
-                \begin{figure*}
+                \begin{figure*}[!htb]
                     \subfigure[Ground-Truth]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/0}}
                     \subfigure[LSM]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/1}}
                     \subfigure[OSM]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/2}} \\
@@ -251,34 +251,10 @@
                     \caption{Shape recovering study, single scatterer: ground-truth and reconstructed images by each algorithm.}
                     \label{fig:shape:single:recons}
                 \end{figure*}
-
-<<<<<<< HEAD
-                % The first case study involves a single scatterer with homogeneous contrast. Fig. \ref{fig:star} illustrates the geometry of the problem. The scatterer is a five-point star with a radius of 0.1 m and a contrast of 0.5. The original image was discretized into a 100x100 pixel grid. Fig. \ref{fig:star} also shows the image reconstructed by an imaging algorithm. Table \ref{tab:star} presents the results obtained for shape and position errors. The results demonstrate that the algorithm successfully recovered the scatterer's shape with a shape error of 0.5\% and a position error of 0.1\%. These findings indicate that the algorithm accurately recovered the scatterer's shape and position.
-
-                % \begin{figure}[!t]
-                %     \centering
-                %     \includegraphics[width=.8\columnwidth]{./figs/star}
-                %     \caption{Single scatterer geometry.}
-                %     \label{fig:star}
-                % \end{figure}
-
-                % \begin{table}[!t]
-                %     \centering
-                %     \caption{Results for the single scatterer case study.}
-                %     \label{tab:star}
-                %     \begin{tabular}{|c|c|c|}
-                %         \hline
-                %         Indicator & Value & Unit \\
-                %         \hline
-                %         $\zeta_S$ & 0.5 & \% \\
-                %         $\zeta_P$ & 0.1 & \% \\
-                %         \hline
-                %     \end{tabular}   
-                % \end{table}
-			
+		
                 Table \ref{tab:star} summarizes the results of the shape error indicator for each algorithm. The results indicate that BIM and SOM achieved the best performance, while CSI, LSM and OSM performed similarly. This is consistent with the observations from Fig. \ref{fig:shape:single:recons}, since the quantitative methods had a greater ability to capture the object's contours compared to the qualitative methods. This was not true for CSI, which, due to its greater difficulty in quantifying the object's contrast, had more difficulty in capturing the object's contours.           
 
-                \begin{table}[!t]
+                \begin{table}[!htb]
                     \centering
                     \renewcommand{\arraystretch}{1.5}
                     \caption{Results for the single scatterer case study.}
@@ -291,7 +267,15 @@
 			
 			\subsubsection{Varying contrast}\label{sec:results:shape:varying}
 
-                \begin{figure*}
+               % Um outro tipo de estudo possível que pode complementar a análise do desempenho dos algoritmos na reconstrução da geometria dos objetos é a observação do desempenho do indicador com a variação do contraste de um objeto. Ou seja, dado um espalhador, a medida que o seu valor de contraste aumenta, o DNL aumenta e, consequentemente, os algoritmos podem peder desempenho uma vez que o problema fica mais díficil. Para demonstrar isso, o mesmo espalhador com as mesmas configurações de cenário do estudo anterior foi considerado. A única excepção na configuração foi que a resolução da imagem original foi aumentada para 160$\times$160 pixels por questões de precisão no cálculo do campo. O espalhador foi reconstruído com base em cinco valores de contraste: 0.25, 0.5, 0.75, 1 e 1.5. A Fig. \ref{fig:shape:vary:dnl} mostra o DNL para cada valor de contraste. Para este estudo foram considerados os métodos OSM e SOM com as mesmas configurações do estudo anterior. Obviamente, os parâmetros dos métodos poderiam ser ajustados para cada valor de contraste. No entanto, como o experimento tem apenas o fim de demonstrar a aplicabilidade do indicador, os parâmetros foram mantidos constantes para todos os valores de contraste.
+
+                Another type of study that can complement the analysis of algorithm performance in object geometry reconstruction is the observation of indicator performance with varying object contrast. Specifically, for a given scatterer, as its contrast value increases, the DNL increases, and consequently, algorithms may lose performance since the problem becomes more challenging. To demonstrate this relationship, the same scatterer from the previous study was considered with identical scenario configurations. The only modification was that the original image resolution was increased to 160$\times$160 pixels to ensure precision in field calculations for high contrast scenarios. 
+
+                The scatterer was reconstructed using five contrast values: 0.25, 0.5, 0.75, 1.0, and 1.5. Fig. \ref{fig:shape:vary:dnl} shows the corresponding DNL for each contrast value. For this study, the OSM and SOM methods were employed with the same configurations as the previous study. While the method parameters could be optimized for each contrast value, they were kept constant across all contrast values to demonstrate the indicator's applicability in a controlled manner.
+
+                {\color{red} EU PRECISO RODAR NOVAMENTE O EXPERIMENTO PORQUE O NÚMERO DE MEDIÇÕES E FONTES NÃO FORAM IGUAIS NA PRIMEIRA VEZ.}
+
+                \begin{figure*}[!htb]
                     \centering
                     \subfigure[OSM, $\chi=0.25$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_0.eps}}
                     \subfigure[OSM, $\chi=0.5$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_1.eps}}
@@ -307,13 +291,22 @@
                     \label{fig:shape:vary:recons}
                 \end{figure*}
                 
-                \begin{figure}
+                % A Fig. \ref{fig:shape:vary:recons} mostra as imagens reconstruídas por OSM e SOM para cada valor de contraste. Conforme esperado, a medida que o contraste aumentou, a precisão na recuperação da geometria diminuiu, ao ponto de que, para o maior valor de contraste, 1.5, a geometria não foi mais recuperada corretamente, principalmente no caso do SOM. É possível observar que o SOM conseguiu estimar o contraste do espalhador com algum grau de precisão até o caso onde $\chi = 1$, no qual o DNL é 2, aproximadamente.
+
+                Fig. \ref{fig:shape:vary:recons} shows the images reconstructed by OSM and SOM for each contrast value. As expected, reconstruction precision decreased with increasing contrast, reaching a point where the geometry was no longer correctly recovered for the highest contrast value (1.5), particularly in the case of SOM. Notably, SOM was able to estimate the scatterer's contrast with reasonable precision up to $\chi = 1$, where the DNL is approximately 2.
+
+                % Fig. \ref{fig:shape:vary:indicators:zeta_s} shows the shape error indicator $\zeta_S$ for OSM and SOM. The results indicate that the shape error increases with the contrast value, which is consistent with the expected behavior of the algorithms. Além disso, no caso $\chi = 1.5$, o indicador $\zeta_S$ assume valores maiores que 100\%, indicando que o número de pixeis classificados incorretamente é maior que o número de pixeis que compõem o espalhador na imagem original. Isso é consistente com a observação de que, para este valor de contraste, a geometria não foi mais recuperada corretamente. Observa-se também que a diferença entre os indicadores de OSM e SOM se mantém relativamente constante até o caso $\chi = 1$.
+
+                Fig. \ref{fig:shape:vary:indicators:zeta_s} presents the shape error indicator $\zeta_S$ for both OSM and SOM methods. The results demonstrate that the shape error increases proportionally with contrast value, which is consistent with the expected algorithmic behavior. Furthermore, for $\chi = 1.5$, the indicator $\zeta_S$ exceeds 100\%, indicating that the number of incorrectly classified pixels surpasses the number of pixels composing the scatterer in the original image. This observation aligns with the finding that geometry recovery fails at this contrast level. Additionally, the difference between the OSM and SOM indicators remains relatively constant up to $\chi = 1$.
+
+                \begin{figure}[!htb]
                     \centering
-                    \subfigure[]{\includegraphics[width=0.49\columnwidth]{./experiments/vary/figs/zeta_s.eps}}
-                    \subfigure[]{\includegraphics[width=0.49\columnwidth]{./experiments/vary/figs/dnl.eps}}
+                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{./experiments/vary/figs/zeta_s.eps}\label{fig:shape:vary:indicators:zeta_s}} \hspace{0.01\columnwidth}
+                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{./experiments/vary/figs/dnl.eps}\label{fig:shape:vary:dnl}}
                     \caption{Shape recovering study, varying contrast: (a) shape error indicator $\zeta_S$ for OSM and SOM; (b) Degree of Nonlinearity (DNL) for each contrast value.}
                     \label{fig:shape:vary:indicators}
                 \end{figure}
+
 			\subsubsection{Average performance}\label{sec:results:shape:average}
 		
 		\subsection{Position Detection Study}\label{sec:results:position}

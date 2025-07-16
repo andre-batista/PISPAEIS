@@ -7,7 +7,7 @@ import draw
 import mom_cg_fft as mom
 
 name = 'vary.cfg'
-NM = NS = 60
+NM = NS = 80
 Ro = 4.
 lambda_b = 1.
 epsilon_rb = 1.
