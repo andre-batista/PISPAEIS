@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(1, '../../../eispy2d/library/')
+sys.path.insert(1, '../../eispy2d/library/')
 
 import testset as tst
 import richmond as ric
@@ -11,7 +11,7 @@ import osm
 import bim
 import csi
 import som
-import benchamrk as bmk
+import benchmark as bmk
 
 name = 'average'
 resolution = (40, 40)

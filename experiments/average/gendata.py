@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(1, '../../../eispy2d/library/')
+sys.path.insert(1, '../../eispy2d/library/')
 
 import configuration as cfg
 import testset as tst
@@ -37,7 +37,7 @@ testset = tst.TestSet(name=name + '.tst', configuration=config,
                       sample_size=sample_size, noise=noise,
                       indicators=indicators)
 
-testset.randomize_tests(compute_dnl=True)
+testset.randomize_tests(compute_dnl=False)
 
 testset.generate_field_data(solver=mom.MoM_CG_FFT(tolerance=1e-3,
                                                   maximum_iterations=5000))
