@@ -8,8 +8,8 @@
 *.synctex(busy)
 
 
-figs/*.pdf
-figs/shape/single/recons/*.pdf
+paper/figs/*.pdf
+paper/figs/shape/single/recons/*.pdf
 experiments/vary/figs/*.pdf
 
 *.bbl
