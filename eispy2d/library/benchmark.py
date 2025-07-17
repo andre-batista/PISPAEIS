@@ -3965,7 +3965,7 @@ class Benchmark(exp.Experiment):
         if show or file_name is not None:
             plot_figure = True
         else:
-            plot_figure = False
+            plot_figure = True
 
         if self._single_method and self._single_testset:
             message = 'Confidence Intervals\n'
@@ -4265,7 +4265,7 @@ class Benchmark(exp.Experiment):
                 plt.show()
             if file_name is not None:
                 plt.close()
-            elif not show:
+            else:
                 return fig, axis
 
     def _search_testset(self, name):
