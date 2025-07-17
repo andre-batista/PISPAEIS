@@ -8,7 +8,7 @@ import result as rst
 import mom_cg_fft as mom
 
 name = 'average'
-NM = NS = 20
+NM = NS = 80
 Ro = 4.
 lambda_b = 1.
 epsilon_rb = 1.
@@ -25,7 +25,7 @@ config = cfg.Configuration(name=name + '.cfg', number_measurements=NM,
 
 contrast = .25
 object_size = .9
-resolution = (80, 80)
+resolution = (120, 120)
 map_pattern = RANDOM_POLYGONS_PATTERN
 sample_size = 30
 noise = 5.
