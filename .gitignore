@@ -1,12 +1,7 @@
-
 *.aux
-
 *.fdb_latexmk
-
 *.log
-
 *.synctex(busy)
-
 
 paper/figs/*.pdf
 paper/figs/shape/single/recons/*.pdf
@@ -17,13 +12,21 @@ experiments/vary/figs/*.pdf
 *.fls
 *.synctex.gz
 
-experimentos/
-
 # Arquivos de dados grandes (>100MB)
 *.cst
 **/data/*.cst
 experiments/*/data/
 experiments/position/single/data/
+
+# Arquivos de dados em geral
+data/**/*.bmk
+data/**/*.cst
+data/**/*.ipt
+data/**/*.tst
+data/**/*.txt
+*.ipt
+*.bmk
+*.tst
 
 # Outros arquivos grandes comuns
 *.hdf5
