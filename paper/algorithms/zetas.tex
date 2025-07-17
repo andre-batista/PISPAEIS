@@ -1,0 +1,30 @@
+\begin{algorithm}
+\caption{Compute Shape Error Indicator $\zeta_S$}
+\label{alg:compute_zeta_s}
+\begin{algorithmic}[1]
+\REQUIRE Original contrast distribution $\boldsymbol{\chi}_o$
+\REQUIRE Reconstructed contrast distribution $\boldsymbol{\chi}_r$
+\REQUIRE Threshold factor $threshold = 0.5$ (default)
+\ENSURE Shape error indicator $\zeta_S$ (\%)
+
+\STATE Extract magnitude information from both contrast distributions
+\STATE Determine adaptive threshold based on reconstructed image dynamic range
+\STATE Apply binary classification to identify object and background regions
+
+\IF{no object regions detected in reconstruction}
+    \RETURN complete failure indicator (100\%)
+\ENDIF
+
+\STATE Extract object boundaries using contour detection methodology
+\STATE Normalize spatial coordinates to handle resolution differences between images
+
+\STATE Generate binary masks from contour information using polygon filling:
+\STATE \quad - Apply odd-parity rule to determine interior points
+\STATE \quad - Handle multiple contours for complex geometries
+
+\STATE Compare geometric regions through symmetric difference operation
+\STATE Quantify classification errors relative to original object size
+
+\RETURN normalized shape error as percentage
+\end{algorithmic}
+\end{algorithm}

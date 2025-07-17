@@ -39,4 +39,4 @@ benchmark = bmk.Benchmark(name=name + '.bmk', method=method,
 
 benchmark.run(parallelization=bmk.PARALLELIZE_EXECUTIONS, pre_save=True)
 
-benchmark.save(file_path='./data/', save_test=True)
+benchmark.save(file_path='./data/', save_testset=True)
