@@ -281,16 +281,16 @@
 
                 \begin{figure*}[!htb]
                     \centering
-                    \subfigure[OSM, $\chi=0.25$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_0.pdf}}
-                    \subfigure[OSM, $\chi=0.5$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_1.pdf}}
-                    \subfigure[OSM, $\chi=0.75$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_2.pdf}}
-                    \subfigure[OSM, $\chi=1$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_3.pdf}}
-                    \subfigure[OSM, $\chi=1.5$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_4.pdf}} \\
-                    \subfigure[SOM, $\chi=0.25$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_0.pdf}}
-                    \subfigure[SOM, $\chi=0.5$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_1.pdf}}
-                    \subfigure[SOM, $\chi=0.75$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_2.pdf}}
-                    \subfigure[SOM, $\chi=1$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_3.pdf}}
-                    \subfigure[SOM, $\chi=1.5$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_4.pdf}}
+                    \subfigure[OSM, $\chi=0.25$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_0.eps}}
+                    \subfigure[OSM, $\chi=0.5$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_1.eps}}
+                    \subfigure[OSM, $\chi=0.75$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_2.eps}}
+                    \subfigure[OSM, $\chi=1$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_3.eps}}
+                    \subfigure[OSM, $\chi=1.5$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_4.eps}} \\
+                    \subfigure[SOM, $\chi=0.25$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_0.eps}}
+                    \subfigure[SOM, $\chi=0.5$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_1.eps}}
+                    \subfigure[SOM, $\chi=0.75$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_2.eps}}
+                    \subfigure[SOM, $\chi=1$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_3.eps}}
+                    \subfigure[SOM, $\chi=1.5$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_4.eps}}
                     \caption{Shape recovering study, varying contrast: reconstructed images by OSM and SOM for different contrast values.}
                     \label{fig:shape:vary:recons}
                 \end{figure*}
@@ -305,8 +305,8 @@
 
                 \begin{figure}[!htb]
                     \centering
-                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{../experiments/vary/figs/zeta_s.pdf}\label{fig:shape:vary:indicators:zeta_s}} \hspace{0.01\columnwidth}
-                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{../experiments/vary/figs/dnl.pdf}\label{fig:shape:vary:dnl}}
+                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{../experiments/vary/figs/zeta_s.eps}\label{fig:shape:vary:indicators:zeta_s}} \hspace{0.01\columnwidth}
+                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{../experiments/vary/figs/dnl.eps}\label{fig:shape:vary:dnl}}
                     \caption{Shape recovering study, varying contrast: (a) shape error indicator $\zeta_S$ for OSM and SOM; (b) Degree of Nonlinearity (DNL) for each contrast value.}
                     \label{fig:shape:vary:indicators}
                 \end{figure}
@@ -364,7 +364,7 @@
                 
                 \begin{figure}
                     \centering
-                    \includegraphics[width=.9\columnwidth]{../experiments/average/figs/confidence_intervals.pdf}
+                    \includegraphics[width=.8\columnwidth]{../experiments/average/figs/confidence_intervals.pdf}
                     \caption{Shape recovering study, average performance: Confidence intervals (95\%) for the shape error indicator $\zeta_S$ for each pair of algorithms.}
                     \label{fig:shape:average:confidence_intervals}
                 \end{figure}
@@ -372,7 +372,19 @@
                 % Com base nos resultados, foi possível aplicar o teste de Friedman \cite{friedman1937use} para verificar se existe uma diferença significativa entre os algoritmos. O teste de Friedman é um teste não paramétrico que verifica se existe uma diferença significativa entre três ou mais grupos relacionados. Neste caso, os grupos são os algoritmos e as medições são os valores do indicador $\zeta_S$ para cada algoritmo em cada instância. O resultado do teste de Friedman foi $p = 0.0001$, indicando que existe uma diferença significativa entre os algoritmos. Em seguida, foi aplicado o teste de Nemenyi \cite{nemenyi1963distribution} para verificar quais algoritmos possuem diferenças significativas entre si. O resultado do teste de Nemenyi indicou que o LSM é significativamente pior que todos os outros algoritmos, enquanto os demais métodos não possuem diferenças significativas entre si.
 		
 		\subsection{Position Detection Study}\label{sec:results:position}
-		
+
+            % Em muitas configurações nas quais os algoritmos conseguem reconstruir adequadamene a geometria dos espalhadores, o erro na detecção da posição dos espalhadores tende a ser baixo. Por exemplo, no estudo da seção \ref{sec:results:shape:star}, o indicador $\zeta_P$ obtido pelo LSM, OSM, BIM, CSI e SOM foram, respectivamente, 0.049\%, 0.057\%, 0.25\%, 0.31\% e 0.14\%. Isto porque a geometria e a posição são características dos espalhadores que, normalmente, os algoritmos não lidam com isso em separado.
+
+            In many scenarios where algorithms can adequately reconstruct the geometry of scatterers, the error in detecting scatterer positions tends to be low. For example, in the study described in Section \ref{sec:results:shape:star}, the $\zeta_P$ indicator values obtained by LSM, OSM, BIM, CSI, and SOM were 0.049\%, 0.057\%, 0.25\%, 0.31\%, and 0.14\%, respectively. This occurs because geometry and position are scatterer characteristics that algorithms typically do not handle separately.
+            
+            % Uma exceção seria no caso de algoritmos que resolvem o problema de imageamento como um problema de otimização no qual as variáveis de decisão são a posição, os vértices (ou outras características de uma geometria predefinida) e o contraste dos espalhadores \cite{michalski2000electromagnetic,salucci2022learned,zardi2025physics}. Além disso, em cenários com espalhadores fortes, os métodos tradicionais geralmente não conseguem recuperar muito bem a geometria dos espalhadores, dada a maior dificuldade do problema. Nesses cenários, o estudo da detecção da posição pode ser mais relevante.
+
+            An exception would be algorithms that solve the imaging problem as an optimization problem, where the decision variables are the position, vertices (or other characteristics of a predefined geometry), and contrast of the scatterers \cite{michalski2000electromagnetic,salucci2022learned,zardi2025physics}. Additionally, in scenarios involving strong scatterers, traditional methods generally struggle to recover scatterer geometry effectively due to the increased problem hardness. In such scenarios, studying position detection becomes more relevant.
+
+            % Levando isso em consideração, os experimentos dessa seção foram formulados considerando espalhadores fortes, nos quais os métodos tradicionais não conseguem recuperar adequadamente a geometria dos espalhadores. Com isso, o indicador de erro de posição $\zeta_P$ pode ser uma métrica relevante para comparar desempenho nesse tipo de cenário.
+
+            Considering this, the experiments in this section were designed for scenarios involving strong scatterers, where traditional methods cannot adequately recover scatterer geometry. Therefore, the position error indicator $\zeta_P$ serves as a relevant metric for comparing algorithm performance in such challenging scenarios.
+
 			\subsubsection{Single scatter}\label{sec:results:position:single}
 			
 			\subsubsection{Multiple scatterers}\label{sec:results:position:multiple}
