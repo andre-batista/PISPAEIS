@@ -7,6 +7,12 @@
 \usepackage{textcomp}
 \usepackage{subfigure}
 \usepackage{xcolor}
+\usepackage{epstopdf}
+
+\graphicspath{{../}}
+\epstopdfsetup{
+    program@epstopdf=epstopdf
+}
 
 \newcommand{\brho}{\boldsymbol{\rho}}
 \newcommand{\brhop}{\boldsymbol{\rho^\prime}}
@@ -281,16 +287,16 @@
 
                 \begin{figure*}[!htb]
                     \centering
-                    \subfigure[OSM, $\chi=0.25$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_0.eps}}
-                    \subfigure[OSM, $\chi=0.5$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_1.eps}}
-                    \subfigure[OSM, $\chi=0.75$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_2.eps}}
-                    \subfigure[OSM, $\chi=1$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_3.eps}}
-                    \subfigure[OSM, $\chi=1.5$]{\includegraphics[height=1.2in]{../experiments/vary/figs/osm_4.eps}} \\
-                    \subfigure[SOM, $\chi=0.25$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_0.eps}}
-                    \subfigure[SOM, $\chi=0.5$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_1.eps}}
-                    \subfigure[SOM, $\chi=0.75$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_2.eps}}
-                    \subfigure[SOM, $\chi=1$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_3.eps}}
-                    \subfigure[SOM, $\chi=1.5$]{\includegraphics[height=1.in]{../experiments/vary/figs/som_4.eps}}
+                    \subfigure[OSM, $\chi=0.25$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_0.eps}}
+                    \subfigure[OSM, $\chi=0.5$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_1.eps}}
+                    \subfigure[OSM, $\chi=0.75$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_2.eps}}
+                    \subfigure[OSM, $\chi=1$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_3.eps}}
+                    \subfigure[OSM, $\chi=1.5$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_4.eps}} \\
+                    \subfigure[SOM, $\chi=0.25$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_0.eps}}
+                    \subfigure[SOM, $\chi=0.5$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_1.eps}}
+                    \subfigure[SOM, $\chi=0.75$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_2.eps}}
+                    \subfigure[SOM, $\chi=1$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_3.eps}}
+                    \subfigure[SOM, $\chi=1.5$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_4.eps}}
                     \caption{Shape recovering study, varying contrast: reconstructed images by OSM and SOM for different contrast values.}
                     \label{fig:shape:vary:recons}
                 \end{figure*}
@@ -305,8 +311,8 @@
 
                 \begin{figure}[!htb]
                     \centering
-                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{../experiments/vary/figs/zeta_s.eps}\label{fig:shape:vary:indicators:zeta_s}} \hspace{0.01\columnwidth}
-                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{../experiments/vary/figs/dnl.eps}\label{fig:shape:vary:dnl}}
+                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{./experiments/vary/figs/zeta_s.eps}\label{fig:shape:vary:indicators:zeta_s}} \hspace{0.01\columnwidth}
+                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{./experiments/vary/figs/dnl.eps}\label{fig:shape:vary:dnl}}
                     \caption{Shape recovering study, varying contrast: (a) shape error indicator $\zeta_S$ for OSM and SOM; (b) Degree of Nonlinearity (DNL) for each contrast value.}
                     \label{fig:shape:vary:indicators}
                 \end{figure}
@@ -327,44 +333,44 @@
 
                 \begin{figure}[!htb]
                     \centering
-                    \subfigure[]{\includegraphics[width=.5\columnwidth]{../experiments/average/figs/dnl.pdf}\label{fig:shape:average:dnl}} \\
-                    \subfigure[]{\includegraphics[width=\columnwidth]{../experiments/average/figs/plot.pdf}\label{fig:shape:average:zeta_s}}
+                    \subfigure[]{\includegraphics[width=.5\columnwidth]{./experiments/average/figs/dnl.eps}\label{fig:shape:average:dnl}} \\
+                    \subfigure[]{\includegraphics[width=\columnwidth]{./experiments/average/figs/plot.eps}\label{fig:shape:average:zeta_s}}
                     \caption{Shape recovering study, average performance: (a) Degree of Nonlinearity (DNL) for each scatterer; (b) shape error indicator $\zeta_S$ for each algorithm in each instance.}
                     \label{fig:shape:average}   
                 \end{figure}
 
                 % Fig. \ref{fig:shape:average:zeta_s} shows the shape error indicator $\zeta_S$ for each algorithm across all instances. É possível observar uma clara diferença entre o LSM e os demais algoritmos, com o LSM apresentando o pior desempenho. Os outros métodos possuem desempenhos similares, embora seja possível observar que o OSM possuiu um erro maior em um número significativo de instâncias e que o CSI, por sua vez, teve um desempenho ligeiramente melhor em um número significativo de instâncias.
 
-                Fig. \ref{fig:shape:average:zeta_s} presents the shape error indicator $\zeta_S$ for each algorithm across all test instances. The results reveal a clear performance distinction when considering LSM, which demonstrates significantly worse performance compared to the other methods. Among the remaining algorithms, while overall performance levels appear similar, some patterns emerge: OSM exhibits higher error rates across a significant number of instances, whereas CSI demonstrates superior performance in a significant portion of the test cases.
+                Fig. \ref{fig:shape:average:zeta_s} presents the shape error indicator $\zeta_S$ for each algorithm across all test instances. The results reveal a clear performance distinction when considering LSM, which demonstrates significantly worse performance compared to the other methods. Among the remaining algorithms, while overall performance levels appear similar, some patterns emerge: CSI exhibits higher error rates across a significant number of instances, whereas BIM demonstrates superior performance in a significant portion of the test cases.
 
                 % Enquanto a análise da Fig. \ref{fig:shape:average:zeta_s} oferece as primeiras impressões sobre os resultados, a aplicação de testes estatísticos é necessária para validar as conclusões. Para isso, o teste de Friedman foi aplicado para verificar se existe uma diferença significativa entre os algoritmos. O teste de Friedman é um teste não paramétrico que avalia diferenças pareadas significativas entre três ou mais grupos relacionados. Neste caso, os grupos são os algoritmos e as medições são os valores do indicador $\zeta_S$ para cada algoritmo em cada instância. Uma vez que o LSM apresentou um desempenho significativamente pior que os demais algoritmos, ele foi removido da análise estatística.
 
-                While Fig. \ref{fig:shape:average:zeta_s} provides initial insights into the results, statistical testing is important to validate the conclusions rigorously. To this end, the Friedman test \cite{friedman1937use} was applied to assess whether significant differences exist among the algorithms. The Friedman test is a non-parametric statistical test that evaluates significant differences between three or more related groups when the data does not meet the assumptions for parametric tests. In this context, the groups correspond to the algorithms, and the measurements are the $\zeta_S$ indicator values for each algorithm across all instances. Given that LSM demonstrated substantially inferior performance compared to the other algorithms, it was excluded from the statistical analysis to focus on the more competitive methods.
-                
+                While Fig. \ref{fig:shape:average:zeta_s} provides initial insights into the results, statistical testing is important to validate the conclusions rigorously. To this end, Randomized Complete Block Design (RCBD) was applied to assess whether significant paired differences exist among the algorithms. RCBD is a statistical test which is used to evaluate significant paired differences between three or more related groups when the data meet the assumptions for parametric tests. In this context, the groups correspond to the algorithms, and the measurements are the $\zeta_S$ indicator values for each algorithm across all instances. Given that LSM demonstrated substantially inferior performance compared to the other algorithms, it was excluded from the statistical analysis to focus on the more competitive methods.
+
                 % O resultado do teste de Friedman foi $p < 10^{-10}$, indicando que existe pelo menos um par de algoritmos com uma diferença significativa. Em seguida, foi aplicado o teste de Wilcoxon para identificar quais algoritmos possuem diferenças significativas entre si. Os valores-p obtidos pelos testes são apresentados na Tabela \ref{tab:shape:average:pvalue}. Conforme é indicado na tabela, a hipótese nula de que os algoritmos possuem desempenhos iguais é rejeitada para todos os pares de algoritmos.
 
-                The Friedman test result was $p < 10^{-10}$, indicating that at least one pair of algorithms shows a significant mean paired difference. Subsequently, the Wilcoxon test was applied to identify which algorithms have significant mean paired differences between them. The p-values obtained from these tests are presented in Table \ref{tab:shape:average:pvalue}. As shown in the table, the null hypothesis that algorithms have equal performance is rejected for all algorithm pairs.
+                After validating normality assumption, the p-value computed by RCBD result was less than $10^{-15}$, indicating that at least one pair of algorithms shows a significant mean paired difference. Subsequently, multiple paired T-Test with Bonferroni correction were applied to identify which algorithms have significant mean paired differences between them. The p-values obtained from these tests are presented in Table \ref{tab:shape:average:pvalue}. As shown in the table, the null hypothesis that algorithms have equal performance is rejected for all algorithm pairs, except for OSM-SOM, indicating that OSM and SOM do not exhibit a significant difference in their average performance.
 
                 \begin{table*}
                     \centering
                     \renewcommand{\arraystretch}{1.5}
-                    \caption{Comparison of $p$-values between methods.}
+                    \caption{Shape recovering study, average performance: $p$-values for the paired T-Test with Bonferroni correction.}
                     \label{tab:shape:average:pvalue}
                     \begin{tabular}{ccccccc}
                         Pairs & OSM-BIM & OSM-CSI & OSM-SOM & BIM-CSI & BIM-SOM & CSI-SOM \\\hline
-                        $p$-value & $<10{-4}$ & $<10{-8}$ & $<10{-3}$ & $<10{-2}$ & $<10{-2}$ & $<10{-8}$ \\  
+                        $p$-value & $<10^{-2}$ & $<10^{-11}$ & 0.15 & $<10^{-7}$ & $<10^{-4}$ & $<10^{-6}$ \\  
                     \end{tabular}
                 \end{table*}
 
                 % Para complementar a análise, a Fig. \ref{fig:shape:average:confidence_intervals} apresenta os intervalos de confiança (95\%) para a média das diferenças pareadas do indicador de erro de forma $\zeta_S$ para cada par de algoritmos. Em todos os casos, foi necessária alguma forma de transformação dos dados (logarítmica, raiz quadrada ou Box-Cox) para que os dados seguissem uma distribuição normal. No entanto, no gráfico, os dados foram transformados de volta para a escala original. Como é possível observar, a média das diferenças sempre favorece o CSI, o que significa que o teste fornece evidência para a superiodidade do CSI em relação aos demais algoritmos. Além disso, o OSM é significativamente pior que o BIM e o SOM, enquanto o BIM possui desempenho melhor que o SOM. No entanto, vale à pena destacar que, essas diferenças, na média, não são maiores que 5\%. Por fim, vale à pena observar que, enquanto no estudo da seção \ref{sec:results:shape:star} o CSI teve um desempenho pior que o BIM e o SOM, neste estudo de benchmarking, o CSI teve um desempenho melhor que ambos. Isso reforça a importância de realizar estudos de benchmarking combinados com análises estatísticas para obter conclusões mais robustas sobre o desempenho dos algoritmos.
 
-                To complement the analysis, Fig. \ref{fig:shape:average:confidence_intervals} presents the 95\% confidence intervals for the mean paired differences of the shape error indicator $\zeta_S$ for each algorithm pair. As observed, the differences consistently favor CSI, providing evidence for CSI's superiority over the other algorithms. Additionally, OSM performs significantly worse than both BIM and SOM, while BIM outperforms SOM. However, these differences average less than 5\%.
+                To complement the analysis, Fig. \ref{fig:shape:average:confidence_intervals} presents the 95\% confidence intervals for the mean paired differences of the shape error indicator $\zeta_S$ for each algorithm pair. As observed, the differences consistently favor BIM, providing evidence for BIM's superiority over the other algorithms. Additionally, CSI performs significantly worse than both BIM, OSM and SOM. However, all differences in average performance are less than 7\%.
 
-                It is worth observing that while CSI performed worse than BIM and SOM in the single scatterer study (Section \ref{sec:results:shape:star}), CSI demonstrated superior performance to both methods in this benchmarking study. This highlights the importance of conducting comprehensive benchmarking studies combined with statistical analysis to obtain more robust conclusions about algorithm average performance.
-                
+                Furthermore, it is noteworthy that BIM also achieved the best performance in the study from Section \ref{sec:results:shape:star}. However, while the difference between SOM and OSM was significant in the experiment from Section \ref{sec:results:shape:star}, this benchmarking study provided evidence for performance equivalence between these two methods. In other words, if conclusions were drawn based solely on the case study, this could lead to a misconception about the performance of these two methods in this problem configuration. Therefore, this reinforces the importance of conducting benchmarking studies combined with statistical analyses to obtain more robust conclusions about algorithm performance.
+
                 \begin{figure}
                     \centering
-                    \includegraphics[width=.8\columnwidth]{../experiments/average/figs/confidence_intervals.pdf}
+                    \includegraphics[width=.8\columnwidth]{./experiments/average/figs/confidence_intervals.eps}
                     \caption{Shape recovering study, average performance: Confidence intervals (95\%) for the shape error indicator $\zeta_S$ for each pair of algorithms.}
                     \label{fig:shape:average:confidence_intervals}
                 \end{figure}
