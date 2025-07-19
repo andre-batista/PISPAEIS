@@ -54,4 +54,4 @@ for n in range(len(epsilon_rd)):
     test.compute_dnl()
     
     print('ok!')
-    test.save()
+    test.save(file_path='../../data/shape/vary/')

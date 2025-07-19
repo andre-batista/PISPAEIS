@@ -10,10 +10,12 @@ import stopcriteria as stp
 
 name = 'vary'
 resolution = (40, 40)
+file_path = '../../data/shape/vary/'
 
 tests = []
 for n in range(5):
-    tests.append(ipt.InputData(import_filename=name + '%d' % n + '.ipt'))
+    tests.append(ipt.InputData(import_filename=name + '%d' % n + '.ipt',
+                               import_filepath=file_path))
 
 methods = [
     osm.OrthogonalitySamplingMethod(threshold=.35),
@@ -31,4 +33,4 @@ for n in range(len(tests)):
 
     caseestudy.run(parallelization=cst.PARALLELIZE_METHOD, pre_save=True)
 
-    caseestudy.save(save_test=True)
+    caseestudy.save(save_test=True, file_path=file_path)
