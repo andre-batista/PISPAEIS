@@ -25,6 +25,7 @@ data/**/*.ipt
 data/**/*.rst
 data/**/*.tst
 data/**/*.txt
+data/**/*.ipynb
 *.ipt
 *.bmk
 *.tst
