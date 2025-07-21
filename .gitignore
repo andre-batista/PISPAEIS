@@ -22,6 +22,7 @@ experiments/position/single/data/
 data/**/*.bmk
 data/**/*.cst
 data/**/*.ipt
+data/**/*.rst
 data/**/*.tst
 data/**/*.txt
 *.ipt
