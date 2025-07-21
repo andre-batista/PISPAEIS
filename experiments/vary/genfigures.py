@@ -8,7 +8,7 @@ import configuration as cfg
 
 N = 5
 casestudies = [cst.CaseStudy(import_filename='vary%d.cst' % n,
-                             import_filepath='./data/') for n in range(N)]
+                             import_filepath='../../data/shape/vary/') for n in range(N)]
 chi = np.array([.25, .5, .75, 1., 1.5])
 
 plt.rcParams['font.family'] = 'serif'

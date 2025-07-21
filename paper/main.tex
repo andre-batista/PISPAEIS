@@ -267,7 +267,7 @@
                 \begin{table}[!htb]
                     \centering
                     \renewcommand{\arraystretch}{1.5}
-                    \caption{Results for the single scatterer case study.}
+                    \caption{Shape recovering study, single scatterer: shape error indicator $\zeta_S$ for each algorithm.}
                     \label{tab:star}
                     \begin{tabular}{cccccc}
                         Method & LSM & OSM & BIM & CSI & SOM \\\hline
@@ -282,8 +282,6 @@
                 Another type of study that can complement the analysis of algorithm performance in object geometry reconstruction is the observation of indicator performance with varying object contrast. Specifically, for a given scatterer, as its contrast value increases, the DNL increases, and consequently, algorithms may lose performance since the problem becomes more challenging. To demonstrate this relationship, the same scatterer from the previous study was considered with identical scenario configurations. The only modification was that the original image resolution was increased to 160$\times$160 pixels to ensure precision in field calculations for high contrast scenarios. 
 
                 The scatterer was reconstructed using five contrast values: 0.25, 0.5, 0.75, 1.0, and 1.5. Fig. \ref{fig:shape:vary:dnl} shows the corresponding DNL for each contrast value. For this study, the OSM and SOM methods were employed with the same configurations as the previous study. While the method parameters could be optimized for each contrast value, they were kept constant across all contrast values to demonstrate the indicator's applicability in a controlled manner.
-
-                {\color{red} EU PRECISO RODAR NOVAMENTE O EXPERIMENTO PORQUE O NÚMERO DE MEDIÇÕES E FONTES NÃO FORAM IGUAIS NA PRIMEIRA VEZ.}
 
                 \begin{figure*}[!htb]
                     \centering
