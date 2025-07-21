@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(1, '../../../../eispy2d/library/')
+sys.path.insert(1, '../../../eispy2d/library/')
 
 import configuration as cfg
 import inputdata as ipt
@@ -9,6 +9,7 @@ import mom_cg_fft as mom
 
 # Parameters
 name = 'single'
+file_path = "../../../data/position/single/"
 NM = NS = 80
 Ro = 4.
 lambda_b = 1.
@@ -50,4 +51,4 @@ _ = forward.solve(test)
 
 test.compute_dnl()
 
-test.save(file_path='./data/')
+test.save(file_path='../data/')
