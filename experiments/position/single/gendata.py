@@ -17,11 +17,11 @@ epsilon_rb = 1.
 Lx = Ly = 2.
 E0 = 1.
 perfect_dielectric = True
-resolution = (120, 120)
+resolution = (160, 160)
 noise = 5.
 indicators = [rst.SHAPE_ERROR, rst.POSITION_ERROR, rst.OBJECTIVE_FUNCTION]
-epsilon_rd = 5. # 6.00
-l = 0.5
+epsilon_rd = 6.
+l = 0.3
 position = [.4, -.4]
 rotate = 30
 
@@ -44,11 +44,13 @@ test.rel_permittivity, _ = draw.star5(
     center=position, rotate=30.
 )
 
+test.draw(show=True)
+
 forward = mom.MoM_CG_FFT(tolerance=1e-3, maximum_iterations=10000,
                          parallelization=True)
 
-_ = forward.solve(test)
+_ = forward.solve(test, PRINT_INFO=False)
 
 test.compute_dnl()
 
-test.save(file_path='../data/')
+test.save(file_path=file_path)

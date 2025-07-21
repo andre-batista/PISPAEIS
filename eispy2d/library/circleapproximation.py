@@ -17,7 +17,7 @@ CONTRAST_RANGE = 'contrast_range'
 class CircleApproximation(stc.Stochastic):
     def __init__(self, outputmode, number_executions=1, position_range=None,
                  radius_range=None, contrast_range=None, alias='ca',
-                 parallelization=False):
+                 parallelization=False, solver="de"):
         super().__init__(outputmode, alias=alias,
                          parallelization=parallelization,
                          number_executions=number_executions)
@@ -40,6 +40,7 @@ class CircleApproximation(stc.Stochastic):
                 self.contrast_range = [contrast_range[0], contrast_range[1]]
         else:
             self.contrast_range = [0., 10.]
+        self.solver = solver
             
     def solve(self, inputdata, discretization, print_info=True,
               print_file=sys.stdout):
@@ -91,13 +92,14 @@ class CircleApproximation(stc.Stochastic):
             num_cores = multiprocessing.cpu_count()
             output = (Parallel(n_jobs=num_cores))(delayed(self._run_algorithm)
                                                   (bounds, inputdata, callback,
-                                                   run_names[ne])
+                                                   run_names[ne], initial_guess)
                                                   for ne in range(self.nexec))
         else:
             output = []
             for ne in range(self.nexec):
                 output.append(self._run_algorithm(bounds, inputdata, callback,
-                                                   run_names[ne]))
+                                                   run_names[ne],
+                                                   initial_guess))
                 if print_info:
                     iteration = 0
                     execution += 1
@@ -107,25 +109,28 @@ class CircleApproximation(stc.Stochastic):
 
         return result
 
-    def _run_algorithm(self, bounds, inputdata, callback, run_name):
+    def _run_algorithm(self, bounds, inputdata, callback, run_name,
+                       initial_guess=None):
         result = rst.Result(run_name,
                             method_name=self.alias,
                             configuration=inputdata.configuration)
 
         tic = tm.time()
 
-        solution = differential_evolution(
-            objfun, bounds, args=(inputdata,), strategy='best1bin', maxiter=10,
-            popsize=15, tol=0.01, mutation=(0.5, 1), recombination=0.7, 
-            seed=None, callback=callback, disp=False, polish=True,
-            init='latinhypercube', atol=0, updating='deferred', workers=-1, 
-            constraints=(), x0=None, integrality=None, vectorized=False
-        )
+        if self.solver == "de":
+            solution = differential_evolution(
+                objfun, bounds, args=(inputdata,), strategy='best1bin', maxiter=10,
+                popsize=15, tol=0.01, mutation=(0.5, 1), recombination=0.7,
+                seed=None, callback=callback, disp=False, polish=True,
+                init='latinhypercube', atol=0, updating='deferred', workers=-1, 
+                constraints=(), x0=None, integrality=None, vectorized=False
+            )
+        else:
 
-        # solution = minimize(objfun, initial_guess, args=(inputdata,),
-        #                     bounds=bounds, method='L-BFGS-B',
-        #                     callback=callback, options={'ftol':1e-8, 
-        #                                                 'disp':False})
+            solution = minimize(objfun, initial_guess, args=(inputdata,),
+                                bounds=bounds, method='L-BFGS-B',
+                                callback=callback, options={'ftol':1e-8, 
+                                                            'disp':False})
 
         execution_time = tm.time() - tic
 
