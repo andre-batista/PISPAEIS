@@ -21,7 +21,7 @@ resolution = (160, 160)
 noise = 5.
 indicators = [rst.SHAPE_ERROR, rst.POSITION_ERROR, rst.OBJECTIVE_FUNCTION]
 epsilon_rd = 8.
-l = 0.1
+l = 0.15
 position = [.4, -.4]
 rotate = 30
 
