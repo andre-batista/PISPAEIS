@@ -37,7 +37,7 @@ testset = tst.TestSet(name=name + '.tst', configuration=config,
                       sample_size=sample_size, noise=noise,
                       indicators=indicators)
 
-testset.randomize_tests(parallelization=True, compute_dnl=True)
+testset.randomize_tests(parallelization=False, compute_dnl=True)
 
 testset.generate_field_data(solver=mom.MoM_CG_FFT(tolerance=1e-3,
                                                   maximum_iterations=10_000))
