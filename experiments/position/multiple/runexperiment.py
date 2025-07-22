@@ -32,7 +32,7 @@ method = [
     csi.ContrastSourceInversion(stp.StopCriteria(max_iterations=300)),
     som.SubspaceBasedOptimizationMethod(stp.StopCriteria(max_iterations=30),
                                         cutoff_index=5),
-    ca.CircleApproximation(stc.OutputMode(stc.EACH_EXECUTION),
+    ca.CircleApproximation(stc.OutputMode(stc.BEST_CASE, reference='zeta_s'),
                            number_executions=1,
                            contrast_range=contrast_range,
                            solver="de")
@@ -44,7 +44,7 @@ discretization = ric.Richmond(configuration=test.configuration,
 casestudy = cst.CaseStudy(name=name + '.cst',
                            method=method,
                            discretization=discretization,
-                           test=test)
+                           test=test, stochastic_runs=1)
 
 casestudy.run(parallelization=cst.PARALLELIZE_METHOD, pre_save=True,
               file_path=file_path)

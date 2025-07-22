@@ -119,7 +119,7 @@ class CircleApproximation(stc.Stochastic):
 
         if self.solver == "de":
             solution = differential_evolution(
-                objfun, bounds, args=(inputdata,), strategy='best1bin', maxiter=10,
+                objfun, bounds, args=(inputdata,), strategy='best1bin', maxiter=50,
                 popsize=15, tol=0.01, mutation=(0.5, 1), recombination=0.7,
                 seed=None, callback=callback, disp=False, polish=True,
                 init='latinhypercube', atol=0, updating='deferred', workers=-1, 

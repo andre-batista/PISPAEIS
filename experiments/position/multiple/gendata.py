@@ -17,7 +17,7 @@ epsilon_rb = 1.
 Lx = Ly = 2.
 E0 = 1.
 perfect_dielectric = True
-resolution = (180, 180)
+resolution = (160, 160)
 noise = 5.
 indicators = [rst.SHAPE_ERROR, rst.POSITION_ERROR]
 epsilon_rd = [5., 4., 3.5]

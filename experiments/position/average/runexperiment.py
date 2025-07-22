@@ -1,26 +1,27 @@
 import sys
 sys.path.insert(1, '../../../eispy2d/library/')
 
-import inputdata as ipt
-import casestudy as cst
+import testset as tst
 import richmond as ric
 import regularization as reg
 import mom_cg_fft as mom
 import stopcriteria as stp
-import stochastic as stc
 import lsm
 import osm
 import bim
 import csi
 import som
+import benchmark as bmk
 import circleapproximation as ca
+import stochastic as stc
 
-name = 'single'
-file_path = "../../../data/position/single/"
+name = 'average'
+filepath = '../../../data/position/average/'
 resolution = (40, 40)
 contrast_range = (0.1, 10.)
 
-test = ipt.InputData(import_filename=name + '.ipt', import_filepath=file_path)
+testset = tst.TestSet(import_filename=name + '.tst',
+                      import_filepath=filepath)
 
 method = [
     lsm.LinearSamplingMethod(alias='lsm',
@@ -38,15 +39,13 @@ method = [
                            solver="de")
 ]
 
-discretization = ric.Richmond(configuration=test.configuration,
+discretization = ric.Richmond(configuration=testset.test[0].configuration,
                               elements=resolution)
 
-casestudy = cst.CaseStudy(name=name + '.cst',
-                           method=method,
-                           discretization=discretization,
-                           test=test, stochastic_runs=1)
+benchmark = bmk.Benchmark(name=name + '.bmk', method=method, 
+                          discretization=discretization, testset=testset)
 
-casestudy.run(parallelization=cst.PARALLELIZE_METHOD, pre_save=True,
-              file_path=file_path)
+benchmark.run(parallelization=bmk.PARALLELIZE_EXECUTIONS, pre_save=True,
+              file_path=filepath)
 
-casestudy.save(save_test=True, file_path=file_path)
+benchmark.save(file_path=filepath, save_testset=True)
