@@ -669,11 +669,14 @@ class InputData:
         return message
 
 
-def degrees_nonlinearity(inputdata):
+def degrees_nonlinearity_old(inputdata):
     if inputdata.rel_permittivity is not None:
         resolution = inputdata.rel_permittivity.shape
     else:
         resolution = inputdata.conductivity.shape
+    
+    resolution = (min(resolution[0], 120), min(resolution[1], 120))
+
     discretization = ric.Richmond(inputdata.configuration, resolution,
                                   state=True)
     X = cfg.get_contrast_map(epsilon_r=inputdata.rel_permittivity,
@@ -685,3 +688,59 @@ def degrees_nonlinearity(inputdata):
     dS = (x[0, 1]-x[0, 0])*(y[1, 0]-y[0, 0])
     F = discretization.GD @ X
     return np.sum(np.abs(F)**2)*dS
+
+def degrees_nonlinearity(inputdata, batch_size=1000):
+    """
+    Compute degrees of nonlinearity with memory optimization.
+    
+    Parameters:
+    - inputdata: Input data object
+    - batch_size: Process matrix multiplication in batches to save memory
+    """
+    if inputdata.rel_permittivity is not None:
+        resolution = inputdata.rel_permittivity.shape
+    else:
+        resolution = inputdata.conductivity.shape
+    
+    # Use lower resolution for DNL computation to save memory
+    dnl_resolution = (min(resolution[0], 150), min(resolution[1], 150))
+    # dnl_resolution = resolution
+    discretization = ric.Richmond(inputdata.configuration, dnl_resolution,
+                                  state=True)
+    
+    # Get contrast map at reduced resolution
+    X = cfg.get_contrast_map(epsilon_r=inputdata.rel_permittivity,
+                             sigma=inputdata.conductivity,
+                             configuration=inputdata.configuration)
+    
+    # Downsample if original resolution is too high
+    if resolution != dnl_resolution:
+        from scipy.ndimage import zoom
+        zoom_factors = (dnl_resolution[0]/resolution[0], 
+                       dnl_resolution[1]/resolution[1])
+        X = zoom(X, zoom_factors, order=1)
+    
+    X = X.reshape((-1, 1))
+    
+    # Get coordinates for the reduced resolution
+    x, y = cfg.get_coordinates_ddomain(configuration=inputdata.configuration,
+                                       resolution=dnl_resolution)
+    dS = (x[0, 1]-x[0, 0])*(y[1, 0]-y[0, 0])
+    
+    # Memory-efficient matrix multiplication using batches
+    GD = discretization.GD
+    n_rows = GD.shape[0]
+    
+    # Process in batches to avoid memory overflow
+    F_squared_sum = 0.0
+    
+    for i in range(0, n_rows, batch_size):
+        end_idx = min(i + batch_size, n_rows)
+        batch_GD = GD[i:end_idx, :]
+        batch_F = batch_GD @ X
+        F_squared_sum += np.sum(np.abs(batch_F)**2)
+        
+        # Clean up batch variables to free memory
+        del batch_GD, batch_F
+    
+    return F_squared_sum * dS

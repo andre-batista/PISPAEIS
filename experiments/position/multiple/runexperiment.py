@@ -15,8 +15,8 @@ import csi
 import som
 import circleapproximation as ca
 
-name = 'single'
-file_path = "../../../data/position/single/"
+name = 'multiple'
+file_path = "../../../data/position/multiple/"
 resolution = (40, 40)
 contrast_range = (0.1, 10.)
 

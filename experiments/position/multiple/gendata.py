@@ -9,6 +9,7 @@ import mom_cg_fft as mom
 
 # Parameters
 name = 'multiple'
+file_path = '../../../data/position/multiple/'
 NM = NS = 80
 Ro = 4.
 lambda_b = 1.
@@ -16,11 +17,11 @@ epsilon_rb = 1.
 Lx = Ly = 2.
 E0 = 1.
 perfect_dielectric = True
-resolution = (200, 200)
+resolution = (180, 180)
 noise = 5.
 indicators = [rst.SHAPE_ERROR, rst.POSITION_ERROR]
-epsilon_rd = [5., 3., 2.]
-l = 0.3
+epsilon_rd = [5., 4., 3.5]
+l = 0.1
 position = [.4, -.4]
 rotate = 30
 
@@ -42,20 +43,22 @@ test.rel_permittivity, _ = draw.star5(
 )
 
 test.rel_permittivity, _ = draw.rhombus(
-    l/1.5, l/1.5, axis_length_x=Lx, axis_length_y=Ly, center=[.7, .1],
+    l, l, axis_length_x=Lx, axis_length_y=Ly, center=[.7, .1],
     background_rel_permittivity=epsilon_rb, object_rel_permittivity=epsilon_rd[1],
     rotate=60, rel_permittivity=test.rel_permittivity
 )
 
 test.rel_permittivity, _ = draw.cross(
-    2*l, l, l/4, axis_length_x=Lx, axis_length_y=Ly,
+    2*l, 2*l, l/2, axis_length_x=Lx, axis_length_y=Ly,
     object_rel_permittivity=epsilon_rd[2], center=[.2, 0.6], rotate=0.,
     rel_permittivity=test.rel_permittivity
 )
 
-forward = mom.MoM_CG_FFT(tolerance=1e-3, maximum_iterations=10000,
+forward = mom.MoM_CG_FFT(tolerance=1e-3, maximum_iterations=10_000,
                          parallelization=True)
+
+_ = forward.solve(test)
 
 test.compute_dnl()
 
-test.save(file_path='./data/')
+test.save(file_path=file_path)
