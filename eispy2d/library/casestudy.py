@@ -526,9 +526,9 @@ class CaseStudy(exp.Experiment):
                                                  vmax=vmax)
                         ifig += 1
                 elif not self.s_save:
-                    figure_title += ' - ' + self.method[m].output + ' case'
+                    # figure_title += ' - ' + self.method[m].output + ' case'
                     if image == BOTH_PROPERTIES:
-                        self.results[m].plot_map(image=rst.BOTH_PROPERTIES,
+                        self.results[m][0].plot_map(image=rst.BOTH_PROPERTIES,
                                                  axis=ax[ifig:ifig+2],
                                                  title=figure_title,
                                                  fontsize=fontsize,

@@ -2,10 +2,13 @@
 *.fdb_latexmk
 *.log
 *.synctex(busy)
+*.dvi
+*.DS_Store
 
 paper/figs/*.pdf
 paper/figs/shape/single/recons/*.pdf
 experiments/vary/figs/*.pdf
+experiments/**/*.pdf
 
 *.bbl
 *.blg
