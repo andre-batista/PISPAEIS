@@ -31,6 +31,10 @@ class BreastPhantomReader:
         # Store parameters and tissue mappings
         self._load_parameters()
         self._map_tissue_bounds()
+        
+        # Initialize immersion medium properties with default values
+        self.immersion_dielectric_constant = 1.0
+        self.immersion_conductivity = 0.0
 
         print(f"Phantom ID {self.breast_id} loaded successfully.")
         print(f"Dimensions (s1, s2, s3): ({self.s1}, {self.s2}, {self.s3})")
@@ -119,6 +123,18 @@ class BreastPhantomReader:
             3.3: ('minimum', 'group3-low'),
         }
 
+    def set_immersion_medium_properties(self, dielectric_constant=1.0, conductivity=0.0):
+        """
+        Sets the dielectric properties for the immersion medium (mtype = -1).
+        
+        Args:
+            dielectric_constant (float): Relative dielectric constant for immersion medium
+            conductivity (float): Conductivity in S/m for immersion medium
+        """
+        self.immersion_dielectric_constant = dielectric_constant
+        self.immersion_conductivity = conductivity
+        print(f"Immersion medium properties set: εr={dielectric_constant}, σ={conductivity} S/m")
+
     def _calculate_complex_permittivity(self, freq_ghz, params):
         """Calculates complex permittivity using Cole-Cole formula."""
         omega = 2 * np.pi * freq_ghz * 1e9
@@ -192,6 +208,19 @@ class BreastPhantomReader:
             if np.any(muscle_mask):
                 muscle_params = params_table.loc['muscle']
                 complex_permittivity_grid[muscle_mask] = self._calculate_complex_permittivity(freq_ghz, muscle_params)
+
+        # Process immersion medium (mtype = -1)
+        immersion_mask = self.mtype_grid == -1
+        if np.any(immersion_mask):
+            # Use default values if immersion properties haven't been set
+            dielectric_const = getattr(self, 'immersion_dielectric_constant', 1.0)
+            conductivity = getattr(self, 'immersion_conductivity', 0.0)
+            
+            # Calculate complex permittivity for immersion medium
+            omega = 2 * np.pi * freq_ghz * 1e9
+            eps_real = dielectric_const
+            eps_imag = conductivity / (omega * epsilon_0)
+            complex_permittivity_grid[immersion_mask] = eps_real - 1j * eps_imag
 
         # Extract dielectric constant and effective conductivity
         # ε* = ε' - jε''

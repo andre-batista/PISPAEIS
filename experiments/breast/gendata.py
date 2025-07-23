@@ -3,8 +3,14 @@ file_path = "../../data/breast/"
 reader = BreastPhantomReader(file_path)
 
 freq = 1. # GHz
+epsilon_rb = 1.
+sigma_b = 0.
+
+reader.set_immersion_medium_properties(dielectric_constant=epsilon_rb,
+                                       conductivity=sigma_b)
+
 epsilon_r, sigma = reader.calculate_dielectric_properties(
-    freq, model='cole-cole'
+    freq, model='debye'
 )
 
 import numpy as np
@@ -25,8 +31,6 @@ DOF = cfg.degrees_of_freedom(object_radius, frequency=freq*1e9,
 print(f"Degrees of freedom: {DOF}")
 NS = NM = 80
 Ro = max([Lx, Ly])
-epsilon_rb = 1.
-sigma_b = 0.
 image_size = [Ly, Lx]
 E0 = 1.
 
