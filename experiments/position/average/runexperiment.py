@@ -45,7 +45,7 @@ discretization = ric.Richmond(configuration=testset.test[0].configuration,
 benchmark = bmk.Benchmark(name=name + '.bmk', method=method, 
                           discretization=discretization, testset=testset)
 
-benchmark.run(parallelization=bmk.PARALLELIZE_EXECUTIONS, pre_save=True,
+benchmark.run(parallelization=bmk.PARALLELIZE_METHODS, pre_save=True,
               file_path=filepath)
 
 benchmark.save(file_path=filepath, save_testset=True)
