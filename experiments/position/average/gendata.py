@@ -42,4 +42,4 @@ testset.randomize_tests(parallelization=False, compute_dnl=True)
 testset.generate_field_data(solver=mom.MoM_CG_FFT(tolerance=1e-3,
                                                   maximum_iterations=10_000))
 
-testset.save(file_path='../../../data/shape/average/',)
+testset.save(file_path='../../../data/position/average/',)
