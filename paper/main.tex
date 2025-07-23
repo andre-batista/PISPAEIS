@@ -447,15 +447,11 @@
 
                 Although the proposed indicator for measuring position error was designed for scenarios with a single scatterer, it can also be applied in scenarios with multiple scatterers. In these cases, the centroid of the arrangement as a whole serves as the reference point for measuring position error. This type of investigation can be useful for applications such as through-wall imaging, for example.
 
-                Baseado nisto, neste experimento são considerados três espalhadores: a estrela
+                Based on this approach, this experiment considers three scatterers: the star from the previous experiment, a square, and a cross. The contrasts of the three scatterers were set to 4, 3.5, and 2.5, respectively. These values were chosen to be lower than in the previous experiment, since the presence of multiple scatterers inherently increases problem hardness due to mutual current induction between the scatterers.
 
-                % Based on this approach, this experiment considers three scatterers: the star-shaped object from the previous study, a circular scatterer, and a square scatterer. All objects have a contrast of 7 and are positioned at different locations within the DOI to create a challenging multi-target scenario. The goal is to evaluate how well each algorithm can detect the overall position of the scatterer arrangement when individual object geometries cannot be accurately recovered.
+                The square has a side length of 0.15$\lambda_b$, while the cross has dimensions of 0.3$\lambda_b$ × 0.3$\lambda_b$ with a thickness of 0.15$\lambda_b$. The scatterers were positioned such that their collective arrangement is located in the upper corner of the DOI, as illustrated in Fig. \ref{fig:position:multiple:ground_truth}. Under this configuration, the DNL for this experiment is 0.3.
 
-                % Fig. \ref{fig:position:multiple:recons} shows the reconstructions obtained by each algorithm for the multiple scatterer scenario. As expected in this high-contrast, small-size configuration, the algorithms reconstruct blob-like structures rather than distinct object geometries. The quality and positioning of these reconstructed features directly influence the centroid calculation and, consequently, the position error measurement.
-
-                % Table \ref{tab:position:multiple:zeta_p} presents the position error results for each algorithm. Interestingly, CSI achieved the best performance in this multi-scatterer scenario, despite its poor performance in the single scatterer case. This suggests that the algorithm's behavior may be different when dealing with multiple targets. BIM and SOM showed similar intermediate performance, while OSM and CA exhibited higher position errors, indicating greater difficulty in accurately localizing the overall scatterer arrangement.
-
-                
+                Fig. \ref{fig:position:multiple:recons} presents the reconstructions obtained by each algorithm for the multiple scatterer scenario. As expected in this small-size configuration, the algorithms produce blob-like structures that are generally larger than the actual object geometries. The CA method positioned its circular approximation close to the square's location. Although the quantitative methods could not accurately estimate the individual scatterer contrasts, they consistently assigned higher contrast values to the square region rather than the star region. This behavior suggests that the square's larger cross-sectional area compared to the star may have influenced the algorithms' reconstruction process.
 
                 \begin{figure*}[!htb]
                     \subfigure[Ground-Truth]{\includegraphics[height=0.55\columnwidth]{../experiments/position/multiple/figs/0.eps}\label{fig:position:multiple:ground_truth}}
@@ -467,6 +463,8 @@
                     \caption{Position detection study, multiple scatterer: ground-truth and reconstructed images by each algorithm.}
                     \label{fig:position:multiple:recons}
                 \end{figure*}
+
+                Table \ref{tab:position:multiple:zeta_p} presents the position error results for each algorithm. Interestingly, CSI achieved the best performance in this multi-scatterer scenario, despite its poor performance in the single scatterer case. This suggests that the algorithm's behavior may be different when dealing with multiple targets. BIM and SOM showed similar intermediate performance, while OSM and CA exhibited higher position errors, indicating greater difficulty in accurately localizing the overall scatterer arrangement.
 
                 \begin{table}[!htb]
                     \centering
@@ -480,6 +478,36 @@
                 \end{table}
                 
 			\subsubsection{Average performance}\label{sec:results:position:benchmark}
+
+                Similar to the shape recovery study, an average performance analysis was conducted to compare the position detection capabilities of OSM, BIM, CSI, SOM, and CA algorithms. This experiment employed 30 scatterer instances with configurations similar to those described in Section \ref{sec:results:position:single}. The scatterer contrast was fixed at 7, and the radius from the center to the farthest vertices was set to 0.15$\lambda_b$. Following the approach from Section \ref{sec:results:shape:average}, the scatterers were randomly generated as polygons with 4 to 15 vertices.
+
+                The DNL distribution is shown in Fig. \ref{fig:position:average:dnl}. The values range from below 1 to above 4, with a median close to 2. The high contrast level and geometric variations contributed to the wide distribution of DNL values. However, as shown in Fig. \ref{fig:position:average:zeta_s}, the algorithm performance within each instance remained within a similar range. CSI clearly exhibited the worst performance, followed by SOM. The best performance in each instance varied between OSM and CA. These results are consistent with the findings from Section \ref{sec:results:position:single}.
+
+                \begin{figure}[!htb]
+                    \centering
+                    \subfigure[]{\includegraphics[width=.5\columnwidth]{./experiments/position/average/figs/dnl.eps}\label{fig:position:average:dnl}} \\
+                    \subfigure[]{\includegraphics[width=\columnwidth]{./experiments/position/average/figs/plot.eps}\label{fig:position:average:zeta_s}}
+                    \caption{Position detection study, average performance: (a) Degree of Nonlinearity (DNL) for each scatterer; (b) position error indicator $\zeta_P$ for each algorithm in each instance.}
+                    \label{fig:position:average}   
+                \end{figure}
+
+                \begin{table*}
+                    \centering
+                    \renewcommand{\arraystretch}{1.5}
+                    \caption{Position detection study, average performance: $p$-values for the paired T-Test with Bonferroni correction.}
+                    \label{tab:position:average:pvalue}
+                    \begin{tabular}{ccccccc}
+                        Pairs & OSM-BIM & OSM-SOM & OSM-CA & BIM-SOM & BIM-CA & SOM-CA \\\hline
+                        $p$-value & $<10^{-9}$ & $<10^{-13}$ & 0.95 & $<10^{-6}$ & $<10^{-10}$ & $<10^{-17}$ \\  
+                    \end{tabular}
+                \end{table*}
+
+                \begin{figure}
+                    \centering
+                    \includegraphics[width=.8\columnwidth]{./experiments/position/average/figs/confidence_intervals.eps}
+                    \caption{Position detection study, average performance: Confidence intervals (95\%) for the position error indicator $\zeta_P$ for each pair of algorithms.}
+                    \label{fig:position:average:confidence_intervals}
+                \end{figure}
 
         \subsection{Breast Phantom Study}\label{sec:results:breast}
 
