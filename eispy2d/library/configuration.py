@@ -741,7 +741,7 @@ def get_contrast_map(epsilon_r=None, sigma=None, epsilon_rb=None, sigma_b=None,
         else:
             omega = 2*pi*configuration.f
             return (epsilon_r/configuration.epsilon_rb - 1
-                    - 1j*(sigma-sigma_b)
+                    - 1j*(sigma-configuration.sigma_b)
                     / (omega*configuration.epsilon_rb*ct.epsilon_0))
 
 

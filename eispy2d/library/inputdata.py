@@ -703,7 +703,7 @@ def degrees_nonlinearity(inputdata, batch_size=1000):
         resolution = inputdata.conductivity.shape
     
     # Use lower resolution for DNL computation to save memory
-    dnl_resolution = (min(resolution[0], 150), min(resolution[1], 150))
+    dnl_resolution = (min(resolution[0], 120), min(resolution[1], 120))
     # dnl_resolution = resolution
     discretization = ric.Richmond(inputdata.configuration, dnl_resolution,
                                   state=True)
