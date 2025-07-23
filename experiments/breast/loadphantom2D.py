@@ -169,7 +169,7 @@ def loadphantom2D(filepath, f, epsilon_rb, sigma_b, new_res=None):
 # Example usage:
 if __name__ == "__main__":
     # Example parameters
-    filepath = "./data/"
+    filepath = "../../data/breast/"
     frequency = 1e9  # 1 GHz
     epsilon_rb = 1.0
     sigma_b = 0.0
