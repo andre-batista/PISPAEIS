@@ -3,8 +3,9 @@ file_path = "../../data/breast/"
 reader = BreastPhantomReader(file_path)
 
 freq = 1. # GHz
-epsilon_rb = 1.
+epsilon_rb = 10.
 sigma_b = 0.
+noise = 5.
 
 reader.set_immersion_medium_properties(dielectric_constant=epsilon_rb,
                                        conductivity=sigma_b)
@@ -32,7 +33,7 @@ print(f"Degrees of freedom: {DOF}")
 NS = NM = 80
 Ro = max([Lx, Ly])
 image_size = [Ly, Lx]
-E0 = 1.
+E0 = 10.
 
 config = cfg.Configuration(name=instance_name + '.cfg',
                            number_measurements=NM,
@@ -57,6 +58,6 @@ test.compute_dnl()
 
 import mom_cg_fft as mom
 forward = mom.MoM_CG_FFT(tolerance=1e-3, maximum_iterations=5_000)
-_ = forward.solve(test)
+_ = forward.solve(test, noise=noise)
 
 test.save(file_path=file_path)
