@@ -22,6 +22,8 @@ import configuration as cfg
 epsr = np.squeeze(epsilon_r[140, :, :])
 sig = np.squeeze(sigma[140, :, :])
 
+# sig = None
+
 instance_name = 'breastphantom'
 dx = dy = 0.5e-3 # 0.5 mm
 Lx, Ly = epsr.shape[1] * dx, epsr.shape[0] * dy
@@ -44,7 +46,8 @@ config = cfg.Configuration(name=instance_name + '.cfg',
                            background_conductivity=sigma_b,
                            image_size=image_size,
                            wavelength_unit=False,
-                           magnitude=E0)
+                           magnitude=E0,
+                           perfect_dielectric=False)
 import inputdata as ipt
 import result as rst
 
