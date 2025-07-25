@@ -27,7 +27,8 @@
 
     \title{To Be Decided}
     \author{Andr\'e Costa Batista, Ricardo Adriano, and Lucas S. Batista
-        \thanks{This work has been supported by the Brazilian agencies Coordination for the Improvement of Higher Education Personnel - Brazil (CAPES) through the Academic Excellence Program (PROEX) under Grant 88887.815891/2023-00, FAPEMIG (Research Support Foundation of the State of Minas Gerais), and CNPq (The National Council for Scientific and Technological Development).}
+        \thanks{This work was supported in part by the Brazilian agency CAPES (Coordination for the Improvement of Higher Education Personnel) under Grant 88887.463864/2019-00, the scholarship FAPEMIG-CNPQ (process APQ-06716-24), and CNPq (The National Council for Scientific and Technological Development).}
+
         \thanks{A. C. Batista, R. Adriano, and L. S. Batista are with the Department of Electrical Engineering, Universidade Federal de Minas Gerais, Belo Horizonte, MG 31270-901, Brazil (e-mail: andre-costa@ufmg.br; rluiz@ufmg.br; lusoba@ufmg.br). A. C. Batista and L. S. Batista are also with Operations Research and Complex Systems Laboratory (ORCS Lab), Belo Horizonte, MG, Brazil.}}
    
     \maketitle
@@ -82,7 +83,7 @@
 
         The objective of this work is to provide additional metrics to assist in evaluating algorithm performance. With a broader range of indicators, it becomes possible to obtain a more comprehensive understanding of algorithm capabilities across different scenarios. Therefore, our contribution is based on proposing two novel indicators for evaluating algorithm performance in recovering scatterer geometry and position. The first indicator quantifies shape error, while the second quantifies position error. 
 
-        The originality of this work lies in the fact that these indicators can measure these two relevant aspects of electromagnetic inverse scattering algorithm performance in a more isolated manner. Furthermore, these indicators are designed to be applicable to any algorithm that reconstructs images, regardless of whether it estimates contrast or not.
+        The originality of this work lies in the fact that these indicators can measure these two relevant aspects of electromagnetic inverse scattering algorithm performance in a more isolated manner than the existing metrics. Furthermore, these indicators are designed to be applicable to any algorithm that reconstructs images, regardless of whether it estimates contrast or not.
 
         % Organização do texto
 
@@ -117,7 +118,6 @@
 		It is important to highlight that, although assumptions are made regarding the scattered field domain and the incident field, the proposed indicators do not depend on these assumptions. They can be applied in any scenario where these entities are defined, and the assumptions in this paper serve only to clearly establish the context in which the indicators are tested.
 	
 	\section{Indicators}\label{sec:indicators}
-
 		
 		Once the result of the contrast function reconstruction is obtained by a given algorithm, the error in recovering the shape and location of the objects can be measured by comparing it with the original images. This means that the application of these metrics is relevant in studies where the exact response is known. Although in many real-world scenarios the imaged scatterer is unknown, applying these metrics to known cases can be valuable for comparing the performance of different algorithms and for estimating a confidence interval for the average performance of an algorithm in a given configuration. Therefore, these metrics are relevant tools that can contribute to the investigation and evaluation of algorithms for the problem.
 		
@@ -551,22 +551,65 @@
 
         \subsection{Breast Phantom Study}\label{sec:results:breast}
 
-            Finally, a case study using a realistic breast phantom demonstrates the application of the proposed indicators in clinical scenarios. This phantom was obtained from the UWCEM Numerical Breast Phantom Repository \cite{burfeindt2012mri} and corresponds to the Very Dense type (ACR class 4). 
+            Finally, a case study using a realistic breast phantom demonstrates the application of the proposed indicators in clinical scenarios. This phantom was obtained from the UWCEM Numerical Breast Phantom Repository \cite{burfeindt2012mri} and corresponds to the Scattered Fibroglandular type (ACR class 2). 
 
-            Since the repository provides three-dimensional phantoms while our scattering model is two-dimensional, a representative cross-section focusing on the breast interior was extracted, as shown in Fig. \ref{fig:breast:phantom:ground_truth}. The resulting image contains 328 $\times$ 328 pixels with a spatial resolution of 0.5 mm $\times$ 0.5 mm per pixel. 
+            Since the repository provides three-dimensional phantoms while our scattering model is two-dimensional, a representative cross-section focusing on the breast interior was extracted, as shown in Fig. \ref{fig:breast:phantom:ground_truth}. The resulting image contains 328 $\times$ 212 pixels with a spatial resolution of 0.5 mm $\times$ 0.5 mm per pixel. 
 
             The phantom includes four tissue types: fatty, transitional, fibroglandular, and skin. The breast is immersed in a homogeneous background medium with relative permittivity $\epsilon_{rb} = 10$ and conductivity $\sigma = 0$ S/m. The operating frequency was set to 1 GHz, with electrical properties of breast tissues determined using the Debye model.
 
             The experimental configuration follows the previous studies: 80 incident sources, 80 measurement points, and 5\% noise level. Under these conditions, the DNL for this experiment is 0.05. Since the interior of the breast is a complex structure, keeping a low DNL value is an important strategy to facilitate the reconstruction.
 
+            The algorithm parameters were readjusted as follows:
+            \begin{itemize}
+                \item Linear Sampling Method (LSM):
+                \begin{itemize}
+                    \item Threshold: 0.7;
+                    \item Regularization Method: Conjugate Gradient with 300 iterations.
+                \end{itemize}
+                \item Orthogonality Sampling Method (OSM):
+                \begin{itemize}
+                    \item Threshold: 0.35;
+                \end{itemize}
+                \item Born Iterative Method (BIM):
+                \begin{itemize}
+                    \item Regularization Method: Conjugate Gradient with 300 iterations.
+                    \item Stopping Criterion: 30 iterations.
+                \end{itemize}
+                \item Contrast Source Inversion (CSI):
+                \begin{itemize}
+                    \item Stopping Criterion: 300 iterations.
+                \end{itemize}
+                \item Subspace Optimization Method (SOM):
+                \begin{itemize}
+                    \item Stopping Criterion: 30 iterations.
+                    \item Eigenvalue Cutoff Index: 5.
+                \end{itemize}
+            \end{itemize}
+
+            
+
     \section{Conclusion}\label{sec:conclusion}
-        A conclusion section is not required. Although a conclusion may review the main points of the paper, do not replicate the abstract as the conclusion. A  conclusion might elaborate on the importance of the work or suggest applications and extensions. \cite{chen2018computational}
+
+        % Uma vez que muitos algoritmos já foram e continuam sendo propostos para o problema inverso de espalhamento eletromagnético e que é importante ter indicadores que sejam capazes de mensurar o desempenho desses algoritmos em diferentes aspectos, este trabalho se propôs a desenvolver dois novos indicadores que podem mensurar de maneira mais isolada dois aspectos que podem ser relevantes para o problema: a localização e a geometria dos espalhadores. Esses indicadores de erro de forma e de posição foram desenvolvidos usando ferramentas de limiarização e detecção de contornos de forma a reduzir o impacto da precisão da estimativa do contraste para possibilitar a mensuração desses aspectos de forma mais independente. Apesar do cálculo desses indicadores depender de uma escolha de nível de limiarização, eles permitem fazer comparações adequadas entre algoritmos qualitativos e quantitavivos, principalmente em cenários com um único espalhador. Portanto, a partir de uma padronização do conjunto de testes, esses indicadores podem ser uma ferramenta significativa para avaliação e comparação de desempenho de métodos propostos na literatura.
+
+        Since many algorithms have been and continue to be proposed for the electromagnetic inverse scattering problem, and it is important to have indicators capable of measuring algorithm performance across different aspects, this work aimed to develop two novel indicators that can measure two relevant problem aspects in a more isolated manner: scatterer localization and geometry. These shape and position error indicators were developed using thresholding and contour detection tools to reduce the impact of contrast estimation precision, enabling more independent measurement of these aspects. Although the calculation of these indicators depends on threshold level selection, they enable adequate comparisons between qualitative and quantitative algorithms, particularly in single scatterer scenarios. Therefore, through standardized test sets, these indicators can serve as significant tools for evaluating and comparing the performance of methods proposed in the literature.
+
+        % Vale à pena destacar também que, com base nos indicadores propostos, os experimentos computacionais realizados considerando um estudo de benchmarking foram capazes de fornecer conclusões na comparação de algoritmos para o problema. Os estudos mostraram que: (a) no cenário com um espalhador e baixo DNL, o BIM tem o melhor desempenho médio na recuperação da forma dos espalhadores em relação aos demais algoritmos considerados; (b) no cenário de pequenos espalhadores de alto contraste, o OSM e o CA têm o melhor desempenho médio na localização dos espalhadores. Outros estudos poderiam ser realizados para elaborar com mais profundidade as diferenças de desempenho entre os algoritmos, o qual não foi o objetivo principal deste trabalho.
+
+        It is also worth highlighting that, based on the proposed indicators, the computational experiments conducted through benchmarking studies were able to provide stronger conclusions about the performance of traditional algorithms in the literature when they are compared. The studies demonstrated that: (a) in scenarios with a single scatterer and low DNL, BIM achieves the best average performance in scatterer shape recovery compared to other considered algorithms; (b) in scenarios involving small, high-contrast scatterers, OSM and CA achieve the best average performance in scatterer localization. Additional studies could be conducted to explore algorithm performance differences more thoroughly, though this was not the primary objective of this work.
+        
+        % Novas investigações podem ser realizadas para aprimorar os indicadores propostos. Uma possibilidade seria se a geometria dos espalhadores puder ser comparada através dos vértices dos objetos de tal forma que a detecção de objetos correspondentes (no caso de múltiplos espalhadores) nas imagens reais e reconstruídas possa ser feita de forma robusta e a diferença na quantidade de pontos do contorno não for um problema. Isso poderia possibilitar que, por exemplo, fosse criado um indicador para mensurar a qualidade da geometria sem levar em consideração a precisão no reconstrução do tamanho do espalhador. Outro caminho possível seria criar diferentes conjuntos de testes que explorem diferentes cenários do problema a fim de serem padrões para comparação de algoritmos. Por fim, a adaptação dos indicadores para problemas tridimensionais também é um caminho possível para futuras investigações.
     
+        Future investigations may be undertaken to enhance the proposed indicators. One possibility would be to compare scatterer geometries through object vertices, which would require robust detection of corresponding objects (in multiple scatterer cases) between real and reconstructed images, and the handling of differences in contour point quantities. This could enable the creation of an indicator to measure geometry quality without considering scatterer size reconstruction precision. Another possible direction would be developing different test sets that explore various problem scenarios to serve as standards for algorithm comparison. Finally, adapting the indicators for three-dimensional problems represents another viable path for future research.
+
     \appendices
     
-    \section*{Acknowledgment}
+    % \section*{Acknowledgment}
     
-        Use the singular heading even if you have many acknowledgments. In most  cases, sponsor and financial support acknowledgments are placed in the  unnumbered footnote on the first page, not here.
+    %     Use the singular heading even if you have many acknowledgments. In most cases, sponsor and financial support acknowledgments are placed in the  unnumbered footnote on the first page, not here.
+
+    %     The authors would like to thank the reviewers for their valuable contributions. This work was supported in part by the Brazilian agencies FAPEMIG, CNPq, and CAPES (Coordination for the Improvement of Higher Education Personnel).
+
     
     \bibliographystyle{IEEEtran}
     \bibliography{mybib}
