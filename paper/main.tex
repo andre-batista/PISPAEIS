@@ -8,6 +8,7 @@
 \usepackage{subfigure}
 \usepackage{xcolor}
 \usepackage{epstopdf}
+\usepackage{url}
 
 \graphicspath{{../}}
 \epstopdfsetup{
@@ -25,20 +26,19 @@
 
 \begin{document}
 
-    \title{To Be Decided}
+    \title{Novel Performance Indicators for Shape and Position Assessment in Electromagnetic Inverse Scattering}
     \author{Andr\'e Costa Batista, Ricardo Adriano, and Lucas S. Batista
-        \thanks{This work was supported in part by the Brazilian agency CAPES (Coordination for the Improvement of Higher Education Personnel) under Grant 88887.463864/2019-00, the scholarship FAPEMIG-CNPQ (process APQ-06716-24), and CNPq (The National Council for Scientific and Technological Development).}
-
-        \thanks{A. C. Batista, R. Adriano, and L. S. Batista are with the Department of Electrical Engineering, Universidade Federal de Minas Gerais, Belo Horizonte, MG 31270-901, Brazil (e-mail: andre-costa@ufmg.br; rluiz@ufmg.br; lusoba@ufmg.br). A. C. Batista and L. S. Batista are also with Operations Research and Complex Systems Laboratory (ORCS Lab), Belo Horizonte, MG, Brazil.}}
+    \thanks{This work was supported in part by the Brazilian agency CAPES (Coordination for the Improvement of Higher Education Personnel) under Grant 88887.463864/2019-00, the scholarship FAPEMIG-CNPQ (process APQ-06716-24), and CNPq (The National Council for Scientific and Technological Development).}
+    \thanks{A. C. Batista, R. Adriano, and L. S. Batista are with the Department of Electrical Engineering, Universidade Federal de Minas Gerais, Belo Horizonte, MG 31270-901, Brazil (e-mail: andre-costa@ufmg.br; rluiz@ufmg.br; lusoba@ufmg.br). A. C. Batista and L. S. Batista are also with Operations Research and Complex Systems Laboratory (ORCS Lab), Belo Horizonte, MG, Brazil.}}
    
     \maketitle
     
     \begin{abstract}
-        To be written.
+        Microwave imaging is a low-cost, non-invasive technique for detecting and characterizing objects in inaccessible media through electromagnetic field measurements. The evaluation of algorithms that solve the related electromagnetic inverse scattering problem typically relies on metrics such as Mean Square Error (MSE) or Structural Similarity (SSIM), which primarily assess contrast estimation accuracy but provide limited insight into the recovery of object geometry and position. This paper introduces two novel performance indicators specifically designed to evaluate electromagnetic inverse scattering algorithms: a shape error indicator that quantifies geometric reconstruction accuracy, and a position error indicator that measures object localization precision. The proposed indicators are applicable to both qualitative and quantitative methods, even when they are combined in an experiment. Comprehensive experimental validation is conducted using traditional algorithms: Linear Sampling Method (LSM), Orthogonality Sampling Method (OSM), Born Iterative Method (BIM), Contrast Source Iterative Method (CSI), Subspace Optimization Method (SOM), and Circle Approximation (CA). Three distinct experimental frameworks are employed: shape recovery studies, position detection studies, and a realistic breast phantom study demonstrating their applicability. Supported by robust statistical analysis, the experiments revealed that: (a) in scenarios with a single scatterer and low Degree of Nonlinearity, BIM achieves the best average performance in object geometry recovery; and (b) in scenarios with a single small-sized, high-contrast scatterer, SOM and OSM achieve the best average performance in target localization. These indicators provide useful tools for algorithm development, benchmarking studies, and performance assessment in electromagnetic inverse scattering applications.
     \end{abstract}
     
     \begin{IEEEkeywords}
-        Keyword 1, keyword 2, keyword 3. Remember: alphabetical order.
+        Algorithm evaluation, electromagnetic inverse scattering, microwave imaging, performance indicators.
     \end{IEEEkeywords}
     
     \section{Introduction}\label{sec:introduction}
@@ -59,7 +59,7 @@
 
         Among qualitative methods, notable examples include the Linear Sampling Method (LSM) \cite{chen2017lsm} and the Orthogonality Sampling Method (OSM) \cite{harris2020orthogonality}. Among quantitative methods, prominent approaches include the Born Iterative Method (BIM) \cite{wang1989iterative}, Contrast Source Inversion (CSI) \cite{berg1997contrast}, the Distorted Born Inversion Method (DBIM) \cite{chew1990reconstruction}, and the Subspace Optimization Method (SOM) \cite{chen2010subspace}.
 
-        Specialized algorithms have been developed to address specific problem characteristics. These include the DORT method \cite{chen2018computational} for electromagnetic signal time reversal, MUSIC \cite{zhong2007music} for small scatterers, and Compressive Sensing \cite{massa2015compressive} for phaseless field data. For weak scatterer problems, effective approaches include First-Order Born Approximation, Backpropagation, and Rytov approximation \cite{chen2018computational}. 
+        Specialized algorithms have been developed to address specific problem characteristics. These include the DORT method (Decomposition of the Time-Reversal Operator) \cite{chen2018computational} for electromagnetic signal time reversal, Multiple Signal Classification (MUSIC) \cite{zhong2007music} for small scatterers, and Compressive Sensing \cite{massa2015compressive} for phaseless field data. For weak scatterer problems, effective approaches include First-Order Born Approximation, Backpropagation, and Rytov approximation \cite{chen2018computational}. 
 
         Additional relevant techniques include Virtual Experiments \cite{isernia2024some,bevacqua2021simple}, which recombine scattered field data to explore conditions that alleviate nonlinearity, and efficient equation reformulations \cite{isernia2024some,bevacqua2021effective} that share the same objective of reducing nonlinearity.
 
@@ -67,25 +67,15 @@
 
         To address these deficiencies, physics-driven methods have been proposed that incorporate physical laws and information to guide the reconstruction process \cite{wei2019physics,wang2023push,hu2023more,liu2025exploring}. Another approach involves constructing surrogate models for recovering scatterer position, geometry, and contrast through optimization problems \cite{salucci2022learned,zardi2025physics}. Despite overcoming some limitations of purely data-driven approaches, their effectiveness may depend on system parameters such as the Green's function, whose determination in complex or inhomogeneous media represents a significant challenge.
 
-        % Quais formas de avaliar soluções e quais ferramentas já existem (incluir aquele trabalho do Kurrant que é software para câncer de mama).
-
-        % Em grande parte destes trabalhos, os algoritmos propostos são testados e avaliados em métricas como o mean square error (MSE) da estimativa do contraste pixel a pixel ou algo similar \cite{yin2023subspace,zhang2022023,salucci2022learned,wang2023push,liu2022som,bevacqua2021simple,bevacqua2021effective}. Este tipo de abordagem leva em consideração a precisão na estimativa do contraste na forma direta e, indiretamente, pode dar uma perspectiva de quão boa a reconstrução da posição e geometria dos objetos pode ser, uma vez que erros na geometria e posicionamento podem afetar nessa métrica. No entanto, uma geometria bem precisa com uma má estimativa do contraste pode resultar em um erro considerável neste tipo de métrica, por exemplo. Logo, aspectos comparar o desempenho no aspecto de quão bem a geometria e a posição dos objetos são recuperadas não são contemplados adequadamente por este tipo de métrica. Além disso, a métrica MSE não é adequada para avaliar algoritmos qualitativos, uma vez que estes não estimam o contraste do meio. Vale à pena destacar também a métrica Structural Similarity (SSIM) \cite{wang2004image} to quantitatively show the reconstruction visual quality, which is designed to compute the mismatch between reconstructed contrast results and corresponding GTs both on the pixel-wise level and perceptual level. Ao invés de fazer uma comparação pixel a pixel, a métrica leva em consideração aspectos de luminância, contraste e estrutura de uma imagem qualquer. Portanto, ao mesmo tempo que fornece uma quantificação mais profunda da qualidade de construção como um todo, ela não vai mensurar diretamente aspectos isolados como geometria e posição.
-
-        In most of these studies, the proposed algorithms are tested and evaluated using metrics such as the mean square error (MSE) of pixel-by-pixel contrast estimation or similar approaches \cite{yin2023subspace,zhang2023iterative,salucci2022learned,wang2023push,liu2022som,bevacqua2021simple,bevacqua2021effective}. This type of approach directly considers the precision of contrast estimation and can indirectly provide perspective on how well the reconstruction of object position and geometry might be, since errors in geometry and positioning can affect this metric. However, a highly accurate geometry with poor contrast estimation can result in considerable error in this type of metric, for example. Therefore, aspects of comparing performance regarding how well object geometry and position are recovered are not adequately addressed by this type of metric. Furthermore, the MSE metric is not suitable for evaluating qualitative algorithms, since these do not estimate the medium's contrast.
+        In most of these studies, the proposed algorithms are tested and evaluated using metrics such as the Mean Square Error (MSE) of pixel-by-pixel contrast estimation or similar approaches \cite{yin2023subspace,zhang2023iterative,salucci2022learned,wang2023push,liu2022som,bevacqua2021simple,bevacqua2021effective}. This type of approach directly considers the precision of contrast estimation and can indirectly provide perspective on how well the reconstruction of object position and geometry might be, since errors in geometry and positioning can affect this metric. However, a highly accurate geometry with poor contrast estimation can result in considerable error in this type of metric, for example. Therefore, aspects of comparing performance regarding how well object geometry and position are recovered are not adequately addressed by this type of metric. Furthermore, the MSE metric is not suitable for evaluating qualitative algorithms, since these do not estimate the medium's contrast.
 
         It is also worth highlighting the Structural Similarity (SSIM) metric \cite{wang2004image} to quantitatively show the reconstruction visual quality, which is designed to compute the mismatch between reconstructed contrast results and corresponding ground truths both on the pixel-wise level and perceptual level \cite{wang2023push,liu2025exploring}. Instead of performing a pixel-by-pixel comparison, this metric considers aspects of luminance, contrast, and structure of any given image. Therefore, while it provides a deeper quantification of overall reconstruction quality, it does not directly measure isolated aspects such as geometry and position.
 
-        Specifically for breast imaging, a set of metrics has been proposed in the literature that considers not only the precision in estimating electrical properties, but also the accuracy of the reconstructed tissue geometry \cite{kurrant2021evaluating}. Each geometry (original and reconstructed) is converted into vectors, and the metric is calculated using a formula that performs the dot product and norm of these vectors. To the best of the authors' knowledge, this is the only metric that can isolately consider the geometry aspect of the scatterer, even though it is designed specifically for breast imaging.
-
-        % Descrever a lacuna para proposição de outros indicadores, tais como de posição e forma. Introduzir a minha proposta destacando vantagens, desvantagens e originalidade.
-
-        % O objetivo deste trabalho é fornecer mais métricas para auxiliar na avaliação do desempenho de algoritmos. Com uma gama maior de indicadores pode ser possível ter uma visão mais abrangente sobre a capacidade dos algoritmos em diferentes cenários. Por isso, nossa contribuição se baseia na proposição de dois novos indicadores para avaliar o desempenho dos algoritmos na recuperação da geometria e posição dos espalhadores. O primeiro indicador quantifica o erro de forma, enquanto o segundo quantifica o erro de posição. A originalidade do trabalho reside no fato de que estes indicadores podem calcular de maneira mais isolada esses dois aspectos que são relevantes da descrição do desempenho de algoritmos para o problema inverso de espalhamento eletromagnético. Além disso, estes indicadores são projetados para serem aplicáveis a qualquer algoritmo que reconstrua a imagem, independentemente de estimar ou não o contraste.
+        Specifically for breast imaging, a set of metrics has been proposed in the literature that considers not only the precision in estimating electrical properties, but also the accuracy of the reconstructed tissue geometry \cite{kurrant2021evaluating}. Each geometry (original and reconstructed) is converted into vectors, and the metric is calculated using a formula that performs the dot product and norm of these vectors. To the best of the authors' knowledge, this is the only metric that can independently consider the geometry aspect of the scatterer, even though it is designed specifically for breast imaging.
 
         The objective of this work is to provide additional metrics to assist in evaluating algorithm performance. With a broader range of indicators, it becomes possible to obtain a more comprehensive understanding of algorithm capabilities across different scenarios. Therefore, our contribution is based on proposing two novel indicators for evaluating algorithm performance in recovering scatterer geometry and position. The first indicator quantifies shape error, while the second quantifies position error. 
 
         The originality of this work lies in the fact that these indicators can measure these two relevant aspects of electromagnetic inverse scattering algorithm performance in a more isolated manner than the existing metrics. Furthermore, these indicators are designed to be applicable to any algorithm that reconstructs images, regardless of whether it estimates contrast or not.
-
-        % Organização do texto
 
         The remainder of this paper is organized as follows. Section \ref{sec:problemstatement} presents the problem statement and the mathematical formulation of the electromagnetic inverse scattering problem. Section \ref{sec:indicators} introduces the proposed indicators for evaluating algorithm performance. Section \ref{sec:results} presents numerical results demonstrating the effectiveness of the proposed indicators. Finally, Section \ref{sec:conclusion} concludes the paper and discusses future work.
         
@@ -137,14 +127,14 @@
 			
 			% A função contraste reconstruída por muitos dos algoritmos -- tais como o BIM, DBIM, CSI, SOM, entre outros -- é comumente uma superfície contínua. Por isso, mesmo que a imagem original contenha apenas objetos de contorno bem definido e contraste homogêneo, a imagem destes objetos obtida pelos algoritmos possuem bordas suaves, i.e., o valor de contraste varia gradualmente entre o valor de meio-de-fundo e o valor do objeto. Por isso, identificar um contorno na imagem resultante é uma heurística porque é necessário escolher algum tipo de critério para definir a partir de que valor de contraste o pixel pode ser considerado como pertencente ao objeto. Por questões de simplicidade, o limiar $T$ para o qual vamos considerar que um píxel da imagem recuperada esteja dentro de um contorno de um objeto será definido como a metade da variação total do contraste na imagem, ou seja:
 			
-			The contrast function reconstructed by many algorithms -- such as BIM, DBIM, CSI, SOM, among others -- is commonly a discretized approximation of a continuous surface. Therefore, even if the original image contains only objects with well-defined boundaries and homogeneous contrast, the image of these objects obtained by the algorithms will have frequently smooth edges, i.e., the contrast value gradually varies between the background medium and the object's value. Consequently, identifying a contour in the resulting image is heuristic because it requires selecting a criterion to define the contrast value at which a pixel can be considered as belonging to the object. For simplicity, the threshold $T$ for considering a pixel in the recovered image to be within an object's contour will be defined as half of the total contrast variation in the image, i.e.:
+			The contrast function reconstructed by many algorithms -- such as BIM, DBIM, CSI, SOM, among others -- is commonly a discretized approximation of a continuous surface. Therefore, even if the original image contains only objects with well-defined boundaries and homogeneous contrast, the image of these objects obtained by the algorithms will frequently have smooth edges, i.e., the contrast value gradually varies between the background medium and the object's value. Consequently, identifying a contour in the resulting image is heuristic because it requires selecting a criterion to define the contrast value at which a pixel can be considered as belonging to the object. For simplicity, the threshold $T$ for considering a pixel in the recovered image to be within an object's contour will be defined as half of the total contrast variation in the image, i.e.:
 			\begin{equation}
 				T = \min(|\Xr|) + \frac{1}{2} \left[\max(|\Xr|)-\min(|\Xr|)\right]
 			\end{equation}
 		
 			% Esta abordagem tem vantagens e desvantagens. Se a imagem reconstruída tiver múltiplos espalhadores no qual um ou mais deles possui um contraste abaixo desse limiar, a metodologia irá falhar em detectar o contorno deste ou destes objetos. No entanto, quando se trata de um caso onde há somente um espalhador na imagem -- o que é a maneira mais objetiva de se testar o potencial de um algoritmo em recuperar geometria, uma vez que a presença de múltiplos espalhadores pode deteriorar o desempenho de algoritmos por questões de influência das correntes induzidas em cada espalhador no espalhamento dos outros espalhadores -- é uma abordagem simples e objetiva e que não representa problemas para algoritmos que são capazes de captar bem os contornos, como métodos baseados aprendizado de máquina. Além disso, ao invés de utilizar os valores da imagem original, é mais interessante usar somente os valores da imagem reconstruída, tanto para isolar influência de erro na estimativa de contraste como para poder aplicar a métrica em métodos qualitativos que não fazem estimativa do contraste.
 			
-			This approach has advantages and disadvantages. If the reconstructed image contains multiple scatterers, and one or more of them has a contrast below this threshold, the methodology will fail to detect the contour of these objects. However, in scenarios where there is only one scatterer in the image, this approach is simple and effective. In fact, a single scatterer is the most objective way to test an algorithm's potential in recovering geometry, since the presence of multiple scatterers can degrade the algorithm's performance due to the influence of the induced currents in each scatterer on the scattering of the other. Furthermore, this approach poses no issues for algorithms capable of accurately capturing contours, such as machine learning-based methods. Moreover, instead of using the values from the original image, it is more beneficial to use only the values from the reconstructed image, both to isolate the influence of error in the contrast estimate and to apply the metric to qualitative methods that do not estimate contrast. If, for some reason, the original contrast function involves soft boundaries of the objects, the threshold might also be applied to the original image.
+            This approach has advantages and disadvantages. If the reconstructed image contains multiple scatterers, and one or more of them has a contrast below this threshold, the methodology will fail to detect the contour of these objects. However, in scenarios where there is only one scatterer in the image, this approach is simple and effective. In fact, a single scatterer is the most objective way to test an algorithm's potential in recovering geometry, since the presence of multiple scatterers can degrade the algorithm's performance due to the influence of the induced currents in each scatterer on the scattering of the others. Furthermore, this approach poses no issues for algorithms capable of accurately capturing contours, such as machine learning-based methods. Moreover, instead of using the values from the original image, it is more beneficial to use only the values from the reconstructed image, both to isolate the influence of error in the contrast estimate and to apply the metric to qualitative methods that do not estimate contrast. If, for some reason, the original contrast function involves soft boundaries of the objects, the threshold might also be applied to the original image.
 			
 			%Uma vez aplicada a etapa de limiarização, os contornos dos espalhadores podem ser determinados. Uma das técnicas que podem ser aplicadas neste caso é o algoritmo Marching Squares \cite{lorensen1987marching}. Este algoritmo é capaz de retornar um conjunto de pontos que especificam cada contorno. Vale lembrar que objetos vazados possuem dois ou mais contornos. Além disso, se o algoritmo de imageamento falhar em detectar um objeto, haverá uma discrepância no número de contornos da imagem original e da reconstruída. Por essas razões, ao invés de comparar as geometrias através de um cálculo feito a partir dos pontos de cada contorno, nós preferimos realizar a comparação baseada na quantidade de pixeis que foram classificados incorretamente. Em outras palavras, após identificarmos quais pixeis estão dentro de cada contorno em cada imagem, podemos verificar quais deles faziam parte dos espalhadores na imagem original e não foram captados na imagem reconstruída (falso-negativo) e quais deles não faziam parte dos espalhadores na imagem original mas foram considerados na reconstruída (falso-positivo). Um dos questionamentos que pode surgir dessa escolha é por que não aplicar diretamente o cálculo de falsos-positivos e falsos-negativos após a limiarização. Uma das razões é que, normalmente, imagens originais e reconstruídas têm resoluções diferentes. Embora o método de interpolação pelo vizinho mais próxima seja uma alternativa para essa tarefa, a abordagem escolhida pode ser mais adequada para captar e preservar contornos de objetos principalmente quando a resolução da imagem reconstruída é bem inferior, conforme exemplificado na Fig. \ref{fig:contourmotivation}.
 			
@@ -195,7 +185,7 @@
 
             % De fato, erros na recuperação da geometrias dos objetos podem influenciar diretamente no cálculo no erro de posição. Por exemplo, se um objeto no formato de uma estrela de cinco pontas fosse reconstruído com uma de suas pontas entortada, isso afetaria o ponto médio do objeto e, consequentemente, o erro de posição. No entanto, isso é esperado, uma vez que qualquer critério para considerar a posição de um objeto leva em conta os píxeis que o descrevem, assim como sua geometria. Por outro lado, o indicador proposto, além de ser simples, pode ser aplicado também em imagens com múltiplos objetos.
 
-            It should be noted that inaccuracies in the reconstructed geometry of objects can significantly influence the position error calculation. For example, if a star-shaped object with five points is reconstructed with one point distorted, this distortion will affect the object's centroid, thereby impacting the position error. However, this effect is expected, as any criterion for determining an object's position inherently considers the pixels defining it, as it is for its geometry. Furthermore, the proposed indicator is straightforward and versatile, applicable even in scenarios involving images with multiple objects. The Algorithm \ref{alg:compute_zeta_p} summarizes the steps for calculating the position error indicator.
+            It should be noted that inaccuracies in the reconstructed geometry of objects can significantly influence the position error calculation. For example, if a star-shaped object with five points is reconstructed with one point distorted, this distortion will affect the object's centroid, thereby impacting the position error. However, this effect is expected, as any criterion for determining an object's position inherently considers the pixels defining it, just as it does for its geometry. Furthermore, the proposed indicator is straightforward and versatile, applicable even in scenarios involving images with multiple objects. The Algorithm \ref{alg:compute_zeta_p} summarizes the steps for calculating the position error indicator.
 
             \input{algorithms/zetap.tex}
 	
@@ -215,7 +205,7 @@
 
         Data synthesis was performed using the MoM-CG-FFT algorithm \cite{su1987calculation} with 5000 iterations. The measurement configuration consisted of 80 measurement points ($N_M$) and 80 incidence angles ($N_S$), with measurement points arranged in a circular array at distance $R_O = 4\lambda_b$ from the DOI center. 
 
-        The DOI dimensions were set to $2\lambda_b \times 2\lambda_b$, and all reconstructions were performed using a $40 \times 40$ pixel discretization.
+        The DOI dimensions were set to $2\lambda_b \times 2\lambda_b$, and all reconstructions were performed using a $40 \times 40$ pixel discretization. All implementations necessary for this work are available in the repository at \url{https://github.com/andre-batista/NPISPAEIS} for reproducibility purposes.
 
 		\subsection{Shape Recovering Study}\label{sec:results:shape}
 		
@@ -288,12 +278,13 @@
                 The images reconstructed by each algorithm are shown in Fig. \ref{fig:shape:single:recons}. For the qualitative methods, OSM exhibited contrast variation within the object, which is consistent with the inherent characteristics of the method. Additionally, OSM recovered a larger area with more defined vertices compared to LSM. Regarding the quantitative methods, CSI demonstrated the lowest performance in recovering the object's contrast value close to the ground truth. Moreover, the quantitative methods produced more accurate contours than their qualitative counterparts.
 
                 \begin{figure*}[!htb]
-                    \subfigure[Ground-Truth]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/0}}
-                    \subfigure[LSM]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/1}}
-                    \subfigure[OSM]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/2}} \\
-                    \subfigure[BIM]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/3}}
-                    \subfigure[CSI]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/4}}
-                    \subfigure[SOM]{\includegraphics[width=0.33\textwidth]{./figs/shape/single/recons/5}}
+                    \centering
+                    \subfigure[Ground-Truth]{\includegraphics[width=0.3\textwidth]{./experiments/shape/star/figs/0.eps}}
+                    \subfigure[LSM]{\includegraphics[width=0.3\textwidth]{./experiments/shape/star/figs/1.eps}}
+                    \subfigure[OSM]{\includegraphics[width=0.3\textwidth]{./experiments/shape/star/figs/2.eps}} \\
+                    \subfigure[BIM]{\includegraphics[width=0.3\textwidth]{./experiments/shape/star/figs/3.eps}}
+                    \subfigure[CSI]{\includegraphics[width=0.3\textwidth]{./experiments/shape/star/figs/4.eps}}
+                    \subfigure[SOM]{\includegraphics[width=0.3\textwidth]{./experiments/shape/star/figs/5.eps}}
                     \caption{Shape recovering study, single scatterer: ground-truth and reconstructed images by each algorithm.}
                     \label{fig:shape:single:recons}
                 \end{figure*}
@@ -321,16 +312,16 @@
 
                 \begin{figure*}[!htb]
                     \centering
-                    \subfigure[OSM, $\chi=0.25$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_0.eps}}
-                    \subfigure[OSM, $\chi=0.5$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_1.eps}}
-                    \subfigure[OSM, $\chi=0.75$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_2.eps}}
-                    \subfigure[OSM, $\chi=1$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_3.eps}}
-                    \subfigure[OSM, $\chi=1.5$]{\includegraphics[height=1.2in]{./experiments/vary/figs/osm_4.eps}} \\
-                    \subfigure[SOM, $\chi=0.25$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_0.eps}}
-                    \subfigure[SOM, $\chi=0.5$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_1.eps}}
-                    \subfigure[SOM, $\chi=0.75$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_2.eps}}
-                    \subfigure[SOM, $\chi=1$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_3.eps}}
-                    \subfigure[SOM, $\chi=1.5$]{\includegraphics[height=1.in]{./experiments/vary/figs/som_4.eps}}
+                    \subfigure[OSM, $\chi=0.25$]{\includegraphics[height=1.2in]{./experiments/shape/vary/figs/osm_0.eps}}
+                    \subfigure[OSM, $\chi=0.5$]{\includegraphics[height=1.2in]{./experiments/shape/vary/figs/osm_1.eps}}
+                    \subfigure[OSM, $\chi=0.75$]{\includegraphics[height=1.2in]{./experiments/shape/vary/figs/osm_2.eps}}
+                    \subfigure[OSM, $\chi=1$]{\includegraphics[height=1.2in]{./experiments/shape/vary/figs/osm_3.eps}}
+                    \subfigure[OSM, $\chi=1.5$]{\includegraphics[height=1.2in]{./experiments/shape/vary/figs/osm_4.eps}} \\
+                    \subfigure[SOM, $\chi=0.25$]{\includegraphics[height=1.in]{./experiments/shape/vary/figs/som_0.eps}}
+                    \subfigure[SOM, $\chi=0.5$]{\includegraphics[height=1.in]{./experiments/shape/vary/figs/som_1.eps}}
+                    \subfigure[SOM, $\chi=0.75$]{\includegraphics[height=1.in]{./experiments/shape/vary/figs/som_2.eps}}
+                    \subfigure[SOM, $\chi=1$]{\includegraphics[height=1.in]{./experiments/shape/vary/figs/som_3.eps}}
+                    \subfigure[SOM, $\chi=1.5$]{\includegraphics[height=1.in]{./experiments/shape/vary/figs/som_4.eps}}
                     \caption{Shape recovering study, varying contrast: reconstructed images by OSM and SOM for different contrast values.}
                     \label{fig:shape:vary:recons}
                 \end{figure*}
@@ -345,8 +336,8 @@
 
                 \begin{figure}[!htb]
                     \centering
-                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{./experiments/vary/figs/zeta_s.eps}\label{fig:shape:vary:indicators:zeta_s}} \hspace{0.01\columnwidth}
-                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{./experiments/vary/figs/dnl.eps}\label{fig:shape:vary:dnl}}
+                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{./experiments/shape/vary/figs/zeta_s.eps}\label{fig:shape:vary:indicators:zeta_s}} \hspace{0.01\columnwidth}
+                    \subfigure[]{\includegraphics[width=0.48\columnwidth]{./experiments/shape/vary/figs/dnl.eps}\label{fig:shape:vary:dnl}}
                     \caption{Shape recovering study, varying contrast: (a) shape error indicator $\zeta_S$ for OSM and SOM; (b) Degree of Nonlinearity (DNL) for each contrast value.}
                     \label{fig:shape:vary:indicators}
                 \end{figure}
@@ -367,8 +358,8 @@
 
                 \begin{figure}[!htb]
                     \centering
-                    \subfigure[]{\includegraphics[width=.5\columnwidth]{./experiments/average/figs/dnl.eps}\label{fig:shape:average:dnl}} \\
-                    \subfigure[]{\includegraphics[width=\columnwidth]{./experiments/average/figs/plot.eps}\label{fig:shape:average:zeta_s}}
+                    \subfigure[]{\includegraphics[width=.5\columnwidth]{./experiments/shape/average/figs/dnl.eps}\label{fig:shape:average:dnl}} \\
+                    \subfigure[]{\includegraphics[width=\columnwidth]{./experiments/shape/average/figs/plot.eps}\label{fig:shape:average:zeta_s}}
                     \caption{Shape recovering study, average performance: (a) Degree of Nonlinearity (DNL) for each scatterer; (b) shape error indicator $\zeta_S$ for each algorithm in each instance.}
                     \label{fig:shape:average}   
                 \end{figure}
@@ -404,7 +395,7 @@
 
                 \begin{figure}
                     \centering
-                    \includegraphics[width=.8\columnwidth]{./experiments/average/figs/confidence_intervals.eps}
+                    \includegraphics[width=.8\columnwidth]{./experiments/shape/average/figs/confidence_intervals.eps}
                     \caption{Shape recovering study, average performance: Confidence intervals (95\%) for the shape error indicator $\zeta_S$ for each pair of algorithms.}
                     \label{fig:shape:average:confidence_intervals}
                 \end{figure}
@@ -450,12 +441,13 @@
                 In this regard, CSI experienced the greatest reconstruction difficulty, with contrast concentrated in a very small region and significantly lower contrast levels compared to the other quantitative methods. It is also notable that CA most closely approximated the actual scatterer contrast.
 
                 \begin{figure*}[!htb]
-                    \subfigure[Ground-Truth]{\includegraphics[height=0.55\columnwidth]{../experiments/position/single/figs/0.eps}\label{fig:position:single:ground_truth}}
-                    \subfigure[OSM]{\includegraphics[height=0.55\columnwidth]{../experiments/position/single/figs/1.eps}}
-                    \subfigure[BIM]{\includegraphics[height=0.55\columnwidth]{../experiments/position/single/figs/2.eps}} \\
-                    \subfigure[CSI]{\includegraphics[height=0.55\columnwidth]{../experiments/position/single/figs/3.eps}}
-                    \subfigure[SOM]{\includegraphics[height=0.55\columnwidth]{../experiments/position/single/figs/4.eps}}
-                    \subfigure[CA]{\includegraphics[height=0.55\columnwidth]{../experiments/position/single/figs/5.eps}}
+                    \centering
+                    \subfigure[Ground-Truth]{\includegraphics[height=0.5\columnwidth]{../experiments/position/single/figs/0.eps}\label{fig:position:single:ground_truth}}
+                    \subfigure[OSM]{\includegraphics[height=0.5\columnwidth]{../experiments/position/single/figs/1.eps}}
+                    \subfigure[BIM]{\includegraphics[height=0.5\columnwidth]{../experiments/position/single/figs/2.eps}} \\
+                    \subfigure[CSI]{\includegraphics[height=0.5\columnwidth]{../experiments/position/single/figs/3.eps}}
+                    \subfigure[SOM]{\includegraphics[height=0.5\columnwidth]{../experiments/position/single/figs/4.eps}}
+                    \subfigure[CA]{\includegraphics[height=0.5\columnwidth]{../experiments/position/single/figs/5.eps}}
                     \caption{Position detection study, single scatterer: ground-truth and reconstructed images by each algorithm.}
                     \label{fig:position:single:recons}
                 \end{figure*}
@@ -486,12 +478,13 @@
                 Fig. \ref{fig:position:multiple:recons} presents the reconstructions obtained by each algorithm for the multiple scatterer scenario. As expected in this small-size configuration, the algorithms produce blob-like structures that are generally larger than the actual object geometries. The CA method positioned its circular approximation close to the square's location. Although the quantitative methods could not accurately estimate the individual scatterer contrasts, they consistently assigned higher contrast values to the square region rather than the star region. This behavior suggests that the square's larger cross-sectional area compared to the star may have influenced the algorithms' reconstruction process.
 
                 \begin{figure*}[!htb]
-                    \subfigure[Ground-Truth]{\includegraphics[height=0.55\columnwidth]{../experiments/position/multiple/figs/0.eps}\label{fig:position:multiple:ground_truth}}
-                    \subfigure[OSM]{\includegraphics[height=0.55\columnwidth]{../experiments/position/multiple/figs/1.eps}}
-                    \subfigure[BIM]{\includegraphics[height=0.55\columnwidth]{../experiments/position/multiple/figs/2.eps}} \\
-                    \subfigure[CSI]{\includegraphics[height=0.55\columnwidth]{../experiments/position/multiple/figs/3.eps}}
-                    \subfigure[SOM]{\includegraphics[height=0.55\columnwidth]{../experiments/position/multiple/figs/4.eps}}
-                    \subfigure[CA]{\includegraphics[height=0.55\columnwidth]{../experiments/position/multiple/figs/5.eps}}
+                    \centering
+                    \subfigure[Ground-Truth]{\includegraphics[height=0.5\columnwidth]{../experiments/position/multiple/figs/0.eps}\label{fig:position:multiple:ground_truth}}
+                    \subfigure[OSM]{\includegraphics[height=0.5\columnwidth]{../experiments/position/multiple/figs/1.eps}}
+                    \subfigure[BIM]{\includegraphics[height=0.5\columnwidth]{../experiments/position/multiple/figs/2.eps}} \\
+                    \subfigure[CSI]{\includegraphics[height=0.5\columnwidth]{../experiments/position/multiple/figs/3.eps}}
+                    \subfigure[SOM]{\includegraphics[height=0.5\columnwidth]{../experiments/position/multiple/figs/4.eps}}
+                    \subfigure[CA]{\includegraphics[height=0.5\columnwidth]{../experiments/position/multiple/figs/5.eps}}
                     \caption{Position detection study, multiple scatterer: ground-truth and reconstructed images by each algorithm.}
                     \label{fig:position:multiple:recons}
                 \end{figure*}
@@ -553,40 +546,69 @@
 
             Finally, a case study using a realistic breast phantom demonstrates the application of the proposed indicators in clinical scenarios. This phantom was obtained from the UWCEM Numerical Breast Phantom Repository \cite{burfeindt2012mri} and corresponds to the Scattered Fibroglandular type (ACR class 2). 
 
-            Since the repository provides three-dimensional phantoms while our scattering model is two-dimensional, a representative cross-section focusing on the breast interior was extracted, as shown in Fig. \ref{fig:breast:phantom:ground_truth}. The resulting image contains 328 $\times$ 212 pixels with a spatial resolution of 0.5 mm $\times$ 0.5 mm per pixel. 
+            Since the repository provides three-dimensional phantoms while our scattering model is two-dimensional, a representative cross-section focusing on the breast interior was extracted, as shown in Fig. \ref{fig:breast:recons:ground_truth}. The resulting image contains 328 $\times$ 212 pixels with a spatial resolution of 0.5 mm $\times$ 0.5 mm per pixel. 
 
-            The phantom includes four tissue types: fatty, transitional, fibroglandular, and skin. The breast is immersed in a homogeneous background medium with relative permittivity $\epsilon_{rb} = 10$ and conductivity $\sigma = 0$ S/m. The operating frequency was set to 1 GHz, with electrical properties of breast tissues determined using the Debye model.
+            The phantom includes four tissue types: fatty, transitional, fibroconnective/glandular, and skin. The breast is immersed in a homogeneous background medium with relative permittivity $\epsilon_{rb} = 10$ and conductivity $\sigma = 0$ S/m. The operating frequency was set to 1 GHz, with electrical properties (both relative permittivity and conductivity) of breast tissues determined using the Debye model.
 
-            The experimental configuration follows the previous studies: 80 incident sources, 80 measurement points, and 5\% noise level. Under these conditions, the DNL for this experiment is 0.05. Since the interior of the breast is a complex structure, keeping a low DNL value is an important strategy to facilitate the reconstruction.
+            The experimental configuration follows the previous studies: 80 incident sources, 80 measurement points, and 5\% noise level. Under these conditions, the DNL for this experiment is 0.013. Since the interior of the breast is a complex structure, keeping a low DNL value is an important strategy to facilitate the reconstruction. The resolution of the recovered image was set to 80 $\times$ 80 pixels.
+
+            Since fibroglandular tissue represents the region of primary interest within the breast, an adjustment to the indicator calculation methodology was necessary. This modification was required because fatty tissue does not exhibit zero contrast (as it is not homogeneous like the immersion medium). Therefore, object classification based solely on an absolute contrast threshold greater than zero would be inadequate. Consequently, the threshold for object classification in the original image was set as 70\% of the value between the maximum and minimum contrast values. Through this approach, the fibroglandular tissue region was effectively isolated, allowing for relevant shape and position error calculations.
 
             The algorithm parameters were readjusted as follows:
             \begin{itemize}
                 \item Linear Sampling Method (LSM):
                 \begin{itemize}
-                    \item Threshold: 0.7;
-                    \item Regularization Method: Conjugate Gradient with 300 iterations.
+                    \item Threshold: 0.95;
+                    \item Regularization Method: Tikhonov with $\alpha = 1$.
                 \end{itemize}
                 \item Orthogonality Sampling Method (OSM):
                 \begin{itemize}
-                    \item Threshold: 0.35;
+                    \item Threshold: 0.9;
                 \end{itemize}
                 \item Born Iterative Method (BIM):
                 \begin{itemize}
-                    \item Regularization Method: Conjugate Gradient with 300 iterations.
-                    \item Stopping Criterion: 30 iterations.
+                    \item Regularization Method: Tikhonov with $\alpha = 10$
+                    \item Stopping Criterion: 10 iterations.
                 \end{itemize}
                 \item Contrast Source Inversion (CSI):
                 \begin{itemize}
-                    \item Stopping Criterion: 300 iterations.
+                    \item Stopping Criterion: 1500 iterations.
                 \end{itemize}
                 \item Subspace Optimization Method (SOM):
                 \begin{itemize}
-                    \item Stopping Criterion: 30 iterations.
-                    \item Eigenvalue Cutoff Index: 5.
+                    \item Stopping Criterion: 100 iterations.
+                    \item Eigenvalue Cutoff Index: 15.
                 \end{itemize}
             \end{itemize}
 
-            
+            Fig. \ref{fig:breast:recons} presents the reconstruction results obtained by each algorithm. All methods successfully detected the fibroglandular tissue region, although the quantitative algorithms varied in their contrast estimations. CSI and SOM underestimated the contrast values, while BIM had the closest estimation. As expected, the algorithms struggled to reconstruct the thin skin layer. However, the boundary between the fatty tissue and the immersion medium is observable in several reconstructions.
+
+            \begin{figure*}[!htb]
+                \centering
+                \subfigure[Ground-Truth]{\includegraphics[height=0.55\columnwidth]{../experiments/breast/figs/0.eps}\label{fig:breast:recons:ground_truth}}
+                \subfigure[LSM]{\includegraphics[height=0.55\columnwidth]{../experiments/breast/figs/1.eps}}
+                \subfigure[OSM]{\includegraphics[height=0.55\columnwidth]{../experiments/breast/figs/2.eps}} \\
+                \subfigure[BIM]{\includegraphics[height=0.55\columnwidth]{../experiments/breast/figs/3.eps}} 
+                \subfigure[CSI]{\includegraphics[height=0.55\columnwidth]{../experiments/breast/figs/4.eps}}
+                \subfigure[SOM]{\includegraphics[height=0.55\columnwidth]{../experiments/breast/figs/5.eps}}
+                % \subfigure[CA]{\includegraphics[height=0.4\columnwidth]{../experiments/breast/figs/6.eps}}
+                \caption{Breast phantom study: ground-truth and reconstructed images by each algorithm.}
+                \label{fig:breast:recons}
+            \end{figure*}
+
+            Table \ref{tab:breast:indicators} presents the shape and position error indicators for each algorithm. The shape error values exceed 57\% for all methods, indicating significant challenges in accurately reconstructing the glandular tissue structure. Since this tissue size is small compared to the image dimensions, variations in the size and shape of the tissue reconstruction can significantly impact the shape indicator. Regarding position detection, all algorithms achieved relatively low position errors (below 5\%), with SOM demonstrating the best performance at 1.6\%.
+
+            \begin{table}[!htb]
+                \centering
+                \renewcommand{\arraystretch}{1.5}
+                \caption{Breast phantom study: shape and position error indicators for each algorithm.}
+                \label{tab:breast:indicators}
+                \begin{tabular}{cccccc}
+                    Method & LSM & OSM & BIM & CSI & SOM \\\hline %  & CA \\\hline
+                    $\zeta_S$ (\%) & 83.6 & 78.6 & 57.2 & 81.4 & 118.8 \\ % & 86.5 \\
+                    $\zeta_P$ (\%) & 2.2 & 4.3 & 3.1 & 3.5 & 1.6 %% & 4.2 \\
+                \end{tabular}   
+            \end{table}
 
     \section{Conclusion}\label{sec:conclusion}
 
@@ -637,40 +659,3 @@
     % \end{IEEEbiography}
 
 \end{document}
-
-% Figure example.
-\begin{figure}[!t]
-    \centerline{\includegraphics[width=\columnwidth]{fig1.png}}
-    \caption{Magnetization as a function of applied field. It is good practice to explain the significance of the figure in the caption.}
-    \label{example}
-\end{figure}
-
-% Table example.
-\begin{table}
-    \caption{Units for Magnetic Properties}
-    \label{table}
-    \setlength{\tabcolsep}{3pt}
-    \begin{tabular}{|p{25pt}|p{75pt}|p{115pt}|}
-        \hline
-        Symbol& Quantity& Conversion from Gaussian and \par CGS EMU to SI $^{\mathrm{a}}$ \\\hline
-        $\Phi $& magnetic flux& 1 Mx $\to  10^{-8}$ Wb $= 10^{-8}$ V$\cdot $s \\
-        $B$& magnetic flux density, \par magnetic induction& 1 G $\to  10^{-4}$ T $= 10^{-4}$ Wb/m$^{2}$ \\
-        $H$& magnetic field strength& 1 Oe $\to  10^{3}/(4\pi )$ A/m \\
-        $m$& magnetic moment& 1 erg/G $=$ 1 emu \par $\to 10^{-3}$ A$\cdot $m$^{2} = 10^{-3}$ J/T \\
-        $M$& magnetization& 1 erg/(G$\cdot $cm$^{3}) =$ 1 emu/cm$^{3}$ \par $\to 10^{3}$ A/m \\
-        4$\pi M$& magnetization& 1 G $\to  10^{3}/(4\pi )$ A/m \\
-        $\sigma $& specific magnetization& 1 erg/(G$\cdot $g) $=$ 1 emu/g $\to $ 1 A$\cdot $m$^{2}$/kg \\
-        $j$& magnetic dipole \par moment& 1 erg/G $=$ 1 emu \par $\to 4\pi \times  10^{-10}$ Wb$\cdot $m \\
-        $J$& magnetic polarization& 1 erg/(G$\cdot $cm$^{3}) =$ 1 emu/cm$^{3}$ \par $\to 4\pi \times  10^{-4}$ T \\
-        $\chi , \kappa $& susceptibility& 1 $\to  4\pi $ \\
-        $\chi_{\rho }$& mass susceptibility& 1 cm$^{3}$/g $\to  4\pi \times  10^{-3}$ m$^{3}$/kg \\
-        $\mu $& permeability& 1 $\to  4\pi \times  10^{-7}$ H/m \par $= 4\pi \times  10^{-7}$ Wb/(A$\cdot $m) \\
-        $\mu_{r}$& relative permeability& $\mu \to \mu_{r}$ \\
-        $w, W$& energy density& 1 erg/cm$^{3} \to  10^{-1}$ J/m$^{3}$ \\
-        $N, D$& demagnetizing factor& 1 $\to  1/(4\pi )$ \\\hline
-        \multicolumn{3}{p{251pt}}{Vertical lines are optional in tables. Statements that serve as captions for the entire table do not need footnote letters. }\\
-        \multicolumn{3}{p{251pt}}{$^{\mathrm{a}}$Gaussian units are the same as cg emu for magnetostatics; Mx $=$ maxwell, G $=$ gauss, Oe $=$ oersted; Wb $=$ weber, V $=$ volt, s $=$ second, T $=$ tesla, m $=$ meter, A $=$ ampere, J $=$ joule, kg $=$ kilogram, H $=$ henry.}
-    \end{tabular}
-    \label{tab1}
-\end{table}
-

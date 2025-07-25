@@ -1853,6 +1853,7 @@ def compute_zeta_tfpad(et_o, et_r):
 
 def compute_zeta_p(chi_o, chi_r):
     Xo, Xr = np.abs(chi_o), np.abs(chi_r)
+    # threshold2 = (np.amin(Xo) + .7*(np.amax(Xo)-np.amin(Xo)))
     threshold = (np.amin(np.abs(Xr))
                  + .5*(np.amax(np.abs(Xr))-np.amin(np.abs(Xr))))
 
@@ -1860,6 +1861,7 @@ def compute_zeta_p(chi_o, chi_r):
     maskr = np.zeros(Xr.shape, dtype=bool)
 
     masko[Xo > 0.] = True
+    # masko[Xo >= threshold2] = True
     maskr[Xr >= threshold] = True
 
     xo, yo = np.meshgrid(np.linspace(0, 1, Xo.shape[1]),
@@ -1882,10 +1884,12 @@ def compute_zeta_p(chi_o, chi_r):
 def compute_zeta_s(chi_o, chi_r, threshold=.5):
     Xo, Xr = np.abs(chi_o), np.abs(chi_r)
     Xrmin, Xrmax = np.amin(Xr), np.amax(Xr)
+    # threshold2 = (np.amin(Xo) + 0.7*(np.amax(Xo)-np.amin(Xo)))
     threshold = (Xrmin + threshold*(Xrmax-Xrmin))
-
     # Thresholding
     Xo[Xo > 0] = 1
+    # Xo[Xo <= threshold2] = 0
+    # Xo[Xo > threshold2] = 1
     Xr[Xr <= threshold] = 0
     Xr[Xr > threshold] = 1
     

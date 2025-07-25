@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 import sys
-sys.path.insert(1, '../../../eispy2d/library/')
+sys.path.insert(1, '../../eispy2d/library/')
 import casestudy as cst
 import result as rst
 
@@ -24,8 +24,8 @@ def configure_axes(axis, hide_x_labels=True, hide_y_labels=True):
         axis[0].set_yticklabels([])
 
 # Initialize case study
-mycase = cst.CaseStudy(import_filename='single.cst', 
-                       import_filepath='../../../data/position/single/')
+mycase = cst.CaseStudy(import_filename='breastphantom.cst', 
+                       import_filepath='../../data/breast/class2/phantom1/')
 filepath = './figs/'
 
 # Generate ground truth figure
@@ -37,11 +37,12 @@ save_figure(filepath, '0')
 
 # Methods to generate reconstructions
 methods = [
-    ('osm', '1', True, True),
-    ('bim', '2', True, True), 
-    ('csi', '3', False, False),  # Keep original labels for CSI
-    ('som', '4', False, True),
-    ('ca', '5', False, True)
+    ('lsm', '1', True, True),
+    ('osm', '2', True, True),
+    ('bim', '3', False, False), 
+    ('csi', '4', False, True),  # Keep original labels for CSI
+    ('som', '5', False, True),
+    ('ca',  '6', False, True)
 ]
 
 # Generate reconstruction figures

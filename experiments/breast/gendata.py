@@ -1,5 +1,5 @@
 from loadphantom import BreastPhantomReader
-file_path = "../../data/breast/"
+file_path = "../../data/breast/class2/phantom1/"
 reader = BreastPhantomReader(file_path)
 
 freq = 1. # GHz

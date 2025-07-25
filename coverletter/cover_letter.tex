@@ -1,0 +1,121 @@
+\documentclass[11pt]{letter}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyphenat}
+\usepackage[protrusion=true,expansion=false]{microtype}
+
+\hyphenation{
+elec-tro-mag-net-ic 
+Trans-ac-tions 
+Sam-pling 
+geo-met-ric 
+con-sid-er-a-tion 
+eval-u-a-tion 
+re-con-struc-tion 
+lo-cal-i-za-tion
+algo-rithm
+algo-rithms
+per-for-mance
+indi-ca-tors
+scat-ter-ing
+micro-wave
+bio-med-i-cal
+EISPY
+in-tro-ducing
+con-trast
+ap-prox-i-ma-tion
+fa-cil-i-tat-ing
+}
+
+% Define sender information
+\signature{André Costa Batista\\
+Department of Electrical Engineering\\
+Operations Research and Complex Systems Laboratory (ORCS Lab)\\
+Universidade Federal de Minas Gerais\\
+Belo Horizonte, MG 31270-901, Brazil\\
+Email: andre-costa@ufmg.br}
+
+\address{Department of Electrical Engineering\\
+Universidade Federal de Minas Gerais\\
+Av. Antônio Carlos, 6627\\
+Belo Horizonte, MG 31270-901\\
+Brazil}
+
+\begin{document}
+
+% Date
+\date{\today}
+
+% Recipient information
+\begin{letter}{
+Konstantina S. Nikita\\
+Editor-in-Chief\\
+IEEE Transactions on Antennas and Propagation\\
+}
+
+% Opening
+\opening{Dear Editor-in-Chief,}
+
+% Main content
+I am writing to submit our manuscript entitled \textbf{``Novel Performance Indicators for Shape and Position Assessment in Electromagnetic Inverse Scattering''} for consideration for publication in IEEE Transactions on Antennas and Propagation.
+
+This manuscript presents a contribution to the field of electromagnetic inverse scattering by introducing two novel performance indicators specifically designed to evaluate algorithm performance in terms of shape reconstruction accuracy and object localization precision. Unlike traditional metrics such as Mean Square Error (MSE) or Structural Similarity Index (SSIM), which primarily assess contrast estimation accuracy, our proposed indicators provide direct insight into the recovery of object geometry and spatial position—critical aspects for practical applications.
+
+\textbf{Key features of this work include:}
+
+\begin{itemize}
+    \item Introduction of two novel performance indicators: a shape error indicator and a position error indicator, specifically tailored for electromagnetic inverse scattering evaluation;
+    \item Comprehensive experimental validation using six traditional algorithms: Linear Sampling Method (LSM), Orthogonality Sampling Method (OSM), Born Iterative Method (BIM), Contrast Source Iterative Method (CSI), Subspace Optimization Method (SOM), and Circle Approximation (CA);
+    \item Three distinct experimental frameworks: shape recovery studies, position detection studies, and realistic breast phantom experiments;
+    \item Robust statistical analysis revealing that BIM achieves optimal performance for geometric reconstruction in low nonlinearity scenarios, while SOM and OSM excel in target localization for small, high-contrast scatterers;
+    \item Open-source implementation through the EISPY2D library, ensuring reproducibility and facilitating future research.
+\end{itemize}
+
+The proposed indicators address a critical gap in the current evaluation methodology for electromagnetic inverse scattering algorithms. They are applicable to both qualitative and quantitative methods and can be effectively used when these approaches are combined in experimental studies. This work provides the electromagnetic inverse scattering community with essential tools for algorithm development, benchmarking studies, and performance assessment.
+
+
+\textbf{Relevance to IEEE Transactions on Antennas and Propagation:}
+
+This work directly aligns with the journal's scope, addressing fundamental aspects of electromagnetic scattering, antenna measurement techniques, and computational electromagnetics. The proposed indicators will be valuable for researchers working on microwave imaging, antenna design optimization, and electromagnetic inverse problems—core areas within the journal's purview.
+
+The authors declare no conflicts of interest. This manuscript has not been submitted elsewhere and contains original research. All experiments were conducted ethically, and proper attributions have been made to previous work.
+
+We believe this manuscript will be of significant interest to the readership of IEEE Transactions on Antennas and Propagation and will contribute meaningfully to advancing the field of electromagnetic inverse scattering. We would be honored to have our work considered for publication in this prestigious journal.
+
+Thank you for your time and consideration. We look forward to your response and are available to address any questions or concerns regarding our submission.
+
+% Closing
+\closing{Sincerely,}
+
+% Additional signatures (co-authors)
+\vspace{1cm}
+
+\noindent
+\textbf{Co-authors:}
+
+\vspace{0.5cm}
+
+\noindent
+Ricardo Adriano\\
+Professor\\
+Department of Electrical Engineering\\
+Universidade Federal de Minas Gerais\\
+Email: rluiz@ufmg.br
+
+\vspace{0.5cm}
+
+\noindent
+Lucas S. Batista\\
+Professor\\
+Department of Electrical Engineering\\
+Universidade Federal de Minas Gerais\\
+Operations Research and Complex Systems Laboratory (ORCS Lab)\\
+Email: lusoba@ufmg.br
+
+\end{letter}
+
+\end{document}

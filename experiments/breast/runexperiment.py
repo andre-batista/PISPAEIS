@@ -16,24 +16,26 @@ import som
 import circleapproximation as ca
 
 name = 'breastphantom'
-file_path = "../../data/breast/"
-resolution = (40, 40)
+file_path = "../../data/breast/class2/phantom1/"
+resolution = (80, 80)
 contrast_range = (0.1, 10.)
 
 test = ipt.InputData(import_filename=name + '.ipt', import_filepath=file_path)
 
 method = [
     lsm.LinearSamplingMethod(alias='lsm',
-                             regularization=reg.ConjugatedGradient(300),
-                             sv_cutoff=None, threshold=.7),
-    osm.OrthogonalitySamplingMethod(threshold=.35),
-    bim.BornIterativeMethod(mom.MoM_CG_FFT(), reg.ConjugatedGradient(300), 
-                            stp.StopCriteria(max_iterations=30)),
-    csi.ContrastSourceInversion(stp.StopCriteria(max_iterations=1_000)),
-    som.SubspaceBasedOptimizationMethod(stp.StopCriteria(max_iterations=30),
+                             regularization=reg.Tikhonov(reg.TIK_FIXED,
+                                                         parameter=1e0),
+                             sv_cutoff=None, threshold=.95),
+    osm.OrthogonalitySamplingMethod(threshold=.90),
+    bim.BornIterativeMethod(mom.MoM_CG_FFT(), reg.Tikhonov(reg.TIK_FIXED, 
+                                                           parameter=1e1),
+                            stp.StopCriteria(max_iterations=10)),
+    csi.ContrastSourceInversion(stp.StopCriteria(max_iterations=1_500)),
+    som.SubspaceBasedOptimizationMethod(stp.StopCriteria(max_iterations=100),
                                         cutoff_index=15),
     ca.CircleApproximation(stc.OutputMode(stc.BEST_CASE, reference='zeta_s'),
-                           number_executions=1,
+                           number_executions=10,
                            contrast_range=contrast_range,
                            solver="de")
 ]

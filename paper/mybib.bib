@@ -1,9 +1,39 @@
+% =============================================================================
+% ORGANIZED BIBLIOGRAPHY FOR ELECTROMAGNETIC INVERSE SCATTERING RESEARCH
+% =============================================================================
+% This bibliography is organized into the following categories:
+% 1. Books and Monographs
+% 2. Book Chapters  
+% 3. Fundamental Methods and Theory
+% 4. Machine Learning and AI Approaches
+% 5. Optimization Methods
+% 6. Medical and Biomedical Applications
+% 7. Software Libraries and Tools
+% 8. Image Quality Assessment
+% 9. Conference Proceedings
+% =============================================================================
+
+% =============================================================================
+% 1. BOOKS AND MONOGRAPHS
+% =============================================================================
+
 @book{chen2018computational,
   title={Computational methods for electromagnetic inverse scattering},
   author={Chen, Xudong},
   volume={244},
   year={2018},
   publisher={Wiley Online Library}
+}
+
+@book{colton2019inverse,
+  author    = {David Colton and Rainer Kress},
+  title     = {Inverse Acoustic and Electromagnetic Scattering Theory},
+  publisher = {Springer Cham},
+  year      = {2019},
+  series    = {Applied Mathematical Sciences},
+  edition   = {4},
+  doi       = {10.1007/978-3-030-30351-8},
+  isbn      = {978-3-030-30351-8}
 }
 
 @book{harrington2001time,
@@ -13,19 +43,33 @@
 	publisher={Wiley-IEEE Press}
 }
 
-@ARTICLE{richmond1965scattering,
-	author={Richmond, J.},
-	journal={IEEE Transactions on Antennas and Propagation}, 
-	title={Scattering by a dielectric cylinder of arbitrary cross section shape}, 
-	year={1965},
-	volume={13},
-	number={3},
-	pages={334-341},
-	keywords={Scattering;Shape;Engine cylinders;Equations;Dielectric constant;Nonuniform electric fields;Permittivity;Senior members;Reflection;Propagation delay},
-	doi={10.1109/TAP.1965.1138427}
+@book{pastorino2010microwave,
+  publisher = {John Wiley \& Sons, Ltd},
+  isbn = {9780470602492},
+  title = {Microwave Imaging},
+  author = {Pastorino, Matteo},
+  year = {2010},
+}
+
+% =============================================================================
+% 2. BOOK CHAPTERS
+% =============================================================================
+
+@INBOOK{chen2017lsm,
+  author={Chen, Xudong},
+  booktitle={Computational Methods for Electromagnetic Inverse Scattering}, 
+  title={Linear Sampling Method}, 
+  publisher = {John Wiley \& Sons Singapore Pte. Ltd},
+  year={2017},
+  volume={},
+  number={},
+  pages={103-121},
+  keywords={Current distribution;Sampling methods;Inverse problems;Electromagnetic scattering;IEEE Sections;Permittivity;Imaging},
+  doi={10.1002/9781119311997.ch5}
 }
 
 @inbook{pastorino2010ch3,
+  author = {Pastorino, Matteo},
 	publisher = {John Wiley \& Sons, Ltd},
 	isbn = {9780470602492},
 	title = {The Electromagnetic Inverse Scattering Problem},
@@ -36,6 +80,480 @@
 	url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470602492.ch3},
 	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/9780470602492.ch3},
 	year = {2010},
+}
+
+@inbook{pastorino2010ch5,
+  author = {Pastorino, Matteo},
+  publisher = {John Wiley \& Sons, Ltd},
+  isbn = {9780470602492},
+  title = {Qualitative Reconstruction Methods},
+  booktitle = {Microwave Imaging},
+  chapter = {Five},
+  pages = {79-122},
+  doi = {https://doi.org/10.1002/9780470602492.ch5},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470602492.ch5},
+  eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/9780470602492.ch5},
+  year = {2010},
+  keywords = {linear ill-posed problems, linear inverse scattering, linear sampling method, qualitative methods, singular value decomposition (SVD)},
+  abstract = {Summary This chapter focuses only on qualitative approaches, which are less ambitious because they either attempt to provide less complete characterization of the scatterers or can be applied only to a particular class of targets. Both the approaches are discussed. However, since many qualitative methods lead to resolution of linear ill-posed problems, some preliminary theory and tools useful in dealing with this class of problems are presented. In particular, the concepts of generalized inverse operators and generalized solutions are addressed, along with one of the most commonly used and powerful tools in linear inverse scattering, the singular value decomposition (SVD). Some basic concepts regarding regularization theory are also briefly introduced, without cumbersome mathematical details. It should be noted that the linear sampling method is only one of the qualitative techniques able to provide the shapes of unknown scatterers. Controlled Vocabulary Terms electromagnetic wave scattering; image reconstruction; image sampling; singular value decomposition}
+}
+
+@inbook{pastorino2010ch7,
+  author = {Pastorino, Matteo},
+  publisher = {John Wiley \& Sons, Ltd},
+  isbn = {9780470602492},
+  title = {Quantitative Stochastic Reconstruction Methods},
+  booktitle = {Microwave Imaging},
+  chapter = {Seven},
+  pages = {153-192},
+  doi = {https://doi.org/10.1002/9780470602492.ch7},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470602492.ch7},
+  eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/9780470602492.ch7},
+  year = {2010},
+  keywords = {ant colony optimization method, genetic algorithm, particle swarm optimization method, population-based algorithms, simulated annealing technique, stochastic minimization methods},
+  abstract = {Summary The simulated annealing technique was one of the first stochastic minimization methods applied to electromagnetic imaging. It is an iterative method that, at each iteration, updates the current trial solution by exploiting probabilistic concepts. Population-based algorithms can be used for imaging purposes with different implementation schemes. It should also be noted that population-based algorithms seem to be particularly suitable for the inclusion of a priori information into the model. From an engineering standpoint, a priori information is very important, since it can be used for accelerating the reconstruction procedure. In this chapter, simulated annealing is discussed first. Then, some population-based methods, which have already been proposed for microwave imaging applications are considered. Specifically, there are the genetic algorithm, the differential evolution method, the particle swarm optimization method, and the ant colony optimization method. Controlled Vocabulary Terms ant colony optimisation; genetic algorithms; particle swarm optimisation; stochastic processes}
+}
+
+% =============================================================================
+% 3. FUNDAMENTAL METHODS AND THEORY
+% =============================================================================
+
+@article{berg1997contrast,
+  doi = {10.1088/0266-5611/13/6/013},
+  url = {https://dx.doi.org/10.1088/0266-5611/13/6/013},
+  year = {1997},
+  month = {dec},
+  publisher = {},
+  volume = {13},
+  number = {6},
+  pages = {1607},
+  author = {Peter M van den Berg and Ralph E Kleinman},
+  title = {A contrast source inversion method},
+  journal = {Inverse Probl.},
+  abstract = {This paper describes a simple algorithm for reconstructing the complex index of refraction of a bounded object immersed in a known background from a knowledge of how the object scatters known incident radiation. The method described here is versatile accommodating both spatially and frequency varying incident fields and allowing a priori information about the scatterer to be introduced in a simple fashion. Numerical results show that this new algorithm outperforms the modified gradient approach which until now has been one of the most effective reconstruction algorithms available.}
+}
+
+@ARTICLE{bevacqua2021effective,
+  author={Bevacqua, Martina Teresa and Isernia, Tommaso},
+  journal={IEEE Trans. Antennas Propag.}, 
+  title={An Effective Rewriting of the Inverse Scattering Equations via Green's Function Decomposition}, 
+  year={2021},
+  volume={69},
+  number={8},
+  pages={4883-4893},
+  keywords={Mathematical model;Scattering;Inverse problems;Green's function methods;Numerical models;Integral equations;Permittivity;Born approximation;contrast source inversion;Green's function;inverse scattering;microwave imaging;nonlinearity;radiating currents},
+  doi={10.1109/TAP.2021.3060147}
+}
+
+@ARTICLE{bevacqua2021simple,
+  author={Bevacqua, Martina Teresa and Palmeri, Roberta and Isernia, Tommaso and Crocco, Lorenzo},
+  journal={IEEE Trans. Antennas Propag.}, 
+  title={A Simple Procedure to Design Virtual Experiments for Microwave Inverse Scattering}, 
+  year={2021},
+  volume={69},
+  number={12},
+  pages={8652-8663},
+  keywords={Inverse problems;Scattering;Microwave antennas;Microwave theory and techniques;Microwave propagation;Microwave imaging;Backpropagation;Adjoint solution;algebraic reconstruction method;inverse scattering problem;microwave imaging;orthogonality sampling method;virtual scattering experiments},
+  doi={10.1109/TAP.2021.3083747}
+}
+
+@article{bucci2001degree,
+  title={Degree of nonlinearity and a new solution procedure in scalar two-dimensional inverse scattering problems},
+  author={Bucci, Ovidio M and Cardace, Nicola and Crocco, Lorenzo and Isernia, Tommaso},
+  journal={J. Opt. Soc. Am. A},
+  volume={18},
+  number={8},
+  pages={1832--1843},
+  year={2001},
+  publisher={Optica Publishing Group}
+}
+
+@ARTICLE{chen2010subspace,
+  author={Chen, Xudong},
+  journal={IEEE Trans. Geosci. Remote Sens.}, 
+  title={Subspace-Based Optimization Method for Solving Inverse-Scattering Problems}, 
+  year={2010},
+  volume={48},
+  number={1},
+  pages={42-49},
+  keywords={Optimization methods;Electromagnetic scattering;Acoustic scattering;Noise robustness;Partitioning algorithms;Equations;Character generation;Convergence;Numerical simulation;Inverse problems;Contrast source inversion (CSI);inverse scattering;optimization},
+  doi={10.1109/TGRS.2009.2025122}
+}
+
+@ARTICLE{chew1990reconstruction,
+  author={Chew, W.C. and Wang, Y.M.},
+  journal={IEEE Trans. Med. Imag.}, 
+  title={Reconstruction of two-dimensional permittivity distribution using the distorted Born iterative method}, 
+  year={1990},
+  volume={9},
+  number={2},
+  pages={218-225},
+  keywords={Permittivity;Iterative methods;Image reconstruction;Predistortion;Inverse problems;Numerical simulation;Scattering;Approximation methods;Convergence;Noise robustness},
+  doi={10.1109/42.56334}
+}
+
+@Article{fedeli2020through,
+  AUTHOR = {Fedeli, Alessandro and Pastorino, Matteo and Ponti, Cristina and Randazzo, Andrea and Schettini, Giuseppe},
+  TITLE = {Through-the-Wall Microwave Imaging: Forward and Inverse Scattering Modeling},
+  JOURNAL = {Sensors},
+  VOLUME = {20},
+  YEAR = {2020},
+  NUMBER = {10},
+  ARTICLE-NUMBER = {2865},
+  URL = {https://www.mdpi.com/1424-8220/20/10/2865},
+  PubMedID = {32443585},
+  ISSN = {1424-8220},
+  ABSTRACT = {The imaging of dielectric targets hidden behind a wall is addressed in this paper. An analytical solver for a fast and accurate computation of the forward scattered field by the targets is proposed, which takes into account all the interactions of the electromagnetic field with the interfaces of the wall. Furthermore, an inversion procedure able to address the full underlying non-linear inverse scattering problem is introduced. This technique exploits a regularizing scheme in Lebesgue spaces in order to reconstruct an image of the hidden targets. Preliminary numerical results are provided in order to initially assess the capabilities of the developed solvers.},
+  DOI = {10.3390/s20102865}
+}
+
+@article{harris2020orthogonality,
+  author = {Harris, Isaac and Nguyen, Dinh-Liem},
+  title = {Orthogonality Sampling Method for the Electromagnetic Inverse Scattering Problem},
+  journal = {SIAM J. Sci. Comput.},
+  volume = {42},
+  number = {3},
+  pages = {B722-B737},
+  year = {2020},
+  doi = {10.1137/19M129783X},
+  URL = {https://doi.org/10.1137/19M129783X},
+  eprint = {https://doi.org/10.1137/19M129783X},
+  abstract = { This paper is concerned with the electromagnetic inverse scattering problem that aims to determine the location and shape of anisotropic scatterers from far field data (at a fixed frequency). We study the orthogonality sampling method, which is a simple, fast, and robust imaging method for solving the inverse scattering problem. We provide a theoretical analysis as well as a stability estimate for the sampling method. An equivalent relation between the orthogonality sampling method and the direct sampling method is also established. The analysis uses the Factorization method for the far field operator, and it plays an important role in the justifications along with the Funk--Hecke integral identity. Finally, we present some numerical examples to validate the performance of the sampling methods for anisotropic scatterers in three dimensions. }
+}
+
+@ARTICLE{liu2022som,
+  author={Liu, Yu and Zhao, Hao and Song, Rencheng and Chen, Xudong and Li, Chang and Chen, Xun},
+  journal={IEEE Trans. Geosci. Remote Sens.}, 
+  title={SOM-Net: Unrolling the Subspace-Based Optimization for Solving Full-Wave Inverse Scattering Problems}, 
+  year={2022},
+  volume={60},
+  number={},
+  pages={1-15},
+  keywords={Permittivity;Iterative methods;Image reconstruction;Scattering;Permittivity measurement;Mathematical models;Inverse problems;Deep unrolling;inverse scattering problem (ISP);subspace-based optimization},
+  doi={10.1109/TGRS.2022.3217162}
+}
+
+@ARTICLE{richmond1965scattering,
+	author={Richmond, J.},
+	journal={IEEE Trans. Antennas Propag.}, 
+	title={Scattering by a dielectric cylinder of arbitrary cross section shape}, 
+	year={1965},
+	volume={13},
+	number={3},
+	pages={334-341},
+	keywords={Scattering;Shape;Engine cylinders;Equations;Dielectric constant;Nonuniform electric fields;Permittivity;Senior members;Reflection;Propagation delay},
+	doi={10.1109/TAP.1965.1138427}
+}
+
+@ARTICLE{salucci2017multifrequency,
+  author={Salucci, M. and Poli, L. and Anselmi, N. and Massa, A.},
+  journal={IEEE Trans. Geosci. Remote Sens.}, 
+  title={Multifrequency Particle Swarm Optimization for Enhanced Multiresolution GPR Microwave Imaging}, 
+  year={2017},
+  volume={55},
+  number={3},
+  pages={1305-1317},
+  keywords={Ground penetrating radar;Particle swarm optimization;Optimization;Inverse problems;Reliability;Wideband;Ground-penetrating radar (GPR);inverse scattering (IS);iterative multiscaling approach (IMSA);multifrequency (MF);particle swarm optimization},
+  doi={10.1109/TGRS.2016.2622061}
+}
+
+@article{su1987calculation,
+  title={Calculation of electromagnetic scattering from a dielectric cylinder using the conjugate gradient method and FFT},
+  author={Su, Ching-Chuan},
+  journal={IEEE Trans. Antennas Propag.},
+  volume={35},
+  number={12},
+  pages={1418--1425},
+  year={1987},
+  publisher={IEEE}
+}
+
+@article{wang1989iterative,
+  author = {Wang, Y. M. and Chew, W. C.},
+  title = {An iterative solution of the two-dimensional electromagnetic inverse scattering problem},
+  journal = {Int. J. Imag. Syst. Tech.},
+  volume = {1},
+  number = {1},
+  pages = {100-108},
+  doi = {https://doi.org/10.1002/ima.1850010111},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/ima.1850010111},
+  eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/ima.1850010111},
+  abstract = {Abstract A new method, based on an iterative procedure, for solving the two-dimensional inverse scattering problem is presented. This method employs an equivalent Neumann series solution in each iteration step. The purpose of the algorithm is to provide a general method to solve the two-dimensional imaging problem when the Born and the Rytov approximations break down. Numerical simulations were calculated for several cases where the conditions for the first order Born approximation were not satisfied. The results show that in both high and low frequency cases, good reconstructed profiles and smoothed versions of the original profiles can be obtained for smoothly varying permittivity profiles (lossless) and discontinuous profiles (lossless), respectively. A limited number of measurements around the object at a single frequency with four to eight plane incident waves from different directions are used. The method proposed in this article could easily be applied to the three-dimensional inverse scattering problem, if computational resources are available.},
+  year = {1989}
+}
+
+@ARTICLE{yin2023subspace,
+  author={Yin, Tiantian and Pan, Li and Chen, Xudong},
+  journal={IEEE Trans. Antennas Propag.}, 
+  title={Subspace-Based Distorted-Rytov Iterative Method for Solving Inverse Scattering Problems}, 
+  year={2023},
+  volume={71},
+  number={10},
+  pages={8173-8183},
+  keywords={Iterative methods;Permittivity;Approximation error;Scattering;Phase distortion;Inverse problems;Approximation algorithms;Distorted Rytov approximation (RA);inhomogeneous background;inverse scattering},
+  doi={10.1109/TAP.2023.3305327}
+}
+
+@ARTICLE{zhang2023iterative,
+  author={Zhang, Yuyue and Yin, Tiantian and Zhao, Zhiqin and Nie, Zaiping and Chen, Xudong},
+  journal={IEEE Trans. Geosci. Remote Sens.}, 
+  title={An Iterative Domain Decomposition Technique Based on Subspace-Based Optimization Method for Solving Highly Nonlinear Inverse Problem}, 
+  year={2022},
+  volume={60},
+  number={},
+  pages={1-13},
+  keywords={Iterative methods;Optimization methods;Image reconstruction;Frequency measurement;Integral equations;Mathematical models;Inverse problems;Highly nonlinearity;iterative domain decomposition technique (IDDT);strong scatterers;subspace-based optimization methods (SOMs)},
+  doi={10.1109/TGRS.2022.3222718}
+}
+
+@ARTICLE{zhong2007music,
+  author={Zhong, Yu and Chen, Xudong},
+  journal={IEEE Trans. Antennas Propag.}, 
+  title={MUSIC Imaging and Electromagnetic Inverse Scattering of Multiple-Scattering Small Anisotropic Spheres}, 
+  year={2007},
+  volume={55},
+  number={12},
+  pages={3542-3549},
+  keywords={Multiple signal classification;Electromagnetic scattering;Inverse problems;Anisotropic magnetoresistance;Polarization;Tensile stress;Equations;Dipole antennas;Antenna accessories;Green's function methods;Inverse scattering problems;linear methods;multiple scattering;small anisotropic spheres},
+  doi={10.1109/TAP.2007.910488}
+}
+
+% =============================================================================
+% 4. MACHINE LEARNING AND AI APPROACHES
+% =============================================================================
+
+@Article{chen2020review,
+  author={Xudong Chen and Zhun Wei and Maokun Li and Paolo Rocca},
+  title={A REVIEW OF DEEP LEARNING APPROACHES FOR INVERSE SCATTERING PROBLEMS (INVITED REVIEW)},
+  volume={167},
+  journal={Pr. Electromagn. Res.},
+  year={2020},
+  pages={67-81},
+  doi={10.2528/PIER20030705}
+}
+
+@ARTICLE{hu2023more,
+  author={Hu, Yi-Di and Wang, Xiao-Hua and Zhou, Hui and Wang, Lei and Wang, Bing-Zhong},
+  journal={IEEE Trans. Geosci. Remote Sens.}, 
+  title={A More General Electromagnetic Inverse Scattering Method Based on Physics-Informed Neural Network}, 
+  year={2023},
+  volume={61},
+  number={},
+  pages={1-9},
+  keywords={Inverse problems;Training;Electromagnetic scattering;Electromagnetics;Mathematical models;Iterative methods;Deep learning;Deep learning;electromagnetic inverse scattering;full-wave inversion;physics-informed neural network (PINN)},
+  doi={10.1109/TGRS.2023.3301455}
+}
+
+@ARTICLE{liu2025exploring,
+  author={Liu, Jianfa and Wang, Yusong and Jin, Lei and Wang, Bao and Zong, Zheng and He, Siyuan and Wei, Zhun},
+  journal={IEEE Trans. Antennas Propag.}, 
+  title={Exploring Scaling Laws in Large Learning Models for Inverse Scattering with Spatial-Temporal Diffusion}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-1},
+  keywords={Uncertainty;Data models;Electromagnetics;Inverse problems;Green's function methods;Diffusion models;Training;Electric fields;Learning systems;Image reconstruction;Inverse scattering problems;scaling laws;diffusion model;large model;uncertainty quantification},
+  doi={10.1109/TAP.2025.3569099}
+}
+
+@ARTICLE{salucci2022learned,
+  author={Salucci, Marco and Poli, Lorenzo and Rocca, Paolo and Massa, Andrea},
+  journal={IEEE Trans. Antennas Propag.}, 
+  title={Learned Global Optimization for Inverse Scattering Problems: Matching Global Search With Computational Efficiency}, 
+  year={2022},
+  volume={70},
+  number={8},
+  pages={6240-6255},
+  keywords={Cost function;Inverse problems;Mathematical models;Digital twin;Radar imaging;Microwave imaging;Method of moments;Artificial intelligence (AI);digital twin (DT);evolutionary algorithms (EAs);Gaussian processes (GPs);inverse scattering (IS);learning-by-examples (LBEs);system-by-design (SbD)},
+  doi={10.1109/TAP.2021.3139627}
+}
+
+@ARTICLE{wang2023push,
+  author={Wang, Yusong and Zong, Zheng and He, Siyuan and Song, Rencheng and Wei, Zhun},
+  journal={IEEE Trans. Geosci. Remote Sens.}, 
+  title={Push the Generalization Limitation of Learning Approaches by Multidomain Weight-Sharing for Full-Wave Inverse Scattering}, 
+  year={2023},
+  volume={61},
+  number={},
+  pages={1-14},
+  keywords={Permittivity;Iterative methods;Deep learning;Mathematical models;Inverse problems;Green's function methods;Computational modeling;Deep-learning schemes (DLS);inverse scattering problems (ISPs);multiple physical constraints;physics informed;weight sharing},
+  doi={10.1109/TGRS.2023.3303572}
+}
+
+@ARTICLE{wei2019physics,
+  author={Wei, Zhun and Chen, Xudong},
+  journal={IEEE Trans. Antennas Propag.}, 
+  title={Physics-Inspired Convolutional Neural Network for Solving Full-Wave Inverse Scattering Problems}, 
+  year={2019},
+  volume={67},
+  number={9},
+  pages={6138-6148},
+  keywords={Iterative methods;Optimization;Inverse problems;Learning systems;Computer architecture;Linear programming;Deep learning;Convolutional neural network (CNN);deep learning;inverse scattering problems (ISPs)},
+  doi={10.1109/TAP.2019.2922779}
+}
+
+@ARTICLE{yao2020enhanced,
+  author={Yao, He Ming and Jiang, Lijun and Sha, Wei E. I.},
+  journal={IEEE Antennas Wireless Propag. Lett.}, 
+  title={Enhanced Deep Learning Approach Based on the Deep Convolutional Encoder–Decoder Architecture for Electromagnetic Inverse Scattering Problems}, 
+  year={2020},
+  volume={19},
+  number={7},
+  pages={1211-1215},
+  keywords={Electromagnetic interference;Machine learning;Decoding;Scattering;Mathematical model;Receivers;Encoding;Convolutional neural network;deep learning (DL);electromagnetic inverse scattering (EMIS);high-contrast scatterer},
+  doi={10.1109/LAWP.2020.2995455}
+}
+
+@ARTICLE{zardi2025physics,
+  author={Zardi, Francesco and Tosi, Luca and Salucci, Marco and Massa, Andrea},
+  journal={IEEE Trans. Antennas Propag.}, 
+  title={A Physics-Driven AI Approach for Microwave Imaging of Breast Tumors}, 
+  year={2025},
+  volume={73},
+  number={7},
+  pages={4661-4676},
+  keywords={Artificial intelligence;Permittivity;Microwave imaging;Training;Physics;Magnetic resonance imaging;Hands;Nonhomogeneous media;Microwave antennas;Mathematical models;Artificial intelligence (AI);breast imaging;evolutionary algorithms (EAs);inverse scattering problem (ISP);learning-by-examples (LBE);microwave imaging (MI);system-by-design (SbD)},
+  doi={10.1109/TAP.2025.3547392}
+}
+
+% =============================================================================
+% 5. OPTIMIZATION METHODS
+% =============================================================================
+
+@ARTICLE{massa2015compressive,
+  author={Massa, Andrea and Rocca, Paolo and Oliveri, Giacomo},
+  journal={IEEE Antennas Propag. M.}, 
+  title={Compressive Sensing in Electromagnetics - A Review}, 
+  year={2015},
+  volume={57},
+  number={1},
+  pages={224-238},
+  keywords={Electromagnetics;Antenna arrays;Bayes methods;Radar antennas;Inverse problems;Radar imaging},
+  doi={10.1109/MAP.2015.2397092}
+}
+
+@article{michalski2000electromagnetic,
+	author = {Michalski, Krzysztof Arkadiusz},
+	title = {Electromagnetic imaging of circular–cylindrical conductors and tunnels using a differential evolution algorithm},
+	journal = {Microw. Opt. Techn. Let.},
+	volume = {27},
+	number = {5},
+	pages = {330-334},
+	keywords = {electromagnetic imaging, cross-well tomography, buried cylinder, underground tunnel, genetic algorithm, differential evolution},
+	doi = {https://doi.org/10.1002/1098-2760(20001205)27:5<330::AID-MOP13>3.0.CO;2-H},
+	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/1098-2760%2820001205%2927%3A5%3C330%3A%3AAID-MOP13%3E3.0.CO%3B2-H},
+	abstract = {Abstract A technique is developed for the electromagnetic reconstruction of the location and radius of buried circular–cylindrical conductors or tunnels based on a differential evolution (DE) algorithm. Simulation results are presented which demonstrate that DE can offer a simple, yet efficient and robust method for the imaging of buried objects. © 2000 John Wiley \& Sons, Inc. Microwave Opt Technol Lett 27: 330–334, 2000.},
+	year = {2000}
+}
+
+@article{storn1997differential,
+	abstract = {A new heuristic approach for minimizing possiblynonlinear and non-differentiable continuous spacefunctions is presented. By means of an extensivetestbed it is demonstrated that the new methodconverges faster and with more certainty than manyother acclaimed global optimization methods. The newmethod requires few control variables, is robust, easyto use, and lends itself very well to parallelcomputation.},
+	author = {Storn, Rainer and Price, Kenneth},
+	date = {1997/12/01},
+	date-added = {2025-07-22 14:04:22 -0300},
+	date-modified = {2025-07-22 14:04:22 -0300},
+	doi = {10.1023/A:1008202821328},
+	id = {Storn1997},
+	isbn = {1573-2916},
+	journal = {J. Global Optim.},
+	number = {4},
+	pages = {341--359},
+	title = {Differential Evolution --A Simple and Efficient Heuristic for global Optimization over Continuous Spaces},
+	url = {https://doi.org/10.1023/A:1008202821328},
+	volume = {11},
+	year = {1997},
+	bdsk-url-1 = {https://doi.org/10.1023/A:1008202821328}
+}
+
+@article{zhu1997algorithm,
+  author = {Zhu, Ciyou and Byrd, Richard H. and Lu, Peihuang and Nocedal, Jorge},
+  title = {Algorithm 778: L-BFGS-B: Fortran subroutines for large-scale bound-constrained optimization},
+  year = {1997},
+  issue_date = {Dec. 1997},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {23},
+  number = {4},
+  issn = {0098-3500},
+  url = {https://doi.org/10.1145/279232.279236},
+  doi = {10.1145/279232.279236},
+  abstract = {L-BFGS-B is a limited-memory algorithm for solving large nonlinear optimization problems subject to simple bounds on the variables. It is intended for problems in which information on the Hessian matrix is difficult to obtain, or for large dense problems. L-BFGS-B can also be used for unconstrained problems and in this case performs similarly to its predessor, algorithm L-BFGS (Harwell routine VA15). The algorithm is implemented in Fortran 77.},
+  journal = {ACM Trans. Math. Softw.},
+  month = dec,
+  pages = {550–560},
+  numpages = {11},
+  keywords = {large-scale optimization, limited-memory method, nonlinear optimization, variable metric method}
+}
+
+% =============================================================================
+% 6. MEDICAL AND BIOMEDICAL APPLICATIONS
+% =============================================================================
+
+@ARTICLE{burfeindt2012mri,
+  author={Burfeindt, Matthew J. and Colgan, Timothy J. and Mays, R. Owen and Shea, Jacob D. and Behdad, Nader and Van Veen, Barry D. and Hagness, Susan C.},
+  journal={IEEE Antennas Wireless Propag. Lett.}, 
+  title={MRI-Derived 3-D-Printed Breast Phantom for Microwave Breast Imaging Validation}, 
+  year={2012},
+  volume={11},
+  number={},
+  pages={1610-1613},
+  keywords={Breast;Phantoms;Microwave imaging;Microwave theory and techniques;Dielectrics;Microwave imaging;phantoms},
+  doi={10.1109/LAWP.2012.2236293}
+}
+
+@INPROCEEDINGS{godinho2025evaluation,
+  author={Godinho, Daniela M. and Alfaiate, Mónica and Conceição, Raquel C.},
+  booktitle={2025 19th European Conference on Antennas and Propagation (EuCAP)}, 
+  title={Evaluation of a Medical Microwave Imaging Device for Breast Diagnosis - First Volunteer Study}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-4},
+  keywords={Image quality;Prototypes;Microwave devices;Radar imaging;Microwave theory and techniques;Permittivity;Image reconstruction;Microwave imaging;Tumors;Microwave propagation;breast cancer;microwave imaging;patient study},
+  doi={10.23919/EuCAP63536.2025.10999848}
+}
+
+@Article{Kurrant2021evaluating,
+  AUTHOR = {Kurrant, Douglas and Omer, Muhammad and Abdollahi, Nasim and Mojabi, Pedram and Fear, Elise and LoVetri, Joe},
+  TITLE = {Evaluating Performance of Microwave Image Reconstruction Algorithms: Extracting Tissue Types with Segmentation Using Machine Learning},
+  JOURNAL = {J. Imaging},
+  VOLUME = {7},
+  YEAR = {2021},
+  NUMBER = {1},
+  ARTICLE-NUMBER = {5},
+  URL = {https://www.mdpi.com/2313-433X/7/1/5},
+  PubMedID = {34460576},
+  ISSN = {2313-433X},
+  ABSTRACT = {Evaluating the quality of reconstructed images requires consistent approaches to extracting information and applying metrics. Partitioning medical images into tissue types permits the quantitative assessment of regions that contain a specific tissue. The assessment facilitates the evaluation of an imaging algorithm in terms of its ability to reconstruct the properties of various tissue types and identify anomalies. Microwave tomography is an imaging modality that is model-based and reconstructs an approximation of the actual internal spatial distribution of the dielectric properties of a breast over a reconstruction model consisting of discrete elements. The breast tissue types are characterized by their dielectric properties, so the complex permittivity profile that is reconstructed may be used to distinguish different tissue types. This manuscript presents a robust and flexible medical image segmentation technique to partition microwave breast images into tissue types in order to facilitate the evaluation of image quality. The approach combines an unsupervised machine learning method with statistical techniques. The key advantage for using the algorithm over other approaches, such as a threshold-based segmentation method, is that it supports this quantitative analysis without prior assumptions such as knowledge of the expected dielectric property values that characterize each tissue type. Moreover, it can be used for scenarios where there is a scarcity of data available for supervised learning. Microwave images are formed by solving an inverse scattering problem that is severely ill-posed, which has a significant impact on image quality. A number of strategies have been developed to alleviate the ill-posedness of the inverse scattering problem. The degree of success of each strategy varies, leading to reconstructions that have a wide range of image quality. A requirement for the segmentation technique is the ability to partition tissue types over a range of image qualities, which is demonstrated in the first part of the paper. The segmentation of images into regions of interest corresponding to various tissue types leads to the decomposition of the breast interior into disjoint tissue masks. An array of region and distance-based metrics are applied to compare masks extracted from reconstructed images and ground truth models. The quantitative results reveal the accuracy with which the geometric and dielectric properties are reconstructed. The incorporation of the segmentation that results in a framework that effectively furnishes the quantitative assessment of regions that contain a specific tissue is also demonstrated. The algorithm is applied to reconstructed microwave images derived from breasts with various densities and tissue distributions to demonstrate the flexibility of the algorithm and that it is not data-specific. The potential for using the algorithm to assist in diagnosis is exhibited with a tumor tracking example. This example also establishes the usefulness of the approach in evaluating the performance of the reconstruction algorithm in terms of its sensitivity and specificity to malignant tissue and its ability to accurately reconstruct malignant tissue.},
+  DOI = {10.3390/jimaging7010005}
+}
+
+@ARTICLE{mojabi2025microwave,
+  author={Mojabi, Pedram and Bourqui, Jeremie and Lasemiimeni, Zahra and Grewal, Baldeep and Fear, Elise},
+  journal={IEEE Trans. Biomed. Eng.}, 
+  title={Microwave Imaging for Breast Cancer Detection: Performance Assessment of a Next-Generation Transmission System}, 
+  year={2025},
+  volume={72},
+  number={6},
+  pages={1787-1799},
+  keywords={Imaging;Microwave imaging;Breast;Microwave theory and techniques;Permittivity;Radar imaging;Phantoms;Image reconstruction;Permittivity measurement;Frequency measurement;Microwave breast imaging;high density array;accuracy;inclusion detection;imaging performance},
+  doi={10.1109/TBME.2024.3521410}
+}
+
+% =============================================================================
+% 7. SOFTWARE LIBRARIES AND TOOLS
+% =============================================================================
+
+@ARTICLE{batista2025eispy2d,
+  author={Costa Batista, André and Adriano, Ricardo and Batista, Lucas S.},
+  journal={IEEE Access}, 
+  title={EISPY2D: An Open-Source Python Library for the Development and Comparison of Algorithms in Two-Dimensional Electromagnetic Inverse Scattering Problems}, 
+  year={2025},
+  volume={13},
+  number={},
+  pages={92134-92154},
+  keywords={Libraries;Electromagnetic scattering;Imaging;Image reconstruction;Electromagnetics;Microwave theory and techniques;Microwave integrated circuits;Microwave imaging;Microwave FET integrated circuits;Inverse problems;Comparison of algorithms;electromagnetic inverse scattering problem;microwave imaging;open-source library;optimization},
+  doi={10.1109/ACCESS.2025.3573679}
 }
 
 @inproceedings{lorensen1987marching,
@@ -54,98 +572,6 @@
 	series = {SIGGRAPH '87}
 }
 
-@ARTICLE{batista2025eispy2d,
-  author={Costa Batista, André and Adriano, Ricardo and Batista, Lucas S.},
-  journal={IEEE Access}, 
-  title={EISPY2D: An Open-Source Python Library for the Development and Comparison of Algorithms in Two-Dimensional Electromagnetic Inverse Scattering Problems}, 
-  year={2025},
-  volume={13},
-  number={},
-  pages={92134-92154},
-  keywords={Libraries;Electromagnetic scattering;Imaging;Image reconstruction;Electromagnetics;Microwave theory and techniques;Microwave integrated circuits;Microwave imaging;Microwave FET integrated circuits;Inverse problems;Comparison of algorithms;electromagnetic inverse scattering problem;microwave imaging;open-source library;optimization},
-  doi={10.1109/ACCESS.2025.3573679}
-}
-
-
-@article{bucci2001degree,
-  title={Degree of nonlinearity and a new solution procedure in scalar two-dimensional inverse scattering problems},
-  author={Bucci, Ovidio M and Cardace, Nicola and Crocco, Lorenzo and Isernia, Tommaso},
-  journal={JOSA A},
-  volume={18},
-  number={8},
-  pages={1832--1843},
-  year={2001},
-  publisher={Optica Publishing Group}
-}
-
-@article{su1987calculation,
-  title={Calculation of electromagnetic scattering from a dielectric cylinder using the conjugate gradient method and FFT},
-  author={Su, Ching-Chuan},
-  journal={IEEE transactions on antennas and propagation},
-  volume={35},
-  number={12},
-  pages={1418--1425},
-  year={1987},
-  publisher={IEEE}
-}
-
-@ARTICLE{salucci2022learned,
-  author={Salucci, Marco and Poli, Lorenzo and Rocca, Paolo and Massa, Andrea},
-  journal={IEEE Transactions on Antennas and Propagation}, 
-  title={Learned Global Optimization for Inverse Scattering Problems: Matching Global Search With Computational Efficiency}, 
-  year={2022},
-  volume={70},
-  number={8},
-  pages={6240-6255},
-  keywords={Cost function;Inverse problems;Mathematical models;Digital twin;Radar imaging;Microwave imaging;Method of moments;Artificial intelligence (AI);digital twin (DT);evolutionary algorithms (EAs);Gaussian processes (GPs);inverse scattering (IS);learning-by-examples (LBEs);system-by-design (SbD)},
-  doi={10.1109/TAP.2021.3139627}
-}
-
-@ARTICLE{zardi2025physics,
-  author={Zardi, Francesco and Tosi, Luca and Salucci, Marco and Massa, Andrea},
-  journal={IEEE Transactions on Antennas and Propagation}, 
-  title={A Physics-Driven AI Approach for Microwave Imaging of Breast Tumors}, 
-  year={2025},
-  volume={73},
-  number={7},
-  pages={4661-4676},
-  keywords={Artificial intelligence;Permittivity;Microwave imaging;Training;Physics;Magnetic resonance imaging;Hands;Nonhomogeneous media;Microwave antennas;Mathematical models;Artificial intelligence (AI);breast imaging;evolutionary algorithms (EAs);inverse scattering problem (ISP);learning-by-examples (LBE);microwave imaging (MI);system-by-design (SbD)},
-  doi={10.1109/TAP.2025.3547392}
-}
-
-@article{michalski2000electromagnetic,
-	author = {Michalski, Krzysztof Arkadiusz},
-	title = {Electromagnetic imaging of circular–cylindrical conductors and tunnels using a differential evolution algorithm},
-	journal = {Microwave and Optical Technology Letters},
-	volume = {27},
-	number = {5},
-	pages = {330-334},
-	keywords = {electromagnetic imaging, cross-well tomography, buried cylinder, underground tunnel, genetic algorithm, differential evolution},
-	doi = {https://doi.org/10.1002/1098-2760(20001205)27:5<330::AID-MOP13>3.0.CO;2-H},
-	eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/1098-2760%2820001205%2927%3A5%3C330%3A%3AAID-MOP13%3E3.0.CO%3B2-H},
-	abstract = {Abstract A technique is developed for the electromagnetic reconstruction of the location and radius of buried circular–cylindrical conductors or tunnels based on a differential evolution (DE) algorithm. Simulation results are presented which demonstrate that DE can offer a simple, yet efficient and robust method for the imaging of buried objects. © 2000 John Wiley \& Sons, Inc. Microwave Opt Technol Lett 27: 330–334, 2000.},
-	year = {2000}
-}
-
-@article{storn1997differential,
-	abstract = {A new heuristic approach for minimizing possiblynonlinear and non-differentiable continuous spacefunctions is presented. By means of an extensivetestbed it is demonstrated that the new methodconverges faster and with more certainty than manyother acclaimed global optimization methods. The newmethod requires few control variables, is robust, easyto use, and lends itself very well to parallelcomputation.},
-	author = {Storn, Rainer and Price, Kenneth},
-	date = {1997/12/01},
-	date-added = {2025-07-22 14:04:22 -0300},
-	date-modified = {2025-07-22 14:04:22 -0300},
-	doi = {10.1023/A:1008202821328},
-	id = {Storn1997},
-	isbn = {1573-2916},
-	journal = {Journal of Global Optimization},
-	number = {4},
-	pages = {341--359},
-	title = {Differential Evolution --A Simple and Efficient Heuristic for global Optimization over Continuous Spaces},
-	url = {https://doi.org/10.1023/A:1008202821328},
-	volume = {11},
-	year = {1997},
-	bdsk-url-1 = {https://doi.org/10.1023/A:1008202821328}
-}
-
 @ARTICLE{virtanen2020SciPy,
   author  = {Virtanen, Pauli and Gommers, Ralf and Oliphant, Travis E. and
             Haberland, Matt and Reddy, Tyler and Cournapeau, David and
@@ -162,7 +588,7 @@
             {van Mulbregt}, Paul and {SciPy 1.0 Contributors}},
   title   = {{{SciPy} 1.0: Fundamental Algorithms for Scientific
             Computing in Python}},
-  journal = {Nature Methods},
+  journal = {Nat. Methods},
   year    = {2020},
   volume  = {17},
   pages   = {261--272},
@@ -171,70 +597,27 @@
   doi     = {10.1038/s41592-019-0686-2},
 }
 
-@article{zhu1997algorithm,
-author = {Zhu, Ciyou and Byrd, Richard H. and Lu, Peihuang and Nocedal, Jorge},
-title = {Algorithm 778: L-BFGS-B: Fortran subroutines for large-scale bound-constrained optimization},
-year = {1997},
-issue_date = {Dec. 1997},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-volume = {23},
-number = {4},
-issn = {0098-3500},
-url = {https://doi.org/10.1145/279232.279236},
-doi = {10.1145/279232.279236},
-abstract = {L-BFGS-B is a limited-memory algorithm for solving large nonlinear optimization problems subject to simple bounds on the variables. It is intended for problems in which information on the Hessian matrix is difficult to obtain, or for large dense problems. L-BFGS-B can also be used for unconstrained problems and in this case performs similarly to its predessor, algorithm L-BFGS (Harwell routine VA15). The algorithm is implemented in Fortran 77.},
-journal = {ACM Trans. Math. Softw.},
-month = dec,
-pages = {550–560},
-numpages = {11},
-keywords = {large-scale optimization, limited-memory method, nonlinear optimization, variable metric method}
+% =============================================================================
+% 8. IMAGE QUALITY ASSESSMENT
+% =============================================================================
+
+@ARTICLE{wang2004image,
+  author={Zhou Wang and Bovik, A.C. and Sheikh, H.R. and Simoncelli, E.P.},
+  journal={IEEE Trans. Image Process.}, 
+  title={Image quality assessment: from error visibility to structural similarity}, 
+  year={2004},
+  volume={13},
+  number={4},
+  pages={600-612},
+  keywords={Image quality;Humans;Transform coding;Visual system;Visual perception;Data mining;Layout;Quality assessment;Degradation;Indexes},
+  doi={10.1109/TIP.2003.819861}
 }
 
-@ARTICLE{burfeindt2012mri,
-  author={Burfeindt, Matthew J. and Colgan, Timothy J. and Mays, R. Owen and Shea, Jacob D. and Behdad, Nader and Van Veen, Barry D. and Hagness, Susan C.},
-  journal={IEEE Antennas and Wireless Propagation Letters}, 
-  title={MRI-Derived 3-D-Printed Breast Phantom for Microwave Breast Imaging Validation}, 
-  year={2012},
-  volume={11},
-  number={},
-  pages={1610-1613},
-  keywords={Breast;Phantoms;Microwave imaging;Microwave theory and techniques;Dielectrics;Microwave imaging;phantoms},
-  doi={10.1109/LAWP.2012.2236293}
-}
+% =============================================================================
+% 9. CONFERENCE PROCEEDINGS
+% =============================================================================
 
-
-@book{pastorino2010microwave,
-publisher = {John Wiley \& Sons, Ltd},
-isbn = {9780470602492},
-title = {Microwave Imaging},
-author = {Pastorino, Matteo},
-year = {2010},
-}
-
-@INPROCEEDINGS{godinho2025evaluation,
-  author={Godinho, Daniela M. and Alfaiate, Mónica and Conceição, Raquel C.},
-  booktitle={2025 19th European Conference on Antennas and Propagation (EuCAP)}, 
-  title={Evaluation of a Medical Microwave Imaging Device for Breast Diagnosis - First Volunteer Study}, 
-  year={2025},
-  volume={},
-  number={},
-  pages={1-4},
-  keywords={Image quality;Prototypes;Microwave devices;Radar imaging;Microwave theory and techniques;Permittivity;Image reconstruction;Microwave imaging;Tumors;Microwave propagation;breast cancer;microwave imaging;patient study},
-  doi={10.23919/EuCAP63536.2025.10999848}}
-
-@ARTICLE{mojabi2025microwave,
-  author={Mojabi, Pedram and Bourqui, Jeremie and Lasemiimeni, Zahra and Grewal, Baldeep and Fear, Elise},
-  journal={IEEE Transactions on Biomedical Engineering}, 
-  title={Microwave Imaging for Breast Cancer Detection: Performance Assessment of a Next-Generation Transmission System}, 
-  year={2025},
-  volume={72},
-  number={6},
-  pages={1787-1799},
-  keywords={Imaging;Microwave imaging;Breast;Microwave theory and techniques;Permittivity;Radar imaging;Phantoms;Image reconstruction;Permittivity measurement;Frequency measurement;Microwave breast imaging;high density array;accuracy;inclusion detection;imaging performance},
-  doi={10.1109/TBME.2024.3521410}}
-
-  @INPROCEEDINGS{fedeli2025mild,
+@INPROCEEDINGS{fedeli2025mild,
   author={Fedeli, Alessandro and Estatico, Claudio and Randazzo, Andrea},
   booktitle={2025 19th European Conference on Antennas and Propagation (EuCAP)}, 
   title={Mild Data-Driven Inversion for Microwave Nondestructive Diagnostics of Plants and Trees}, 
@@ -243,271 +626,8 @@ year = {2010},
   number={},
   pages={1-5},
   keywords={Microwave measurement;Pathology;Inverse problems;Vegetation;Microwave theory and techniques;Dielectrics;Numerical models;Image reconstruction;Microwave imaging;Testing;Microwave imaging;inverse problems;plant diagnostics;mild data-driven methods},
-  doi={10.23919/EuCAP63536.2025.10999253}}
-
-
-@Article{fedeli2020through,
-AUTHOR = {Fedeli, Alessandro and Pastorino, Matteo and Ponti, Cristina and Randazzo, Andrea and Schettini, Giuseppe},
-TITLE = {Through-the-Wall Microwave Imaging: Forward and Inverse Scattering Modeling},
-JOURNAL = {Sensors},
-VOLUME = {20},
-YEAR = {2020},
-NUMBER = {10},
-ARTICLE-NUMBER = {2865},
-URL = {https://www.mdpi.com/1424-8220/20/10/2865},
-PubMedID = {32443585},
-ISSN = {1424-8220},
-ABSTRACT = {The imaging of dielectric targets hidden behind a wall is addressed in this paper. An analytical solver for a fast and accurate computation of the forward scattered field by the targets is proposed, which takes into account all the interactions of the electromagnetic field with the interfaces of the wall. Furthermore, an inversion procedure able to address the full underlying non-linear inverse scattering problem is introduced. This technique exploits a regularizing scheme in Lebesgue spaces in order to reconstruct an image of the hidden targets. Preliminary numerical results are provided in order to initially assess the capabilities of the developed solvers.},
-DOI = {10.3390/s20102865}
+  doi={10.23919/EuCAP63536.2025.10999253}
 }
-
-@ARTICLE{salucci2017multifrequency,
-  author={Salucci, M. and Poli, L. and Anselmi, N. and Massa, A.},
-  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
-  title={Multifrequency Particle Swarm Optimization for Enhanced Multiresolution GPR Microwave Imaging}, 
-  year={2017},
-  volume={55},
-  number={3},
-  pages={1305-1317},
-  keywords={Ground penetrating radar;Particle swarm optimization;Optimization;Inverse problems;Reliability;Wideband;Ground-penetrating radar (GPR);inverse scattering (IS);iterative multiscaling approach (IMSA);multifrequency (MF);particle swarm optimization},
-  doi={10.1109/TGRS.2016.2622061}}
-
-@book{colton2019inverse,
-  author    = {David Colton and Rainer Kress},
-  title     = {Inverse Acoustic and Electromagnetic Scattering Theory},
-  publisher = {Springer Cham},
-  year      = {2019},
-  series    = {Applied Mathematical Sciences},
-  edition   = {4},
-  doi       = {10.1007/978-3-030-30351-8},
-  isbn      = {978-3-030-30351-8}
-}
-
-@inbook{pastorino2010ch5,
-publisher = {John Wiley \& Sons, Ltd},
-isbn = {9780470602492},
-title = {Qualitative Reconstruction Methods},
-booktitle = {Microwave Imaging},
-chapter = {Five},
-pages = {79-122},
-doi = {https://doi.org/10.1002/9780470602492.ch5},
-url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470602492.ch5},
-eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/9780470602492.ch5},
-year = {2010},
-keywords = {linear ill-posed problems, linear inverse scattering, linear sampling method, qualitative methods, singular value decomposition (SVD)},
-abstract = {Summary This chapter focuses only on qualitative approaches, which are less ambitious because they either attempt to provide less complete characterization of the scatterers or can be applied only to a particular class of targets. Both the approaches are discussed. However, since many qualitative methods lead to resolution of linear ill-posed problems, some preliminary theory and tools useful in dealing with this class of problems are presented. In particular, the concepts of generalized inverse operators and generalized solutions are addressed, along with one of the most commonly used and powerful tools in linear inverse scattering, the singular value decomposition (SVD). Some basic concepts regarding regularization theory are also briefly introduced, without cumbersome mathematical details. It should be noted that the linear sampling method is only one of the qualitative techniques able to provide the shapes of unknown scatterers. Controlled Vocabulary Terms electromagnetic wave scattering; image reconstruction; image sampling; singular value decomposition}
-}
-
-
-@inbook{pastorino2010ch7,
-
-publisher = {John Wiley \& Sons, Ltd},
-isbn = {9780470602492},
-title = {Quantitative Stochastic Reconstruction Methods},
-booktitle = {Microwave Imaging},
-chapter = {Seven},
-pages = {153-192},
-doi = {https://doi.org/10.1002/9780470602492.ch7},
-url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/9780470602492.ch7},
-eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/9780470602492.ch7},
-year = {2010},
-keywords = {ant colony optimization method, genetic algorithm, particle swarm optimization method, population-based algorithms, simulated annealing technique, stochastic minimization methods},
-abstract = {Summary The simulated annealing technique was one of the first stochastic minimization methods applied to electromagnetic imaging. It is an iterative method that, at each iteration, updates the current trial solution by exploiting probabilistic concepts. Population-based algorithms can be used for imaging purposes with different implementation schemes. It should also be noted that population-based algorithms seem to be particularly suitable for the inclusion of a priori information into the model. From an engineering standpoint, a priori information is very important, since it can be used for accelerating the reconstruction procedure. In this chapter, simulated annealing is discussed first. Then, some population-based methods, which have already been proposed for microwave imaging applications are considered. Specifically, there are the genetic algorithm, the differential evolution method, the particle swarm optimization method, and the ant colony optimization method. Controlled Vocabulary Terms ant colony optimisation; genetic algorithms; particle swarm optimisation; stochastic processes}
-}
-
-@INBOOK{chen2017lsm,
-  author={Chen, Xudong},
-  booktitle={Computational Methods for Electromagnetic Inverse Scattering}, 
-  title={Linear Sampling Method}, 
-  year={2017},
-  volume={},
-  number={},
-  pages={103-121},
-  keywords={Current distribution;Sampling methods;Inverse problems;Electromagnetic scattering;IEEE Sections;Permittivity;Imaging},
-  doi={10.1002/9781119311997.ch5}}
-
-
-
-
-
-
-
-@article{harris2020orthogonality,
-author = {Harris, Isaac and Nguyen, Dinh-Liem},
-title = {Orthogonality Sampling Method for the Electromagnetic Inverse Scattering Problem},
-journal = {SIAM Journal on Scientific Computing},
-volume = {42},
-number = {3},
-pages = {B722-B737},
-year = {2020},
-doi = {10.1137/19M129783X},
-
-URL = { 
-    
-        https://doi.org/10.1137/19M129783X
-    
-    
-
-},
-eprint = { 
-    
-        https://doi.org/10.1137/19M129783X
-    
-    
-
-}
-,
-    abstract = { This paper is concerned with the electromagnetic inverse scattering problem that aims to determine the location and shape of anisotropic scatterers from far field data (at a fixed frequency). We study the orthogonality sampling method, which is a simple, fast, and robust imaging method for solving the inverse scattering problem. We provide a theoretical analysis as well as a stability estimate for the sampling method. An equivalent relation between the orthogonality sampling method and the direct sampling method is also established. The analysis uses the Factorization method for the far field operator, and it plays an important role in the justifications along with the Funk--Hecke integral identity. Finally, we present some numerical examples to validate the performance of the sampling methods for anisotropic scatterers in three dimensions. }
-}
-
-@ARTICLE{chew1990reconstruction,
-  author={Chew, W.C. and Wang, Y.M.},
-  journal={IEEE Transactions on Medical Imaging}, 
-  title={Reconstruction of two-dimensional permittivity distribution using the distorted Born iterative method}, 
-  year={1990},
-  volume={9},
-  number={2},
-  pages={218-225},
-  keywords={Permittivity;Iterative methods;Image reconstruction;Predistortion;Inverse problems;Numerical simulation;Scattering;Approximation methods;Convergence;Noise robustness},
-  doi={10.1109/42.56334}}
-
-@article{wang1989iterative,
-author = {Wang, Y. M. and Chew, W. C.},
-title = {An iterative solution of the two-dimensional electromagnetic inverse scattering problem},
-journal = {International Journal of Imaging Systems and Technology},
-volume = {1},
-number = {1},
-pages = {100-108},
-doi = {https://doi.org/10.1002/ima.1850010111},
-url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/ima.1850010111},
-eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/ima.1850010111},
-abstract = {Abstract A new method, based on an iterative procedure, for solving the two-dimensional inverse scattering problem is presented. This method employs an equivalent Neumann series solution in each iteration step. The purpose of the algorithm is to provide a general method to solve the two-dimensional imaging problem when the Born and the Rytov approximations break down. Numerical simulations were calculated for several cases where the conditions for the first order Born approximation were not satisfied. The results show that in both high and low frequency cases, good reconstructed profiles and smoothed versions of the original profiles can be obtained for smoothly varying permittivity profiles (lossless) and discontinuous profiles (lossless), respectively. A limited number of measurements around the object at a single frequency with four to eight plane incident waves from different directions are used. The method proposed in this article could easily be applied to the three-dimensional inverse scattering problem, if computational resources are available.},
-year = {1989}
-}
-
-@article{berg1997contrast,
-doi = {10.1088/0266-5611/13/6/013},
-url = {https://dx.doi.org/10.1088/0266-5611/13/6/013},
-year = {1997},
-month = {dec},
-publisher = {},
-volume = {13},
-number = {6},
-pages = {1607},
-author = {Peter M van den Berg and Ralph E Kleinman},
-title = {A contrast source inversion method},
-journal = {Inverse Problems},
-abstract = {This paper describes a simple algorithm for reconstructing the complex index of refraction of a bounded object immersed in a known background from a knowledge of how the object scatters known incident radiation. The method described here is versatile accommodating both spatially and frequency varying incident fields and allowing a priori information about the scatterer to be introduced in a simple fashion. Numerical results show that this new algorithm outperforms the modified gradient approach which until now has been one of the most effective reconstruction algorithms available.}
-}
-
-@ARTICLE{chen2010subspace,
-  author={Chen, Xudong},
-  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
-  title={Subspace-Based Optimization Method for Solving Inverse-Scattering Problems}, 
-  year={2010},
-  volume={48},
-  number={1},
-  pages={42-49},
-  keywords={Optimization methods;Electromagnetic scattering;Acoustic scattering;Noise robustness;Partitioning algorithms;Equations;Character generation;Convergence;Numerical simulation;Inverse problems;Contrast source inversion (CSI);inverse scattering;optimization},
-  doi={10.1109/TGRS.2009.2025122}}
-
-  @ARTICLE{zhong2007music,
-  author={Zhong, Yu and Chen, Xudong},
-  journal={IEEE Transactions on Antennas and Propagation}, 
-  title={MUSIC Imaging and Electromagnetic Inverse Scattering of Multiple-Scattering Small Anisotropic Spheres}, 
-  year={2007},
-  volume={55},
-  number={12},
-  pages={3542-3549},
-  keywords={Multiple signal classification;Electromagnetic scattering;Inverse problems;Anisotropic magnetoresistance;Polarization;Tensile stress;Equations;Dipole antennas;Antenna accessories;Green's function methods;Inverse scattering problems;linear methods;multiple scattering;small anisotropic spheres},
-  doi={10.1109/TAP.2007.910488}}
-
-@ARTICLE{massa2015compressive,
-  author={Massa, Andrea and Rocca, Paolo and Oliveri, Giacomo},
-  journal={IEEE Antennas and Propagation Magazine}, 
-  title={Compressive Sensing in Electromagnetics - A Review}, 
-  year={2015},
-  volume={57},
-  number={1},
-  pages={224-238},
-  keywords={Electromagnetics;Antenna arrays;Bayes methods;Radar antennas;Inverse problems;Radar imaging},
-  doi={10.1109/MAP.2015.2397092}}
-
-@Article{chen2020review,
- authors={Xudong Chen, Zhun Wei, Maokun Li, Paolo Rocca},
- title={A REVIEW OF DEEP LEARNING APPROACHES FOR INVERSE SCATTERING PROBLEMS (INVITED REVIEW)},
- volume={167},
- journal={Progress In Electromagnetics Research},
- year={2020},
- pages={67-81},
- doi={10.2528/PIER20030705}
- }
-
-@ARTICLE{yao2020enhanced,
-  author={Yao, He Ming and Jiang, Lijun and Sha, Wei E. I.},
-  journal={IEEE Antennas and Wireless Propagation Letters}, 
-  title={Enhanced Deep Learning Approach Based on the Deep Convolutional Encoder–Decoder Architecture for Electromagnetic Inverse Scattering Problems}, 
-  year={2020},
-  volume={19},
-  number={7},
-  pages={1211-1215},
-  keywords={Electromagnetic interference;Machine learning;Decoding;Scattering;Mathematical model;Receivers;Encoding;Convolutional neural network;deep learning (DL);electromagnetic inverse scattering (EMIS);high-contrast scatterer},
-  doi={10.1109/LAWP.2020.2995455}}
-
-@INPROCEEDINGS{wei2019solving,
-  author={Wei, Zhun and Chen, Xudong},
-  booktitle={2019 IEEE International Conference on Computational Electromagnetics (ICCEM)}, 
-  title={Solving Full-Wave Nonlinear Inverse Scattering Problems by Deep Learning Schemes}, 
-  year={2019},
-  volume={},
-  number={},
-  pages={1-2},
-  keywords={Image reconstruction;Permittivity;Deep learning;Inverse problems;Permittivity measurement;Physics;convolution neural network;inverse scattering;deep learning},
-  doi={10.1109/COMPEM.2019.8779092}}
-
-@ARTICLE{wei2019physics,
-  author={Wei, Zhun and Chen, Xudong},
-  journal={IEEE Transactions on Antennas and Propagation}, 
-  title={Physics-Inspired Convolutional Neural Network for Solving Full-Wave Inverse Scattering Problems}, 
-  year={2019},
-  volume={67},
-  number={9},
-  pages={6138-6148},
-  keywords={Iterative methods;Optimization;Inverse problems;Learning systems;Computer architecture;Linear programming;Deep learning;Convolutional neural network (CNN);deep learning;inverse scattering problems (ISPs)},
-  doi={10.1109/TAP.2019.2922779}}
-
-@ARTICLE{wang2023push,
-  author={Wang, Yusong and Zong, Zheng and He, Siyuan and Song, Rencheng and Wei, Zhun},
-  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
-  title={Push the Generalization Limitation of Learning Approaches by Multidomain Weight-Sharing for Full-Wave Inverse Scattering}, 
-  year={2023},
-  volume={61},
-  number={},
-  pages={1-14},
-  keywords={Permittivity;Iterative methods;Deep learning;Mathematical models;Inverse problems;Green's function methods;Computational modeling;Deep-learning schemes (DLS);inverse scattering problems (ISPs);multiple physical constraints;physics informed;weight sharing},
-  doi={10.1109/TGRS.2023.3303572}}
-
-@ARTICLE{liu2025exploring,
-  author={Liu, Jianfa and Wang, Yusong and Jin, Lei and Wang, Bao and Zong, Zheng and He, Siyuan and Wei, Zhun},
-  journal={IEEE Transactions on Antennas and Propagation}, 
-  title={Exploring Scaling Laws in Large Learning Models for Inverse Scattering with Spatial-Temporal Diffusion}, 
-  year={2025},
-  volume={},
-  number={},
-  pages={1-1},
-  keywords={Uncertainty;Data models;Electromagnetics;Inverse problems;Green's function methods;Diffusion models;Training;Electric fields;Learning systems;Image reconstruction;Inverse scattering problems;scaling laws;diffusion model;large model;uncertainty quantification},
-  doi={10.1109/TAP.2025.3569099}}
-
-@ARTICLE{hu2023more,
-  author={Hu, Yi-Di and Wang, Xiao-Hua and Zhou, Hui and Wang, Lei and Wang, Bing-Zhong},
-  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
-  title={A More General Electromagnetic Inverse Scattering Method Based on Physics-Informed Neural Network}, 
-  year={2023},
-  volume={61},
-  number={},
-  pages={1-9},
-  keywords={Inverse problems;Training;Electromagnetic scattering;Electromagnetics;Mathematical models;Iterative methods;Deep learning;Deep learning;electromagnetic inverse scattering;full-wave inversion;physics-informed neural network (PINN)},
-  doi={10.1109/TGRS.2023.3301455}}
 
 @INPROCEEDINGS{isernia2024some,
   author={Isernia, Tommaso and Bevacqua, Martina T. and Crocco, Lorenzo and Donato, Loreto Di and Palmeri, Roberta and Zumbo, Sabrina},
@@ -518,89 +638,17 @@ abstract = {This paper describes a simple algorithm for reconstructing the compl
   number={},
   pages={1-4},
   keywords={Inverse problems;Scattering;Machine learning},
-  doi={10.46620/URSIATRASC24/NUMB9770}}
-
-@ARTICLE{bevacqua2021simple,
-  author={Bevacqua, Martina Teresa and Palmeri, Roberta and Isernia, Tommaso and Crocco, Lorenzo},
-  journal={IEEE Transactions on Antennas and Propagation}, 
-  title={A Simple Procedure to Design Virtual Experiments for Microwave Inverse Scattering}, 
-  year={2021},
-  volume={69},
-  number={12},
-  pages={8652-8663},
-  keywords={Inverse problems;Scattering;Microwave antennas;Microwave theory and techniques;Microwave propagation;Microwave imaging;Backpropagation;Adjoint solution;algebraic reconstruction method;inverse scattering problem;microwave imaging;orthogonality sampling method;virtual scattering experiments},
-  doi={10.1109/TAP.2021.3083747}}
-
-@ARTICLE{bevacqua2021effective,
-  author={Bevacqua, Martina Teresa and Isernia, Tommaso},
-  journal={IEEE Transactions on Antennas and Propagation}, 
-  title={An Effective Rewriting of the Inverse Scattering Equations via Green’s Function Decomposition}, 
-  year={2021},
-  volume={69},
-  number={8},
-  pages={4883-4893},
-  keywords={Mathematical model;Scattering;Inverse problems;Green's function methods;Numerical models;Integral equations;Permittivity;Born approximation;contrast source inversion;Green’s function;inverse scattering;microwave imaging;nonlinearity;radiating currents},
-  doi={10.1109/TAP.2021.3060147}}
-
-@ARTICLE{yin2023subspace,
-  author={Yin, Tiantian and Pan, Li and Chen, Xudong},
-  journal={IEEE Transactions on Antennas and Propagation}, 
-  title={Subspace-Based Distorted-Rytov Iterative Method for Solving Inverse Scattering Problems}, 
-  year={2023},
-  volume={71},
-  number={10},
-  pages={8173-8183},
-  keywords={Iterative methods;Permittivity;Approximation error;Scattering;Phase distortion;Inverse problems;Approximation algorithms;Distorted Rytov approximation (RA);inhomogeneous background;inverse scattering},
-  doi={10.1109/TAP.2023.3305327}}
-
-@ARTICLE{zhang2023iterative,
-  author={Zhang, Yuyue and Yin, Tiantian and Zhao, Zhiqin and Nie, Zaiping and Chen, Xudong},
-  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
-  title={An Iterative Domain Decomposition Technique Based on Subspace-Based Optimization Method for Solving Highly Nonlinear Inverse Problem}, 
-  year={2022},
-  volume={60},
-  number={},
-  pages={1-13},
-  keywords={Iterative methods;Optimization methods;Image reconstruction;Frequency measurement;Integral equations;Mathematical models;Inverse problems;Highly nonlinearity;iterative domain decomposition technique (IDDT);strong scatterers;subspace-based optimization methods (SOMs)},
-  doi={10.1109/TGRS.2022.3222718}}
-
-@ARTICLE{liu2022som,
-  author={Liu, Yu and Zhao, Hao and Song, Rencheng and Chen, Xudong and Li, Chang and Chen, Xun},
-  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
-  title={SOM-Net: Unrolling the Subspace-Based Optimization for Solving Full-Wave Inverse Scattering Problems}, 
-  year={2022},
-  volume={60},
-  number={},
-  pages={1-15},
-  keywords={Permittivity;Iterative methods;Image reconstruction;Scattering;Permittivity measurement;Mathematical models;Inverse problems;Deep unrolling;inverse scattering problem (ISP);subspace-based optimization},
-  doi={10.1109/TGRS.2022.3217162}}
-
-@ARTICLE{wang2004image,
-  author={Zhou Wang and Bovik, A.C. and Sheikh, H.R. and Simoncelli, E.P.},
-  journal={IEEE Transactions on Image Processing}, 
-  title={Image quality assessment: from error visibility to structural similarity}, 
-  year={2004},
-  volume={13},
-  number={4},
-  pages={600-612},
-  keywords={Image quality;Humans;Transform coding;Visual system;Visual perception;Data mining;Layout;Quality assessment;Degradation;Indexes},
-  doi={10.1109/TIP.2003.819861}}
-
-
-@Article{Kurrant2021evaluating,
-AUTHOR = {Kurrant, Douglas and Omer, Muhammad and Abdollahi, Nasim and Mojabi, Pedram and Fear, Elise and LoVetri, Joe},
-TITLE = {Evaluating Performance of Microwave Image Reconstruction Algorithms: Extracting Tissue Types with Segmentation Using Machine Learning},
-JOURNAL = {Journal of Imaging},
-VOLUME = {7},
-YEAR = {2021},
-NUMBER = {1},
-ARTICLE-NUMBER = {5},
-URL = {https://www.mdpi.com/2313-433X/7/1/5},
-PubMedID = {34460576},
-ISSN = {2313-433X},
-ABSTRACT = {Evaluating the quality of reconstructed images requires consistent approaches to extracting information and applying metrics. Partitioning medical images into tissue types permits the quantitative assessment of regions that contain a specific tissue. The assessment facilitates the evaluation of an imaging algorithm in terms of its ability to reconstruct the properties of various tissue types and identify anomalies. Microwave tomography is an imaging modality that is model-based and reconstructs an approximation of the actual internal spatial distribution of the dielectric properties of a breast over a reconstruction model consisting of discrete elements. The breast tissue types are characterized by their dielectric properties, so the complex permittivity profile that is reconstructed may be used to distinguish different tissue types. This manuscript presents a robust and flexible medical image segmentation technique to partition microwave breast images into tissue types in order to facilitate the evaluation of image quality. The approach combines an unsupervised machine learning method with statistical techniques. The key advantage for using the algorithm over other approaches, such as a threshold-based segmentation method, is that it supports this quantitative analysis without prior assumptions such as knowledge of the expected dielectric property values that characterize each tissue type. Moreover, it can be used for scenarios where there is a scarcity of data available for supervised learning. Microwave images are formed by solving an inverse scattering problem that is severely ill-posed, which has a significant impact on image quality. A number of strategies have been developed to alleviate the ill-posedness of the inverse scattering problem. The degree of success of each strategy varies, leading to reconstructions that have a wide range of image quality. A requirement for the segmentation technique is the ability to partition tissue types over a range of image qualities, which is demonstrated in the first part of the paper. The segmentation of images into regions of interest corresponding to various tissue types leads to the decomposition of the breast interior into disjoint tissue masks. An array of region and distance-based metrics are applied to compare masks extracted from reconstructed images and ground truth models. The quantitative results reveal the accuracy with which the geometric and dielectric properties are reconstructed. The incorporation of the segmentation that results in a framework that effectively furnishes the quantitative assessment of regions that contain a specific tissue is also demonstrated. The algorithm is applied to reconstructed microwave images derived from breasts with various densities and tissue distributions to demonstrate the flexibility of the algorithm and that it is not data-specific. The potential for using the algorithm to assist in diagnosis is exhibited with a tumor tracking example. This example also establishes the usefulness of the approach in evaluating the performance of the reconstruction algorithm in terms of its sensitivity and specificity to malignant tissue and its ability to accurately reconstruct malignant tissue.},
-DOI = {10.3390/jimaging7010005}
+  doi={10.46620/URSIATRASC24/NUMB9770}
 }
 
-
-
+@INPROCEEDINGS{wei2019solving,
+  author={Wei, Zhun and Chen, Xudong},
+  booktitle={2019 IEEE International Conference on Computational Electromagnetics (ICCEM)}, 
+  title={Solving Full-Wave Nonlinear Inverse Scattering Problems by Deep Learning Schemes}, 
+  year={2019},
+  volume={},
+  number={},
+  pages={1-2},
+  keywords={Image reconstruction;Permittivity;Deep learning;Inverse problems;Permittivity measurement;Physics;convolution neural network;inverse scattering;deep learning},
+  doi={10.1109/COMPEM.2019.8779092}
+}
