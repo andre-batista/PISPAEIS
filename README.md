@@ -1,4 +1,4 @@
-# Novel Performance Indicators for Shape and Position Assessment in Electromagnetic Inverse Scattering
+# Performance Indicators for Shape and Position Assessment in Electromagnetic Inverse Scattering
 
 <!-- [![IEEE Transactions on Antennas and Propagation](https://img.shields.io/badge/IEEE-TAP-blue.svg)](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8) -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -6,7 +6,7 @@
 
 ## Overview
 
-This repository contains the complete research materials for the paper **"Novel Performance Indicators for Shape and Position Assessment in Electromagnetic Inverse Scattering"** submitted to **IEEE Transactions on Antennas and Propagation**.
+This repository contains the complete research materials for the paper **"Performance Indicators for Shape and Position Assessment in Electromagnetic Inverse Scattering"** submitted to **IEEE Transactions on Antennas and Propagation**.
 
 The research introduces two novel performance indicators specifically designed to evaluate electromagnetic inverse scattering algorithms:
 - **Shape Error Indicator**: Quantifies geometric reconstruction accuracy
@@ -21,7 +21,7 @@ This paper introduces two novel performance indicators specifically designed to 
 ## Repository Structure
 
 ```
-NPISPAEIS/
+PISPAEIS/
 ├── paper/                          # LaTeX source files for the manuscript
 │   ├── main.tex                    # Main paper document
 │   ├── mybib.bib                   # Bibliography file with 47 references
@@ -79,8 +79,8 @@ The experiments revealed that:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/andre-batista/NPISPAEIS.git
-   cd NPISPAEIS
+   git clone https://github.com/andre-batista/PISPAEIS.git
+   cd PISPAEIS
    ```
 
 2. **Create virtual environment:**
@@ -147,10 +147,10 @@ All experimental data is stored in standardized formats compatible with the EISP
 If you use this work in your research, please cite:
 
 ```bibtex
-@misc{batista2024novel,
-    title={Novel Performance Indicators for Shape and Position Assessment in Electromagnetic Inverse Scattering},
+@misc{batista2025performance,
+    title={Performance Indicators for Shape and Position Assessment in Electromagnetic Inverse Scattering},
     author={Batista, André Costa and Adriano, Ricardo and Batista, Lucas S.},
-    year={2024},
+    year={2025},
     note={Preprint}
 }
 ```
