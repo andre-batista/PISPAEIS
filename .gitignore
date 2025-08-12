@@ -20,6 +20,7 @@ experiments/**/*.pdf
 **/data/*.cst
 experiments/*/data/
 experiments/position/single/data/
+manuscript.zip
 
 # Arquivos de dados em geral
 data/**/*.bmk

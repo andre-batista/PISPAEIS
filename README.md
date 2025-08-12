@@ -41,6 +41,7 @@ PISPAEIS/
 │   └── position/                   # Position experiment data
 ├── requirements.txt                # Python dependencies
 ├── loaddata.py                     # Data loading utilities
+├── buildmanuscriptfolder.py        # Build a .zip file with the necessary files for paper compilation
 └── README.md                       # This file
 ```
 
