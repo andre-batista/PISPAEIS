@@ -159,8 +159,7 @@ If you use this work in your research, please cite:
 ## Authors
 
 - **André Costa Batista** - Department of Electrical Engineering, Universidade Federal de Minas Gerais
-- **Ricardo Adriano** - Department of Electrical Engineering, Universidade Federal de Minas Gerais  
-- **Lucas S. Batista** - Department of Electrical Engineering, Universidade Federal de Minas Gerais
+- **Ricardo Adriano** - Department of Electrical Engineering, Universidade Federal de Minas Gerais
 
 ## Acknowledgments
 
