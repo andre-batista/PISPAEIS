@@ -104,9 +104,9 @@ def create_manuscript_zip():
         return
     
     # Check if main.tex exists
-    main_tex = paper_dir / "main.tex"
+    main_tex = paper_dir / "manuscript.tex"
     if not main_tex.exists():
-        print("Error: 'main.tex' file not found in paper folder!")
+        print("Error: 'manuscript.tex' file not found in paper folder!")
         return
     
     # Extract referenced figures from main.tex
