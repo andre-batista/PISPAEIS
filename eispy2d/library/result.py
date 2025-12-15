@@ -17,6 +17,7 @@ import copy as cp
 import numpy as np
 from scipy.stats import linregress
 from skimage import measure
+from skimage.metrics import structural_similarity
 from statsmodels.graphics.boxplots import violinplot
 import matplotlib.pyplot as plt
 import error
@@ -51,6 +52,7 @@ LABEL_ZETA_P = r'$\zeta_{P}$ [%]'
 LABEL_ZETA_S = r'$\zeta_{S}$ [%]'
 LABEL_ZETA_TFMPAD = r'$\zeta_{TFMPAD}$ [%/pixel]'
 LABEL_ZETA_TFPPAD = r'$\zeta_{TFPPAD}$ [%/rad]'
+LABEL_SSIM = r'SSIM'
 LABEL_EXECUTION_TIME = r'$t_{exe}$ [sec]'
 LABEL_OBJECTIVE_FUNCTION = r'$f(\chi, E_z^s)$'
 LABEL_NUMBER_EVALUATIONS = 'Evaluations'
@@ -83,6 +85,7 @@ CONDUCTIVITY_AD_ERROR = 'zeta_sad'
 TOTAL_VARIATION = 'zeta_tv'
 POSITION_ERROR = 'zeta_p'
 SHAPE_ERROR = 'zeta_s'
+SSIM_ERROR = 'ssim'
 REL_PERMITTIVITY_BACKGROUND_ERROR = 'zeta_ebe'
 REL_PERMITTIVITY_OBJECT_ERROR = 'zeta_eoe'
 CONDUCTIVITY_BACKGROUND_ERROR = 'zeta_sbe'
@@ -102,7 +105,7 @@ INDICATOR_SET = [RESIDUAL_NORM_ERROR, RESIDUAL_PAD_ERROR,
                  TOTALFIELD_MAGNITUDE_PAD, TOTALFIELD_PHASE_AD,
                  TOTAL_VARIATION, SHAPE_ERROR, POSITION_ERROR, EXECUTION_TIME,
                  OBJECTIVE_FUNCTION, NUMBER_EVALUATIONS, NUMBER_ITERATIONS,
-                 PATH]
+                 PATH, SSIM_ERROR]
 
 LABELS = {RESIDUAL_NORM_ERROR: r'$\zeta_{RN}$ (V/m)',
           RESIDUAL_PAD_ERROR: r'$\zeta_{RPAD}$ [%/sample]',
@@ -121,7 +124,8 @@ LABELS = {RESIDUAL_NORM_ERROR: r'$\zeta_{RN}$ (V/m)',
           OBJECTIVE_FUNCTION: 'Objective Function',
           NUMBER_EVALUATIONS: 'Evaluations',
           NUMBER_ITERATIONS: 'Iterations',
-          PATH: 'Path of Optimum Solution'}
+          PATH: 'Path of Optimum Solution',
+          SSIM_ERROR: 'SSIM'}
 
 TITLES = {RESIDUAL_NORM_ERROR: 'Residual Norm',
           RESIDUAL_PAD_ERROR: 'Residual PAD',
@@ -140,7 +144,8 @@ TITLES = {RESIDUAL_NORM_ERROR: 'Residual Norm',
           OBJECTIVE_FUNCTION: 'Ob. Func. Evaluation',
           NUMBER_EVALUATIONS: 'Evaluations',
           NUMBER_ITERATIONS: 'Iterations',
-          PATH: 'Path of Optimum Solution'}
+          PATH: 'Path of Optimum Solution',
+          SSIM_ERROR: 'Structural Similarity'}
 
 
 class Result:
@@ -239,6 +244,7 @@ class Result:
             self.zeta_ebe, self.zeta_sbe = list(), list()
             self.zeta_eoe, self.zeta_soe = list(), list()
             self.zeta_tfmpad, self.zeta_tfpad = list(), list()
+            self.ssim = list()
             if objective_function is None:
                 self.objective_function = list()
             else:
@@ -275,7 +281,8 @@ class Result:
             POSITION_ERROR: self.zeta_p,
             TOTALFIELD_MAGNITUDE_PAD: self.zeta_tfmpad,
             TOTALFIELD_PHASE_AD: self.zeta_tfpad,
-            PATH: self.path
+            PATH: self.path,
+            SSIM_ERROR: self.ssim
         }
 
         with open(file_path + self.name, 'wb') as datafile:
@@ -310,6 +317,7 @@ class Result:
         self.zeta_p = data[POSITION_ERROR]
         self.zeta_s = data[SHAPE_ERROR]
         self.path = data[PATH]
+        self.ssim = data[SSIM_ERROR]
 
     def plot_map(self, axis=None, image=CONTRAST, groundtruth=None, title=None,
                  show=False, save=False, file_path='', file_format='eps',
@@ -722,6 +730,18 @@ class Result:
             else:
                 Xr = contrast
             self.zeta_p.append(compute_zeta_p(Xo, Xr))
+        
+        if SSIM_ERROR in inputdata.indicators:
+            Xo = cfg.get_contrast_map(epsilon_r=inputdata.rel_permittivity,
+                                      sigma=inputdata.conductivity,
+                                      configuration=self.configuration)
+            if contrast is None:
+                Xr = cfg.get_contrast_map(epsilon_r=rel_permittivity,
+                                          sigma=conductivity,
+                                          configuration=self.configuration)
+            else:
+                Xr = contrast
+            self.ssim.append(compute_ssim(Xo, Xr))
 
         if TOTAL_VARIATION in inputdata.indicators:
             if (conductivity is None and rel_permittivity is None
@@ -1945,6 +1965,16 @@ def compute_zeta_s(chi_o, chi_r, threshold=.5):
     area_diff = np.sum(diff)/np.sum(masko)*100
 
     return area_diff
+
+def compute_ssim(chi_o, chi_r):
+    range_o = chi_o.max() - chi_o.min()
+    range_r = chi_r.max() - chi_r.min()
+    if range_o > range_r:
+        data_range = range_o
+    else:
+        data_range = range_r
+    ssim = structural_similarity(chi_o, chi_r, data_range=data_range)
+    return ssim
 
 
 def check_indicator(indicator):
