@@ -345,6 +345,38 @@ Algorithm evaluation, electromagnetic inverse scattering, microwave imaging, per
                 \label{fig:shape:average:confidence_intervals}
             \end{figure}
 
+        \subsubsection{Indicator Comparison}\label{sec:results:shape:indicatorcomparison}
+
+            To further illustrate the application of the proposed shape error indicator, an experiment was conducted to compare its behavior with other commonly used indicators in the literature. Specifically, the Root Mean Square Error (RMSE) between the original and reconstructed images, denoted as $\zeta_{\epsilon PAD}$ according to \cite{batista2025eispy2d}, and the Structural Similarity Index Measure (SSIM) \cite{wang2004image} were considered for comparison.
+
+            The experiment involved reconstructing a star-shaped scatterer, as described in Section \ref{sec:results:shape:star}, using the SOM algorithm. The reconstruction process was performed over 100 iterations, with images saved at iterations 10, 20, 30, and 100. 
+
+            \begin{figure*}[!htb]
+                \centering
+                \subfigure[]{\includegraphics[width=.205\textwidth]{./experiments/indicatorcomparison/shape/figs/groundtruth.eps}\label{fig:shape:indicatorcomparison:groundtruth}}
+                \subfigure[]{\includegraphics[width=.18\textwidth]{./experiments/indicatorcomparison/shape/figs/som10.eps}\label{fig:shape:indicatorcomparison:som:10}}
+                \subfigure[]{\includegraphics[width=.18\textwidth]{./experiments/indicatorcomparison/shape/figs/som20.eps}\label{fig:shape:indicatorcomparison:som:20}} 
+                \subfigure[]{\includegraphics[width=.18\textwidth]{./experiments/indicatorcomparison/shape/figs/som30.eps}\label{fig:shape:indicatorcomparison:som:30}}
+                \subfigure[]{\includegraphics[width=.232\textwidth]{./experiments/indicatorcomparison/shape/figs/som100.eps}\label{fig:shape:indicatorcomparison:som:100}}
+                \caption{Shape recovery study, indicator comparison: (a) ground-truth and images recovered by SOM in (b) 10, (c) 20, (d) 30, and (e) 100 iterations.}
+                \label{fig:shape:indicatorcomparison:recons}
+            \end{figure*}
+
+            Fig. \ref{fig:shape:indicatorcomparison:recons} displays the ground-truth image and the images reconstructed by SOM at iterations 10, 20, 30, and 100. As the number of iterations increases, some observable changes occur in the reconstructed images. The contrast estimation rises slightly with each iteration, with the estimated values remaining moderately above the true contrast value. The star edges become gradually more defined as iterations increase. However, the most significant changes occur in the background medium characteristics. Variations in the vicinity of the star become progressively more pronounced with increasing iterations, while regions farther from the star exhibit a significantly more homogeneous background medium as the iterative process continues.
+
+            \begin{figure}
+                \centering
+                \subfigure[]{\includegraphics[width=.45\columnwidth]{./experiments/indicatorcomparison/shape/figs/zeta_s.eps}\label{fig:shape:indicatorcomparison:zeta_s}} \hspace{0.05\columnwidth}
+                \subfigure[]{\includegraphics[width=.45\columnwidth]{./experiments/indicatorcomparison/shape/figs/zeta_epad.eps}\label{fig:shape:indicatorcomparison:rmse}} \\
+                \subfigure[]{\includegraphics[width=.45\columnwidth]{./experiments/indicatorcomparison/shape/figs/ssim.eps}\label{fig:shape:indicatorcomparison:ssim}}
+                \caption{Shape recovery study, indicator comparison: (a) shape error indicator $\zeta_S$, (b) $\zeta_{\epsilon PAD}$ (RMSE), and (c) SSIM for images recovered by SOM in 100 iterations.}
+                \label{fig:shape:indicatorcomparison:indicators}
+            \end{figure}
+
+            Fig. \ref{fig:shape:indicatorcomparison:indicators} presents the values of the three indicators for the reconstructed images at each iteration. It is important to note that the ideal value of SSIM is 1, indicating identical images, while the ideal values of both $\zeta_S$ and $\zeta_{\epsilon PAD}$ are 0, indicating the absence of error. Consequently, SSIM increases with image quality improvement, whereas the other two indicators decrease. The results reveal a tendency toward stability in the indicator values starting from iteration 30 or 50. Notably, the SSIM value remains considerably distant from 1. Furthermore, both $\zeta_S$ and $\zeta_{\epsilon PAD}$ exhibit smooth variations throughout the iterative process. However, $\zeta_S$ displays small irregularities in the decay, which can be attributed to the discrete nature of the thresholding operation inherent to its calculation methodology.
+
+            The distance of the SSIM indicator from the ideal level (1) can be explained by the influence that background medium variations exert on the indicator calculation. This also occurs in the RMSE ($\zeta_{\epsilon PAD}$) calculation, although the impact is less pronounced due to the way the error is computed. On the other hand, the $\zeta_S$ indicator is less affected by these background medium variations, since the thresholding process tends to eliminate these small fluctuations, focusing primarily on the recovery of the scatterer geometry. This represents an advantage of the proposed indicator, especially in scenarios where accurate recovery of the scatterer geometry is the primary objective.
+
     \subsection{Position Detection Study}\label{sec:results:position}
 
         In many scenarios where algorithms can adequately reconstruct the geometry of scatterers, the error in detecting scatterer positions tends to be low. For example, in the study described in Section \ref{sec:results:shape:star}, the $\zeta_P$ indicator values obtained by LSM, OSM, BIM, CSI, and SOM were 0.049\%, 0.057\%, 0.25\%, 0.31\%, and 0.14\%, respectively. This occurs because geometry and position are scatterer characteristics that algorithms typically do not handle separately.
