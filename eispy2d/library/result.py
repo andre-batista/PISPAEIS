@@ -851,6 +851,9 @@ class Result:
         if self.path is not None and len(self.path) != 0:
             message += ' Optimum solution: ' + str(self.path[-1]) + ','
 
+        if self.ssim is not None and len(self.ssim) != 0:
+            message += ' SSIM: %.3f,' % self.ssim[-1]
+
         return message
 
     def valid_indicators(self):
@@ -1171,6 +1174,15 @@ class Result:
                 info = '[' + str(', '.join('{:.2f}%'.format(i)
                                            for i in self.zeta_s) + ']')
             message += ('\nShape error: ' + info)
+        if len(self.ssim) > 0:
+            if len(self.ssim) == 1:
+                info = '%.4f' % self.ssim[0]
+            elif len(self.ssim) > 30:
+                info = '%.4f' % self.ssim[-1]
+            else:
+                info = '[' + str(', '.join('{:.4f}'.format(i)
+                                           for i in self.ssim) + ']')
+            message += ('\nSSIM index: ' + info)
         if type(self.objective_function) is float:
             message += ('\nObjective function evaluation: %.3e'
                         % self.objective_function)
