@@ -1,0 +1,33 @@
+\begin{algorithm}
+\caption{Compute Position Error Indicator $\zeta_P$}
+\label{alg:compute_zeta_p}
+\begin{algorithmic}[1]
+\REQUIRE Original contrast distribution $\boldsymbol{\chi}_o$
+\REQUIRE Reconstructed contrast distribution $\boldsymbol{\chi}_r$
+\ENSURE Position error indicator $\zeta_P$ (\%)
+
+\STATE Extract magnitude information from both contrast distributions
+\STATE Determine adaptive threshold based on reconstructed image dynamic range
+
+\STATE Generate binary object masks using threshold-based classification
+\STATE \quad - Original mask: pixels with non-zero contrast values
+\STATE \quad - Reconstructed mask: pixels above computed threshold
+
+\IF{no object regions detected in reconstruction}
+    \RETURN complete failure indicator (100\%)
+\ENDIF
+
+\STATE Create normalized coordinate systems for both images
+\STATE \quad - Map pixel coordinates to unit interval [0,1]
+\STATE \quad - Handle potential resolution differences
+
+\STATE Compute geometric centroids using weighted coordinate averaging:
+\STATE \quad - Calculate center of mass for original object mask
+\STATE \quad - Calculate center of mass for reconstructed object mask
+
+\STATE Measure centroid displacement using Euclidean distance metric
+\STATE Normalize distance to percentage scale relative to image dimensions
+
+\RETURN position error as percentage of maximum possible displacement
+\end{algorithmic}
+\end{algorithm}
