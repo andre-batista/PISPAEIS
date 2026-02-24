@@ -22,13 +22,6 @@ This paper introduces two novel performance indicators specifically designed to 
 
 ```
 PISPAEIS/
-├── paper/                          # LaTeX source files for the manuscript
-│   ├── main.tex                    # Main paper document
-│   ├── mybib.bib                   # Bibliography file with 47 references
-│   ├── main.pdf                    # Compiled PDF manuscript
-│   ├── algorithms/                 # Algorithm descriptions
-│   └── figs/                       # Paper figures and images
-├── cover_letter/                   # Cover letter for journal submission
 ├── experiments/                    # Experimental implementations and results
 │   ├── breast/                     # Breast phantom experiments
 │   ├── shape/                      # Shape recovery studies
@@ -41,7 +34,6 @@ PISPAEIS/
 │   └── position/                   # Position experiment data
 ├── requirements.txt                # Python dependencies
 ├── loaddata.py                     # Data loading utilities
-├── buildmanuscriptfolder.py        # Build a .zip file with the necessary files for paper compilation
 └── README.md                       # This file
 ```
 
@@ -117,20 +109,6 @@ The experiments revealed that:
    python runexperiment.py
    ```
 
-## Paper Compilation
-
-The paper is written in LaTeX using the IEEE Transactions format.
-
-### Compiling the PDF
-
-```bash
-cd paper
-pdflatex main.tex
-bibtex main
-pdflatex main.tex
-pdflatex main.tex
-```
-
 ## Data Description
 
 ### Experimental Datasets
@@ -148,11 +126,11 @@ All experimental data is stored in standardized formats compatible with the EISP
 If you use this work in your research, please cite:
 
 ```bibtex
-@misc{batista2025performance,
+@article{batista2025performance,
     title={Performance Indicators for Shape and Position Assessment in Electromagnetic Inverse Scattering},
-    author={Batista, André Costa and Adriano, Ricardo and Batista, Lucas S.},
-    year={2025},
-    note={Preprint}
+    journal={IEEE Access}, 
+    author={Batista, André Costa and Adriano, Ricardo},
+    year={2026},
 }
 ```
 
@@ -167,6 +145,8 @@ This work was supported in part by:
 - Brazilian agency CAPES (Coordination for the Improvement of Higher Education Personnel) under Grant 88887.463864/2019-00
 - FAPEMIG-CNPQ scholarship (process APQ-06716-24)
 - CNPq (The National Council for Scientific and Technological Development)
+
+We also thank Lucas S. Batista for his guidance and support during the research.
 
 ## License
 
